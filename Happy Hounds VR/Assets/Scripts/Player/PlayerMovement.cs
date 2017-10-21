@@ -6,10 +6,20 @@ public class PlayerMovement : MonoBehaviour {
 
     private SteamVR_TrackedObject trackedObj;
 
+    //to show laser
     public GameObject laserPrefab;
     private GameObject laser;
     private Transform laserTransform;
     private Vector3 hitPoint;
+    //to teleport
+    public Transform cameraRigTransform;
+    public GameObject teleportReticlePrefab;
+    private GameObject reticle;
+    private Transform teleportReticleTransform;
+    public Transform headTransform;
+    public Vector3 teleportReticleOffset;
+    public LayerMask teleportMask;
+    private bool shouldTeleport;
 
     private SteamVR_Controller.Device Controller
     {
@@ -20,6 +30,8 @@ public class PlayerMovement : MonoBehaviour {
     {
         laser = Instantiate(laserPrefab);
         laserTransform = laser.transform;
+        reticle = Instantiate(teleportReticlePrefab);
+        teleportReticleTransform = reticle.transform;
     }
 
     private void Awake()
@@ -42,15 +54,33 @@ public class PlayerMovement : MonoBehaviour {
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100))
+            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit,
+                100, teleportMask))
             {
                 hitPoint = hit.point;
                 ShowLaser(hit);
+                reticle.SetActive(true);
+                teleportReticleTransform.position = hitPoint + teleportReticleOffset;
+                shouldTeleport = true;
             }
         }
         else
         {
             laser.SetActive(false);
+            reticle.SetActive(false);
         }
+        if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && shouldTeleport)
+        {
+            Teleport();
+        }
+    }
+
+    private void Teleport()
+    {
+        shouldTeleport = false;
+        reticle.SetActive(false);
+        Vector3 difference = cameraRigTransform.position - headTransform.position;
+        difference.y = 0;
+        cameraRigTransform.position = hitPoint + difference;
     }
 }
