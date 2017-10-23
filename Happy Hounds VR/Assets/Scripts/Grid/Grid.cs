@@ -30,4 +30,14 @@ public class Grid : MonoBehaviour
         for (int j = 0; j < outdoorLengthZ; j++)
             nodes.Add(new Vector3(-19, 0, -4 - outdoorLengthZ));
     }
+
+    /// <summary>
+    /// Returns random point in traversable
+    /// </summary>
+    public Vector3 GetRandomPoint()
+    {
+        int i = Random.Range(0, 42);
+        
+        return nodes[i];
+    }
 }
