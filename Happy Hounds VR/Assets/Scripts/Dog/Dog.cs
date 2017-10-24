@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(Rigidbody))]
-public class Dog : MonoBehaviour
+public abstract class Dog : MonoBehaviour
 {
     public enum Direction { Forward, Back, Left, Right }; //for movement
 
@@ -25,11 +26,16 @@ public class Dog : MonoBehaviour
     float cleanliness;
     float obedience;
 
+<<<<<<< HEAD
     GameObject gridObject;
+=======
+    GameObject grid;
+>>>>>>> 837714ef0a2a5ae032be77bd18267abdc919c53c
     Grid gridScript;
 
     void Start()
     {
+<<<<<<< HEAD
         FindGrid();
         SetFoodType();
     }
@@ -38,9 +44,19 @@ public class Dog : MonoBehaviour
     {
         gridObject = GameObject.FindGameObjectWithTag("Grid");
         gridScript = gridObject.GetComponent<Grid>();
+=======
+        
     }
 
-    private void SetFoodType()
+    public void GetGrid()
+    {
+        grid = GameObject.FindGameObjectWithTag("Grid");
+        gridScript = grid.GetComponent<Grid>();
+>>>>>>> 837714ef0a2a5ae032be77bd18267abdc919c53c
+    }
+
+    
+    public void SetFoodType()
     {
         if (pup)
             foodType = (int)FoodTypes.Pup;
@@ -121,6 +137,7 @@ public class Dog : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     IEnumerator LerpToRandomPoint()
     {
         float totalTime = 10;
@@ -139,5 +156,24 @@ public class Dog : MonoBehaviour
         }
 
         StartCoroutine(LerpToRandomPoint());
+=======
+     public virtual void StartDogLerp()
+    {
+        StartCoroutine(DogLerp());
+    }
+        
+    IEnumerator DogLerp()
+    {
+        float totalTime = 10;
+        float currentTime = 0;
+        Vector3 currentPos = transform.position;
+        Vector3 goalPos = gridScript.GetRandomNode();
+        while (currentTime < totalTime)
+        {
+            currentTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(currentPos, goalPos, currentTime / totalTime);
+            yield return 0;
+        }
+>>>>>>> 837714ef0a2a5ae032be77bd18267abdc919c53c
     }
 }

@@ -156,20 +156,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -394,6 +380,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0010000012, y: 0.08000914, z: 0.20093286}
   m_Center: {x: 0.0004999992, y: 0.03999543, z: -0.050466433}
+<<<<<<< HEAD
 --- !u!1 &488342485
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +494,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+=======
+>>>>>>> 837714ef0a2a5ae032be77bd18267abdc919c53c
 --- !u!1 &560343607 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100028, guid: 38bd5ed47729db44e91a3608ecd86388, type: 3}
@@ -1080,7 +1069,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2054449252 stripped
 GameObject:
