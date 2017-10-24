@@ -25,12 +25,26 @@ public class Dog : MonoBehaviour
     float cleanliness;
     float obedience;
 
+    GameObject grid;
+    Grid gridScript;
+
     void Start()
     {
+        GetGrid();
         SetFoodType();
     }
 
+    void GetGrid()
+    {
+        grid = GameObject.FindGameObjectWithTag("Grid");
+        gridScript = grid.GetComponent<Grid>();
+    }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+            StartCoroutine(DogLerp());
+    }
     private void SetFoodType()
     {
         if (pup)
@@ -106,4 +120,17 @@ public class Dog : MonoBehaviour
         }
     }
 
+    IEnumerator DogLerp()
+    {
+        float totalTime = 10;
+        float currentTime = 0;
+        Vector3 currentPos = transform.position;
+        Vector3 goalPos = gridScript.GetRandomNode();
+        while (currentTime < totalTime)
+        {
+            currentTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(currentPos, goalPos, currentTime / totalTime);
+            yield return 0;
+        }
+    }
 }
