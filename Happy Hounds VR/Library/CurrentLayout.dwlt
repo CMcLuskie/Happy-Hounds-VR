@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 392}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 117
+  controlID: 155
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 17
+  controlID: 53
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_MinSize: {x: 279, y: 292}
   m_MaxSize: {x: 4004, y: 8042}
   vertical: 1
-  controlID: 118
+  controlID: 156
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -254,8 +254,8 @@ MonoBehaviour:
     y: 396
     width: 473
     height: 335
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 279, y: 71}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 392}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 155
+  controlID: 75
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -304,8 +304,8 @@ MonoBehaviour:
     y: 0
     width: 372
     height: 249
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -439,14 +439,14 @@ MonoBehaviour:
     width: 689
     height: 375
   m_SceneLighting: 1
-  lastFramingTime: 629.6277608133133
+  lastFramingTime: 186.04392257426457
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -13.081872, y: -2.7376904, z: -4.5402193}
+    m_Target: {x: -3.9244049, y: 1.5542755, z: -1.1290007}
     speed: 2
-    m_Value: {x: -13.081872, y: -2.7376904, z: -4.5402193}
+    m_Value: {x: -3.9244049, y: 1.5542755, z: -1.1290007}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -469,13 +469,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.18993786, y: 0.6665415, z: -0.18146764, w: -0.6976501}
+    m_Target: {x: -0.06725936, y: 0.9115749, z: -0.37025112, w: -0.16559437}
     speed: 2
-    m_Value: {x: -0.18993787, y: 0.6665416, z: -0.18146764, w: -0.69765013}
+    m_Value: {x: -0.06725936, y: 0.9115749, z: -0.37025112, w: -0.16559437}
   m_Size:
-    m_Target: 33.147907
+    m_Target: 17.996332
     speed: 2
-    m_Value: 33.147907
+    m_Value: 17.996332
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -613,10 +613,10 @@ MonoBehaviour:
     width: 469
     height: 375
   m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 44fbffff00000000
+    scrollPos: {x: 0, y: 235.4961}
+    m_SelectedIDs: dcedffff
+    m_LastClickedID: -4644
+    m_ExpandedIDs: b8edffffccedffffdaedffffdcedffffd6f4fffff4f4fffffaf4ffff3cf5ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -665,7 +665,7 @@ MonoBehaviour:
     y: 488
     width: 469
     height: 314
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 300.95508}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -160
@@ -769,19 +769,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Grid
+    - Assets/Scripts/Dog
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Grid
+  - Assets/Scripts/Dog
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Development\GitHub\Happy-Hounds-VR\Happy Hounds VR
   m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b02c0000
-    m_LastClickedID: 11440
-    m_ExpandedIDs: 00000000ec2a0000182b0000ea2c00004c2d0000962d000000ca9a3bffffff7f
+    m_SelectedIDs: e0270000
+    m_LastClickedID: 10208
+    m_ExpandedIDs: 00000000102700003c2700000e29000070290000022a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -809,7 +809,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 1eefffff
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ec2a0000182b0000ea2c00004c2d0000962d0000
+    m_ExpandedIDs: 00000000102700003c2700000e29000070290000022a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -840,18 +840,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 0a7f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: DogBrain
+      m_OriginalName: DogBrain
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 12558
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 14}
     m_CreateAssetUtility:

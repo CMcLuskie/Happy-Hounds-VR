@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(Rigidbody))]
-public class Dog : MonoBehaviour
+public abstract class Dog : MonoBehaviour
 {
     public enum Direction { Forward, Back, Left, Right }; //for movement
 
@@ -30,22 +31,17 @@ public class Dog : MonoBehaviour
 
     void Start()
     {
-        GetGrid();
-        SetFoodType();
+        
     }
 
-    void GetGrid()
+    public void GetGrid()
     {
         grid = GameObject.FindGameObjectWithTag("Grid");
         gridScript = grid.GetComponent<Grid>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-            StartCoroutine(DogLerp());
-    }
-    private void SetFoodType()
+    
+    public void SetFoodType()
     {
         if (pup)
             foodType = (int)FoodTypes.Pup;
@@ -120,6 +116,11 @@ public class Dog : MonoBehaviour
         }
     }
 
+     public virtual void StartDogLerp()
+    {
+        StartCoroutine(DogLerp());
+    }
+        
     IEnumerator DogLerp()
     {
         float totalTime = 10;
