@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
-public class Dog : MonoBehaviour
+public abstract class Dog : MonoBehaviour
 {
     public enum Direction { Forward, Back, Left, Right }; //for movement
 
@@ -25,11 +25,21 @@ public class Dog : MonoBehaviour
     float cleanliness;
     float obedience;
 
+    public bool isLerping = false;
+
+    GameObject grid;
+    Grid gridScript;
+
     void Start()
     {
         SetFoodType();
     }
 
+   public virtual void GetGridObject()
+    {
+        grid = GameObject.FindGameObjectWithTag("Grid");
+        gridScript = grid.GetComponent<Grid>();
+    }
 
     private void SetFoodType()
     {
@@ -106,4 +116,29 @@ public class Dog : MonoBehaviour
         }
     }
 
+    public virtual void StartDogLerp()
+    {
+        StartCoroutine(DogLerp());
+        isLerping = true;
+    }
+
+    IEnumerator DogLerp()
+    {
+        float totalTime = 5;
+        float currentTime = 0;
+        Vector3 currentPos = transform.position;
+        Vector3 goalPos = gridScript.GetRandomNode();
+        while (currentTime < totalTime)
+        {
+            currentTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(currentPos, goalPos, currentTime / totalTime);
+
+            if (currentTime >= totalTime)
+                isLerping = false;
+            yield return 0;
+
+        }
+        
+
+    }
 }

@@ -7,27 +7,45 @@ public class Grid : MonoBehaviour
     public List<Vector3> nodes;
     public List<Vector3> blockedNodes;
 
-    int lengthX = 24;
-    int indoorLengthZ = 8;
-    int outdoorLengthZ = 10;
+    int lengthX = 28;
+    int lengthZ = 28;
 
+    public bool showNodes;
     private void Start()
     {
-        InstantiateNodesX();
-        InstantiateNodesZ();
+        InstantiateNodes();
+
+        if (showNodes)
+            ShowNodes();
     } 
 
-    void InstantiateNodesX()
+    void InstantiateNodes()
     {
         for (int i = 0; i < lengthX; i++)
-            nodes.Add(new Vector3(-19 + i, 0, 4));
+        {
+            for(int j= 0; j < lengthZ; j++)
+            {
+                nodes.Add(new Vector3(14 - i, 0, 14 - j));
+            }
+        }
+
+        foreach (Vector3 v in blockedNodes)
+            nodes.Remove(v);
+
     }
 
-    void InstantiateNodesZ()
+    void ShowNodes()
     {
-        for (int i = 0; i < indoorLengthZ; i++)
-            nodes.Add(new Vector3(4, 0, 4 - indoorLengthZ));
-        for (int j = 0; j < outdoorLengthZ; j++)
-            nodes.Add(new Vector3(-19, 0, -4 - outdoorLengthZ));
+        foreach(Vector3 v in nodes)
+        {
+            GameObject nodeObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            nodeObject.transform.position = v;
+        }
+    }
+
+    public Vector3 GetRandomNode()
+    {
+        int i = Random.Range(0, nodes.Count);
+        return nodes[i];
     }
 }

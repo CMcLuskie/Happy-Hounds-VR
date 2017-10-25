@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  productGUID: 6e3a6b45a258590429678f52ded0c2cc
+  productGUID: bfd12650be8389b4081fb7114970e06c
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
@@ -591,9 +591,9 @@ PlayerSettings:
   cloudServicesEnabled: {}
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 22d26645-fba5-4e5a-8ad3-6330605fcf8c
-  projectName: Happy Hounds VR (1)
-  organizationId: conall-m
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
