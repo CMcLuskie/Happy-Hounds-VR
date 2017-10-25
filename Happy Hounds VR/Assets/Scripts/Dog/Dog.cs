@@ -11,7 +11,8 @@ public abstract class Dog : MonoBehaviour
     public enum FoodTypes { Pup, Adult, Senior };
     private int foodType;
 
-
+    Vector3 goalPos;
+     
     [SerializeField]
     protected bool pup;
     [SerializeField]
@@ -127,7 +128,7 @@ public abstract class Dog : MonoBehaviour
         float totalTime = 5;
         float currentTime = 0;
         Vector3 currentPos = transform.position;
-        Vector3 goalPos = gridScript.GetRandomNode();
+        goalPos = gridScript.GetRandomNode();
         while (currentTime < totalTime)
         {
             currentTime += Time.deltaTime;
@@ -141,4 +142,83 @@ public abstract class Dog : MonoBehaviour
         
 
     }
+
+    //public List<Vector3> Pathfinding(Vector3 startNode, Vector3 endNode)
+    //{
+    //    List<Vector3> openList = new List<Vector3>();
+    //    List<Vector3> closedList = new List<Vector3>();
+
+    //    openList.Add(startNode);
+
+    //    while (openList.Count > 0)
+    //    {
+    //        openList.Sort();
+    //        Vector3 currentNode = openList[0];
+
+    //        openList.Remove(currentNode);
+    //        closedList.Add(currentNode);
+
+
+    //        if (currentNode == endNode)
+    //        {
+    //             //get found path
+    //        }
+
+    //        List<Vector3> connectedNodes = new List<Vector3>();
+    //        for(int i=0; i < 3; i++)
+    //        {
+    //            for (int j = 0; j < 3; j++)
+    //            {
+    //                connectedNodes.Add(new Vector3(currentNode.x - 1 + i, currentNode.y, currentNode.z - 1 + j));
+    //                connectedNodes.Remove(currentNode);
+    //            }
+    //        }
+
+    //        for(int i=0; i<connectedNodes.Count; i++)
+    //        {
+    //            Vector3 connectedNode = connectedNodes[i];
+    //            if (closedList.Contains(connectedNode))
+    //            {
+    //                continue;
+    //            }
+
+    //            int 
+    //        }
+    //    }
+    //}
+
+    private int ManhattanDistanceHeuristic(int currentX, int currentY, int targetX, int targetY)
+    {
+        int xDist = Mathf.Abs(currentX - targetX);
+        int yDist = Mathf.Abs(currentY - targetY);
+
+        return 10 * (xDist + yDist);
+    }
+
+    private int ChebyshevDistanceHeuristic(int currentX, int currentY, int targetX, int targetY)
+    {
+        int xDist = Mathf.Abs(currentX - targetX);
+        int yDist = Mathf.Abs(currentY - targetY);
+
+        return 10 * (xDist + yDist) + (14 - 2 * 10) * Mathf.Min(xDist, yDist);
+    }
+
+    private int EuclideanDistanceHeuristic(int currentX, int currentY, int targetX, int targetY)
+    {
+        int xDist = Mathf.Abs(currentX - targetX);
+        int yDist = Mathf.Abs(currentY - targetY);
+
+        return 10 * (int)Mathf.Sqrt((xDist * xDist + yDist * yDist) * (xDist * xDist + yDist * yDist));
+    }
+
+    //protected List<Vector3> GetFoundPath(Vector3 endNode)
+    //{
+    //    List<Vector3> foundPath = new List<Vector3>();
+    //    if (endNode != null)
+    //    {
+    //        foundPath.Add(endNode);
+
+    //        while(endNode)
+    //    }
+    //}
 }

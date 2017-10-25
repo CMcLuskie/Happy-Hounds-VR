@@ -807,8 +807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f21cd2a25bc4404f97e5f346b4f403a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - {x: 0, y: 0, z: 0}
   blockedNodes: []
+  dogYPos: 1
   showNodes: 0
 --- !u!4 &1260262325
 Transform:
@@ -1107,7 +1109,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1917831047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1127,6 +1129,7 @@ MonoBehaviour:
   pup: 0
   adult: 1
   senior: 0
+  isLerping: 0
   wanderTimer: 0
 --- !u!54 &1917831053
 Rigidbody:

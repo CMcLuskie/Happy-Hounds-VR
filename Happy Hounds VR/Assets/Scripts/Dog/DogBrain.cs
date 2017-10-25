@@ -22,10 +22,9 @@ public class DogBrain : Dog {
         if ((wanderTimer >= 5 || wanderTimer <= 6f) && isLerping == false)
         {
             wanderTimer = 0;
-
             StartDogLerp();
         }
 	}
 
-
+    
 }

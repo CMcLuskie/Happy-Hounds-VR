@@ -10,6 +10,8 @@ public class Grid : MonoBehaviour
     int lengthX = 28;
     int lengthZ = 28;
 
+    public float dogYPos;
+
     public bool showNodes;
     private void Start()
     {
@@ -25,7 +27,7 @@ public class Grid : MonoBehaviour
         {
             for(int j= 0; j < lengthZ; j++)
             {
-                nodes.Add(new Vector3(14 - i, 0, 14 - j));
+                nodes.Add(new Vector3(14 - i, dogYPos, 14 - j));
             }
         }
 
