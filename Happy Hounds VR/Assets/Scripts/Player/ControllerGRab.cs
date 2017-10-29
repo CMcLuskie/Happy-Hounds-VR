@@ -2,23 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerGRab : MonoBehaviour
+public class ControllerGRab : Controllers
 {
-    private SteamVR_TrackedObject trackedObj;
+    [HideInInspector]
+    public GameObject collidingObject;//stores the GO the trigger is colliding with 
+    [HideInInspector]
+    public GameObject objectInHand;//reference to GO player is currently grabbing
 
-    private GameObject collidingObject;//stores the GO the trigger is colliding with 
-    private GameObject objectInHand;//reference to GO player is currently grabbing
 
+    
 
-    private SteamVR_Controller.Device Controller
-    {
-        get { return SteamVR_Controller.Input((int)trackedObj.index); }
-    }
-
-    private void Awake()
-    {
-        trackedObj = GetComponent<SteamVR_TrackedObject>();
-    }
+    
 
     private void SetCollidingObject(Collider col)
     {
@@ -46,7 +40,7 @@ public class ControllerGRab : MonoBehaviour
         collidingObject = null;
     }
 
-    private void GrabObject()
+    public void GrabObject()
     {
         Debug.Log("Grab Object");
         objectInHand = collidingObject;//moves GO to players hand
@@ -66,21 +60,21 @@ public class ControllerGRab : MonoBehaviour
         return fx;
     }
 
-    private void ReleaseObject()
+    public void ReleaseObject()
     {
         if (GetComponent<FixedJoint>())
         {
             GetComponent<FixedJoint>().connectedBody = null;
             Destroy(GetComponent<FixedJoint>());
-            objectInHand.GetComponent<Rigidbody>().velocity = Controller.velocity;
-            objectInHand.GetComponent<Rigidbody>().angularVelocity = Controller.angularVelocity;
+            objectInHand.GetComponent<Rigidbody>().velocity = ControllerVelocity();
+            objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity();
         }
         objectInHand = null;
     }
 
     private void Update()
     {
-        if (Controller.GetHairTriggerDown())
+        if (TriggerDown())
         {
             if (collidingObject)
             {
@@ -90,7 +84,7 @@ public class ControllerGRab : MonoBehaviour
         }
             
 
-        if (Controller.GetHairTriggerUp())
+        if (TriggerUp())
         {
             if (objectInHand)
                 ReleaseObject();

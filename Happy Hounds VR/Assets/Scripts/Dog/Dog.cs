@@ -29,7 +29,7 @@ public abstract class Dog : MonoBehaviour
     public bool isLerping = false;
 
     GameObject grid;
-    Grid gridScript;
+    public Grid gridScript;
 
     void Start()
     {
@@ -117,75 +117,94 @@ public abstract class Dog : MonoBehaviour
         }
     }
 
-    public virtual void StartDogLerp()
+    public virtual void WanderLerp(Node start, Node end)
     {
-        StartCoroutine(DogLerp());
+        List<Node> path = new List<Node>();
+        path = Pathfinding(start, end);
+        StartCoroutine(DogLerp(path));
         isLerping = true;
     }
 
-    IEnumerator DogLerp()
+    IEnumerator DogLerp(List<Node> path)
     {
-        float totalTime = 5;
-        float currentTime = 0;
-        Vector3 currentPos = transform.position;
-        goalPos = gridScript.GetRandomNode();
-        while (currentTime < totalTime)
+        //pops to get current node
+        Node currentNode = path[0];
+        path.Remove(currentNode);
+        Vector3 current = currentNode.coord;
+
+        while (path.Count > 0)
         {
-            currentTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(currentPos, goalPos, currentTime / totalTime);
+            //pops to get target
+            Node targetNode = path[0];
+            path.Remove(targetNode);
+            Vector3 target = targetNode.coord;
 
-            if (currentTime >= totalTime)
-                isLerping = false;
-            yield return 0;
+            float totalTime = 1;
+            float currentTime = 0;
 
+            while (currentTime < totalTime)
+            {
+                currentTime += Time.deltaTime;
+                transform.position = Vector3.Lerp(current, target, currentTime / totalTime);
+
+                if (currentTime >= totalTime)
+                    isLerping = false;
+
+                yield return 0;
+
+            }
         }
-        
 
     }
 
-    //public List<Vector3> Pathfinding(Vector3 startNode, Vector3 endNode)
-    //{
-    //    List<Vector3> openList = new List<Vector3>();
-    //    List<Vector3> closedList = new List<Vector3>();
+    public List<Node> Pathfinding(Node startNode, Node endNode)
+    {
+        List<Node> openList = new List<Node>();
+        List<Node> closedList = new List<Node>();
 
-    //    openList.Add(startNode);
+        openList.Add(startNode);
 
-    //    while (openList.Count > 0)
-    //    {
-    //        openList.Sort();
-    //        Vector3 currentNode = openList[0];
+        while (openList.Count > 0)
+        {
+            openList.Sort();
+            Node currentNode = openList[0];
 
-    //        openList.Remove(currentNode);
-    //        closedList.Add(currentNode);
+            openList.Remove(currentNode);
+            closedList.Add(currentNode);
 
 
-    //        if (currentNode == endNode)
-    //        {
-    //             //get found path
-    //        }
+            if (currentNode == endNode)
+            {
+                GetFoundPath(endNode);
+            }
 
-    //        List<Vector3> connectedNodes = new List<Vector3>();
-    //        for(int i=0; i < 3; i++)
-    //        {
-    //            for (int j = 0; j < 3; j++)
-    //            {
-    //                connectedNodes.Add(new Vector3(currentNode.x - 1 + i, currentNode.y, currentNode.z - 1 + j));
-    //                connectedNodes.Remove(currentNode);
-    //            }
-    //        }
+            List<Node> connectedNodes = new List<Node>();
+            connectedNodes = gridScript.ConnectedNodes(currentNode.coord);
 
-    //        for(int i=0; i<connectedNodes.Count; i++)
-    //        {
-    //            Vector3 connectedNode = connectedNodes[i];
-    //            if (closedList.Contains(connectedNode))
-    //            {
-    //                continue;
-    //            }
+            for(int i = 0 ; i < connectedNodes.Count; i++)
+            {
+                Node connectedNode = connectedNodes[i];
+                if (closedList.Contains(connectedNode))
+                    continue;
 
-    //            int 
-    //        }
-    //    }
-    //}
+                int g = currentNode.g;
+                int h = EuclideanDistanceHeuristic((int)connectedNode.coord.x, (int)connectedNode.coord.z, (int)endNode.coord.x, (int)endNode.coord.z);
+                int f = g + h;
+                if (f <= connectedNode.f || !(openList.Contains(connectedNode)))
+                {
+                    connectedNode.g = g;
+                    connectedNode.f = f;
+                }
+
+                if (!(openList.Contains(connectedNode)))
+                {
+                    connectedNode.parent = currentNode;
+                    openList.Add(connectedNode);
+                }
+            }
+        }
+        return GetFoundPath(null);
+    }
 
     private int ManhattanDistanceHeuristic(int currentX, int currentY, int targetX, int targetY)
     {
@@ -211,14 +230,21 @@ public abstract class Dog : MonoBehaviour
         return 10 * (int)Mathf.Sqrt((xDist * xDist + yDist * yDist) * (xDist * xDist + yDist * yDist));
     }
 
-    //protected List<Vector3> GetFoundPath(Vector3 endNode)
-    //{
-    //    List<Vector3> foundPath = new List<Vector3>();
-    //    if (endNode != null)
-    //    {
-    //        foundPath.Add(endNode);
+    protected List<Node> GetFoundPath(Node endNode)
+    {
+        List<Node> foundPath = new List<Node>();
+        if (endNode != null)
+        {
+            foundPath.Add(endNode);
 
-    //        while(endNode)
-    //    }
-    //}
+            while(endNode.parent != null)
+            {
+                foundPath.Add(endNode.parent);
+                endNode = endNode.parent;
+            }
+
+            foundPath.Reverse();
+        }
+        return foundPath;
+    }
 }

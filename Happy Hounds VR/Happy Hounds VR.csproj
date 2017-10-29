@@ -78,10 +78,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DogPack\Examples\Scripts\Animate.cs" />
+    <Compile Include="Assets\DogPack\Examples\Scripts\ButtonResponder.cs" />
+    <Compile Include="Assets\DogPack\Examples\Scripts\ChangeBlendShape.cs" />
+    <Compile Include="Assets\DogPack\Examples\Scripts\ChangeButtonText.cs" />
+    <Compile Include="Assets\DogPack\Examples\Scripts\ChangeShader.cs" />
+    <Compile Include="Assets\DogPack\Examples\Scripts\MouseOrbitImprovedMod.cs" />
     <Compile Include="Assets\Scripts\Dog\Dog.cs" />
     <Compile Include="Assets\Scripts\Dog\DogBrain.cs" />
     <Compile Include="Assets\Scripts\Grid\Grid.cs" />
+    <Compile Include="Assets\Scripts\Grid\Node.cs" />
     <Compile Include="Assets\Scripts\Player\ControllerGRab.cs" />
+    <Compile Include="Assets\Scripts\Player\Controllers.cs" />
+    <Compile Include="Assets\Scripts\Player\Controls.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
@@ -187,6 +196,7 @@
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\DogPack\Examples\Description.txt" />
     <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\SeeThru.shader" />
     <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\Silhouette.shader" />
     <None Include="Assets\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />

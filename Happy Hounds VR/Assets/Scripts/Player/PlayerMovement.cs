@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Controllers
 {
-    private SteamVR_TrackedObject trackedObj;
 
     public GameObject laserPrefab;
     private GameObject laser;
@@ -21,12 +20,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform headTransform;
     public Vector3 teleportReticleOffset;
     public LayerMask teleportMask;
-    private bool shouldTeleport;
+    [HideInInspector]
+    public bool shouldTeleport;
 
-    private SteamVR_Controller.Device Controller
-    {
-        get { return SteamVR_Controller.Input((int)trackedObj.index); }
-    }
+    
 
     private void Start()
     {
@@ -37,38 +34,55 @@ public class PlayerMovement : MonoBehaviour
         teleportReticleTransform = reticle.transform;
     }
 
-    private void Awake()
-    {
-        trackedObj = GetComponent<SteamVR_TrackedObject>();
-    }
 
     private void Update()
     {
-        if (Controller.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
+        if (TouchpadPressDown())
         {
-            RaycastHit hit;
-
-            if(Physics.Raycast
-                (trackedObj.transform.position,transform.forward, out hit, 100, teleportMask))
-            {
-                hitPoint = hit.point;
-                ShowLaser(hit);
-                reticle.SetActive(true);
-                teleportReticleTransform.position = hitPoint + teleportReticleOffset;
-                shouldTeleport = true;
-            }
+            InstantiateLaser();
         }
         else
         {
-            laser.SetActive(false);
-            reticle.SetActive(false);
+            DeactivateLaser();
+            DeactivateReticle();
         }
 
-        if(Controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad)&& shouldTeleport)
+        if(TouchpadPressUp() && shouldTeleport)
             Teleport();
             
     }
 
+    public void InstantiateLaser()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast
+            (trackedObj.transform.position, transform.forward, out hit, 100, teleportMask))
+        {
+            hitPoint = hit.point;
+            ShowLaser(hit);
+            reticle.SetActive(true);
+            teleportReticleTransform.position = hitPoint + teleportReticleOffset;
+            shouldTeleport = true;
+        }
+
+    }
+
+    /// <summary>
+    /// Deactivates Laser
+    /// </summary>
+    public void DeactivateLaser()
+    {
+        laser.SetActive(false);
+    }
+
+    /// <summary>
+    /// Deactivates Reticle
+    /// </summary>
+    public void DeactivateReticle()
+    {
+        reticle.SetActive(false);
+    }
     /// <summary>
     /// shows laser coming from player's hand
     /// </summary>
@@ -85,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// allows the laser to teleport
     /// </summary>
-    private void Teleport()
+    public void Teleport()
     {
         shouldTeleport = false;
         reticle.SetActive(false);

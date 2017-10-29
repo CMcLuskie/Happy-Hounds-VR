@@ -5,6 +5,11 @@ using UnityEngine;
 public class DogBrain : Dog {
 
     public float wanderTimer;
+    public Animator animator;
+    float move;
+    
+    bool wandering;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -16,15 +21,23 @@ public class DogBrain : Dog {
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(KeyCode.Space))
-            StartDogLerp();
+            
 
         wanderTimer += Time.deltaTime;
         if ((wanderTimer >= 5 || wanderTimer <= 6f) && isLerping == false)
         {
-            wanderTimer = 0;
-            StartDogLerp();
+            Wandering();
         }
 	}
 
-    
+    void Wandering()
+    {
+        wanderTimer = 0;
+
+        Vector3 currentPos = transform.position;
+        Node currentNode = new Node();
+        currentNode.coord = currentPos;
+        WanderLerp(currentNode, gridScript.GetRandomNode());      
+        animator.SetFloat("Move", 0.6f);
+    }
 }
