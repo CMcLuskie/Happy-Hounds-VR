@@ -117,10 +117,16 @@ public abstract class Dog : MonoBehaviour
         }
     }
 
-    public virtual void WanderLerp(Node start, Node end)
+    public virtual void Lerping(Node end)
     {
+        //to get start node
+        Vector3 currentPos = transform.position;
+        Node currentNode = new Node();
+        currentNode.coord = currentPos;
+        //to pathfind
         List<Node> path = new List<Node>();
-        path = Pathfinding(start, end);
+        path = Pathfinding(currentNode, end);
+        //for lerping
         StartCoroutine(DogLerp(path));
         isLerping = true;
     }

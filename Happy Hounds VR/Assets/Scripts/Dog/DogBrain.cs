@@ -10,8 +10,18 @@ public class DogBrain : Dog {
     
     bool wandering;
 
-	// Use this for initialization
-	void Start ()
+    private void OnEnable()
+    {
+        Controls.DogCall += DogCall;
+    }
+
+    private void OnDisable()
+    {
+        Controls.DogCall -= DogCall;
+    }
+
+    // Use this for initialization
+    void Start ()
     {
         GetGridObject();
         
@@ -33,11 +43,15 @@ public class DogBrain : Dog {
     void Wandering()
     {
         wanderTimer = 0;
-
-        Vector3 currentPos = transform.position;
-        Node currentNode = new Node();
-        currentNode.coord = currentPos;
-        WanderLerp(currentNode, gridScript.GetRandomNode());      
+        Lerping(gridScript.GetRandomNode());      
         animator.SetFloat("Move", 0.6f);
+    }
+
+    void DogCall(Vector3 playerPos)
+    {
+        //converts playerpos to node# 
+        Node node = new Node();
+        node.coord = playerPos;
+        Lerping(node);
     }
 }

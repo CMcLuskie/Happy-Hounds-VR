@@ -10,6 +10,8 @@ public abstract class Controllers : MonoBehaviour {
     public bool mainHand;
     public bool secondHand;
 
+    public Transform playerHead;
+
     private SteamVR_Controller.Device Controller
     {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
@@ -75,7 +77,7 @@ public abstract class Controllers : MonoBehaviour {
 
     /*
      * 
-     * Velocitys
+     * misc gets
      * 
      */
     public Vector3 ControllerVelocity()
@@ -86,5 +88,12 @@ public abstract class Controllers : MonoBehaviour {
     public Vector3 ControllerAngularVelocity()
     {
         return Controller.angularVelocity;
+    }
+
+    public Vector3 GetPlayerPos()
+    {
+        Vector3 playerPos = playerHead.position;
+        playerPos.y = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>().dogYPos;
+        return playerPos;
     }
 }

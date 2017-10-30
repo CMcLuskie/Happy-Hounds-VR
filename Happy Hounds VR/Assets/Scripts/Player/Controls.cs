@@ -7,6 +7,10 @@ public class Controls : Controllers
     PlayerMovement movementScript;
     ControllerGRab grabScript;
 
+    public delegate void OnControllerInput(Vector3 playerPos);
+
+    public static event OnControllerInput DogCall;
+
     private void Awake()
     {
         movementScript = GetComponent<PlayerMovement>();
@@ -48,5 +52,15 @@ public class Controls : Controllers
                     grabScript.ReleaseObject();
             }
         }
+
+        if (secondHand)
+        {
+            if (TriggerDown())
+            {
+                DogCall(GetPlayerPos());
+            }
+        }
     }
+
+    
 }
