@@ -416,6 +416,7 @@ MonoBehaviour:
   trackedObj: {fileID: 0}
   mainHand: 0
   secondHand: 0
+  playerHead: {fileID: 0}
   laserPrefab: {fileID: 1074426735376336, guid: 20d39a6317ef8e145afb4cca57b9cb75,
     type: 2}
   cameraRigTransform: {fileID: 618266669}
@@ -441,6 +442,7 @@ MonoBehaviour:
   trackedObj: {fileID: 0}
   mainHand: 0
   secondHand: 0
+  playerHead: {fileID: 0}
   collidingObject: {fileID: 0}
   objectInHand: {fileID: 0}
 --- !u!4 &529780024 stripped
@@ -584,6 +586,7 @@ MonoBehaviour:
   trackedObj: {fileID: 0}
   mainHand: 0
   secondHand: 0
+  playerHead: {fileID: 0}
   laserPrefab: {fileID: 1074426735376336, guid: 20d39a6317ef8e145afb4cca57b9cb75,
     type: 2}
   cameraRigTransform: {fileID: 618266669}
@@ -609,6 +612,7 @@ MonoBehaviour:
   trackedObj: {fileID: 0}
   mainHand: 0
   secondHand: 0
+  playerHead: {fileID: 0}
   collidingObject: {fileID: 0}
   objectInHand: {fileID: 0}
 --- !u!4 &618266669 stripped

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Node : MonoBehaviour {
+public class Node {
 
     public Vector3 coord;
 
     public Node parent;
 
-    public int f;
-    public int g;
-    public int h;
+    public int f = 0;
+    public int g = 0;
+    public int h = 0;
 
-    public List<Node> ConnectedNodes(Vector3 current)
+    public List<Node> ConnectedNodes()
     {
         List<Node> connected = new List<Node>();
         for (int i = 0; i < 3; i++)
@@ -21,9 +21,9 @@ public class Node : MonoBehaviour {
             {
                 Node node = new Node();
                 node.coord = new Vector3
-                    (current.x - 1 + i, current.y, current.z - 1 + j);
+                    (coord.x - 1 + i, coord.y, coord.z - 1 + j);
 
-                if (node.coord == current)
+                if (node.coord == coord)
                     connected.Remove(node);
             }
         }
