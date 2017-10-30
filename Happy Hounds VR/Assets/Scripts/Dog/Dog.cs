@@ -121,8 +121,7 @@ public abstract class Dog : MonoBehaviour
     {
         //to get start node
         Vector3 currentPos = transform.position;
-        Node currentNode = new Node();
-        currentNode.coord = currentPos;
+        Node currentNode = gridScript.coordToNode(currentPos);
         //to pathfind
         List<Node> path = new List<Node>();
         path = Pathfinding(currentNode, end);
@@ -133,6 +132,8 @@ public abstract class Dog : MonoBehaviour
 
     IEnumerator DogLerp(List<Node> path)
     {
+
+        print("pathLength = " + path.Count);
         //pops to get current node
         Node currentNode = path[0];
         path.Remove(currentNode);
@@ -185,7 +186,7 @@ public abstract class Dog : MonoBehaviour
             }
 
             List<Node> connectedNodes = new List<Node>();
-            connectedNodes = gridScript.ConnectedNodes(currentNode.coord);
+            connectedNodes = currentNode.ConnectedNodes();
 
             for(int i = 0 ; i < connectedNodes.Count; i++)
             {
@@ -238,12 +239,14 @@ public abstract class Dog : MonoBehaviour
 
     protected List<Node> GetFoundPath(Node endNode)
     {
+        print("JUST FUCKING CUNT OR SOMETHING");
+
         List<Node> foundPath = new List<Node>();
         if (endNode != null)
         {
             foundPath.Add(endNode);
 
-            while(endNode.parent != null)
+            while (endNode.parent != null)
             {
                 foundPath.Add(endNode.parent);
                 endNode = endNode.parent;

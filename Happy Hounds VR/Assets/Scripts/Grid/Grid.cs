@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : Node
+public class Grid : MonoBehaviour
 {
     public List<Vector3> nodeCoords;
     public List<Vector3> blockedNodes;
@@ -21,7 +21,28 @@ public class Grid : Node
         
         if (showNodes)
             ShowNodes();
-    } 
+    }
+
+    // lengthX = 3
+    // lengthZ = 5
+    // 0,  1,  2,  3,  4,
+    // 5,  6,  7,  8,  9,
+    // 10, 11 12, 13, 14,
+
+    // 0,  1,  2,  3,  4, 5,  6,  7,  8,  9, 10, 11 12, 13, 14,
+
+    /// <summary>
+    /// converts world position to closest node
+    /// </summary>
+    /// <param name="coord"></param>
+    /// <returns></returns>
+    public Node coordToNode(Vector3 coord)
+    {
+        int x = (int)coord.x + 14;
+        int z = (int)coord.z + 14;
+        int nodeIndex = z + x * lengthZ;
+        return nodes[nodeIndex];
+    }
 
     /// <summary>
     /// gets traversable area in vector 3
