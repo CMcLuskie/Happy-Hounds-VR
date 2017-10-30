@@ -98,4 +98,32 @@ public class Grid : MonoBehaviour
         int i = Random.Range(0, nodes.Length);
         return nodes[i];
     }
+
+    /// <summary>
+    /// hi
+    /// </summary>
+    /// <param name="node"></param>
+    /// <returns>
+    /// connected nodes
+    /// </returns>
+    public Node[] connectedNodes(Node node)
+    {
+        List<Node> connected = new List<Node>();
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                Node connectedNode = new Node();
+                connectedNode.coord = new Vector3(node.coord.x - 1 + i, node.coord.y, node.coord.z - 1 + j);
+                
+                connected.Add(connectedNode);
+
+                if (connectedNode == node)
+                    connected.Remove(node);
+            }
+        }
+
+        return connected.ToArray();
+    }
 }

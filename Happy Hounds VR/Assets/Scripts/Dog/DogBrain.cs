@@ -5,7 +5,7 @@ using UnityEngine;
 public class DogBrain : Dog {
 
     public float wanderTimer;
-    public Animator animator;
+    
     float move;
     
     bool wandering;
@@ -18,7 +18,6 @@ public class DogBrain : Dog {
     private void OnDisable()
     {
         Controls.DogCall -= DogCall;
-        //I love celine dion 
     }
 
     // Use this for initialization
@@ -32,25 +31,25 @@ public class DogBrain : Dog {
         if (Input.GetKeyDown(KeyCode.Space))
             Wandering();
 
-        wanderTimer += Time.deltaTime;
-        if ((wanderTimer >= 5 || wanderTimer <= 6f) && isLerping == false)
+        if (!isLerping)
         {
-
+            Wandering();
         }
 	}
 
     void Wandering()
     {
-        wanderTimer = 0;
-        Lerping(gridScript.GetRandomNode());      
-        animator.SetFloat("Move", 3f);
+        // Lerping(gridScript.GetRandomNode());
+        TempWander(gridScript.GetRandomNode());
+        animator.SetFloat("Move", .6f);
     }
 
     void DogCall(Vector3 playerPos)
     {
-        //converts playerpos to node# 
-        //Node node = new Node();
-        //node.coord = playerPos;
-        //Lerping(node);
+        Node node = gridScript.coordToNode(playerPos);
+        // Lerping(node);
+        TempWander(gridScript.coordToNode(playerPos));
+        animator.SetFloat("Move", 6f);
+
     }
 }

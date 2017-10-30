@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+
 using UnityEngine;
 
-public class Node {
+public class Node :IComparable<Node>
+{
 
     public Vector3 coord;
 
@@ -12,21 +13,17 @@ public class Node {
     public int g = 0;
     public int h = 0;
 
-    public List<Node> ConnectedNodes()
+    public int CompareTo(Node node)
     {
-        List<Node> connected = new List<Node>();
-        for (int i = 0; i < 3; i++)
+        if (f < node.f)
         {
-            for (int j = 0; j < 3; j++)
-            {
-                Node node = new Node();
-                node.coord = new Vector3
-                    (coord.x - 1 + i, coord.y, coord.z - 1 + j);
-
-                if (node.coord == coord)
-                    connected.Remove(node);
-            }
+            return -1;
         }
-        return connected;
+        else if (f > node.f)
+        {
+            return 1;
+        }
+
+        return 0;
     }
 }

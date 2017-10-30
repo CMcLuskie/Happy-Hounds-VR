@@ -12,7 +12,9 @@ public abstract class Dog : MonoBehaviour
     private int foodType;
 
     Vector3 goalPos;
-     
+
+    public Animator animator;
+
     [SerializeField]
     protected bool pup;
     [SerializeField]
@@ -36,7 +38,7 @@ public abstract class Dog : MonoBehaviour
         SetFoodType();
     }
 
-   public virtual void GetGridObject()
+    public virtual void GetGridObject()
     {
         grid = GameObject.FindGameObjectWithTag("Grid");
         gridScript = grid.GetComponent<Grid>();
@@ -52,7 +54,7 @@ public abstract class Dog : MonoBehaviour
             foodType = (int)FoodTypes.Senior;
     }
 
-    
+
 
     public float GetDogStats(Stats stats)
     {
@@ -120,8 +122,7 @@ public abstract class Dog : MonoBehaviour
     public virtual void Lerping(Node end)
     {
         //to get start node
-        Vector3 currentPos = transform.position;
-        Node currentNode = gridScript.coordToNode(currentPos);
+        Node currentNode = gridScript.coordToNode(transform.position);
         //to pathfind
         List<Node> path = new List<Node>();
         path = Pathfinding(currentNode, end);
@@ -164,6 +165,14 @@ public abstract class Dog : MonoBehaviour
 
     }
 
+
+
+    /// <summary>
+    /// Pathfinding uses A*
+    /// </summary>
+    /// <param name="startNode"></param>
+    /// <param name="endNode"></param>
+    /// <returns></returns>
     public List<Node> Pathfinding(Node startNode, Node endNode)
     {
         List<Node> openList = new List<Node>();
@@ -175,7 +184,6 @@ public abstract class Dog : MonoBehaviour
         {
             openList.Sort();
             Node currentNode = openList[0];
-
             openList.Remove(currentNode);
             closedList.Add(currentNode);
 
@@ -185,10 +193,10 @@ public abstract class Dog : MonoBehaviour
                 GetFoundPath(endNode);
             }
 
-            List<Node> connectedNodes = new List<Node>();
-            connectedNodes = currentNode.ConnectedNodes();
+            Node[] connectedNodes = gridScript.connectedNodes(currentNode);
 
-            for(int i = 0 ; i < connectedNodes.Count; i++)
+            int connectedNodesCount = connectedNodes.Length;
+            for (int i = 0; i < connectedNodesCount; i++)
             {
                 Node connectedNode = connectedNodes[i];
                 if (closedList.Contains(connectedNode))
@@ -199,6 +207,7 @@ public abstract class Dog : MonoBehaviour
                 int f = g + h;
                 if (f <= connectedNode.f || !(openList.Contains(connectedNode)))
                 {
+
                     connectedNode.g = g;
                     connectedNode.f = f;
                 }
@@ -239,8 +248,6 @@ public abstract class Dog : MonoBehaviour
 
     protected List<Node> GetFoundPath(Node endNode)
     {
-        print("JUST FUCKING CUNT OR SOMETHING");
-
         List<Node> foundPath = new List<Node>();
         if (endNode != null)
         {
@@ -255,5 +262,37 @@ public abstract class Dog : MonoBehaviour
             foundPath.Reverse();
         }
         return foundPath;
+    }
+
+
+    /*
+         * 
+         * 
+         * TEMP
+         * 
+         * 
+         * 
+         * 
+         */
+
+public void TempWander(Node end)
+    {
+        isLerping = true;
+        StartCoroutine(TempLerp(transform.position, end.coord));
+    }
+
+    IEnumerator TempLerp(Vector3 start, Vector3 end)
+    {
+        float totalTime = 5;
+        float currentTime = 0;
+        while (currentTime < totalTime)
+        {
+            currentTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(start, end, currentTime / totalTime);
+
+            if (currentTime >= totalTime)
+                isLerping = false;
+            yield return 0;
+        }
     }
 }
