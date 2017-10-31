@@ -1,0 +1,269 @@
+fileFormatVersion: 2
+guid: cb36e0d7ea1663d46b4a74456b302061
+timeCreated: 1509446532
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Bush
+    100002: Bush1
+    100004: Bush1 1
+    100006: Bush2
+    100008: Bush2 1
+    100010: Bush3
+    100012: Bush3 1
+    100014: Bush4
+    100016: Bush4 1
+    100018: Bushes
+    100020: Bushes1
+    100022: BWall
+    100024: Door
+    100026: Door2
+    100028: Doorknob
+    100030: Fence
+    100032: Floor1
+    100034: FWall
+    100036: Garden2
+    100038: Ground
+    100040: House1
+    100042: //RootNode
+    100044: LWall
+    100046: OutsideTrees
+    100048: polySurface6
+    100050: polySurface6 1
+    100052: polySurface6 2
+    100054: polySurface6 3
+    100056: polySurface7
+    100058: polySurface7 1
+    100060: polySurface7 2
+    100062: polySurface7 3
+    100064: Roof
+    100066: RWall
+    100068: Tree
+    100070: Tree 1
+    100072: Tree2
+    100074: Tree3
+    100076: Tree4
+    100078: Walls
+    100080: Window
+    100082: Window1
+    100084: Window2
+    100086: Window3
+    100088: Windows
+    400000: Bush
+    400002: Bush1
+    400004: Bush1 1
+    400006: Bush2
+    400008: Bush2 1
+    400010: Bush3
+    400012: Bush3 1
+    400014: Bush4
+    400016: Bush4 1
+    400018: Bushes
+    400020: Bushes1
+    400022: BWall
+    400024: Door
+    400026: Door2
+    400028: Doorknob
+    400030: Fence
+    400032: Floor1
+    400034: FWall
+    400036: Garden2
+    400038: Ground
+    400040: House1
+    400042: //RootNode
+    400044: LWall
+    400046: OutsideTrees
+    400048: polySurface6
+    400050: polySurface6 1
+    400052: polySurface6 2
+    400054: polySurface6 3
+    400056: polySurface7
+    400058: polySurface7 1
+    400060: polySurface7 2
+    400062: polySurface7 3
+    400064: Roof
+    400066: RWall
+    400068: Tree
+    400070: Tree 1
+    400072: Tree2
+    400074: Tree3
+    400076: Tree4
+    400078: Walls
+    400080: Window
+    400082: Window1
+    400084: Window2
+    400086: Window3
+    400088: Windows
+    2300000: Bush
+    2300002: Bush1
+    2300004: Bush1 1
+    2300006: Bush2
+    2300008: Bush2 1
+    2300010: Bush3
+    2300012: Bush3 1
+    2300014: Bush4
+    2300016: Bush4 1
+    2300018: BWall
+    2300020: Door2
+    2300022: Doorknob
+    2300024: Fence
+    2300026: Floor1
+    2300028: FWall
+    2300030: Ground
+    2300032: LWall
+    2300034: polySurface6
+    2300036: polySurface6 1
+    2300038: polySurface6 2
+    2300040: polySurface6 3
+    2300042: polySurface7
+    2300044: polySurface7 1
+    2300046: polySurface7 2
+    2300048: polySurface7 3
+    2300050: Roof
+    2300052: RWall
+    2300054: Tree
+    2300056: Tree 1
+    2300058: Tree2
+    2300060: Tree3
+    2300062: Tree4
+    3300000: Bush
+    3300002: Bush1
+    3300004: Bush1 1
+    3300006: Bush2
+    3300008: Bush2 1
+    3300010: Bush3
+    3300012: Bush3 1
+    3300014: Bush4
+    3300016: Bush4 1
+    3300018: BWall
+    3300020: Door2
+    3300022: Doorknob
+    3300024: Fence
+    3300026: Floor1
+    3300028: FWall
+    3300030: Ground
+    3300032: LWall
+    3300034: polySurface6
+    3300036: polySurface6 1
+    3300038: polySurface6 2
+    3300040: polySurface6 3
+    3300042: polySurface7
+    3300044: polySurface7 1
+    3300046: polySurface7 2
+    3300048: polySurface7 3
+    3300050: Roof
+    3300052: RWall
+    3300054: Tree
+    3300056: Tree 1
+    3300058: Tree2
+    3300060: Tree3
+    3300062: Tree4
+    4300000: FWall
+    4300002: LWall
+    4300004: Floor1
+    4300006: RWall
+    4300008: BWall
+    4300010: Roof
+    4300012: Ground
+    4300014: Fence
+    4300016: Bush
+    4300018: Bush1
+    4300020: Bush2
+    4300022: Bush3
+    4300024: Bush4
+    4300026: Bush1
+    4300028: Bush2
+    4300030: Bush3
+    4300032: Bush4
+    4300034: Tree
+    4300036: Door2
+    4300038: Doorknob
+    4300040: polySurface7
+    4300042: polySurface6
+    4300044: polySurface7
+    4300046: polySurface6
+    4300048: polySurface7
+    4300050: polySurface6
+    4300052: polySurface7
+    4300054: polySurface6
+    4300056: Tree4
+    4300058: Tree3
+    4300060: Tree2
+    4300062: Tree
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
