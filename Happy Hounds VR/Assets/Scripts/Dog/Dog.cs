@@ -11,6 +11,8 @@ public abstract class Dog : MonoBehaviour
     public enum FoodTypes { Pup, Adult, Senior };
     private int foodType;
 
+    public int rotationSpeed;
+
     Vector3 goalPos;
 
     public Animator animator;
@@ -29,6 +31,8 @@ public abstract class Dog : MonoBehaviour
     float obedience;
 
     public bool isLerping = false;
+    public bool isWandering = true;
+    public bool attentionGiven = false;
 
     GameObject grid;
     public Grid gridScript;
@@ -264,6 +268,10 @@ public abstract class Dog : MonoBehaviour
         return foundPath;
     }
 
+    void LookatTarget()
+    {
+
+    }
 
     /*
          * 
@@ -275,12 +283,14 @@ public abstract class Dog : MonoBehaviour
          * 
          */
 
-public void TempWander(Node end)
+public void TempWander(Vector3 end)
     {
         isLerping = true;
-        StartCoroutine(TempLerp(transform.position, end.coord));
+        transform.LookAt(end);
+        StartCoroutine(TempLerp(transform.position, end));
     }
 
+    
     IEnumerator TempLerp(Vector3 start, Vector3 end)
     {
         float totalTime = 5;

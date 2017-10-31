@@ -7,12 +7,11 @@ public abstract class Controllers : MonoBehaviour {
     [HideInInspector]
     public SteamVR_TrackedObject trackedObj;
 
-    public bool mainHand;
-    public bool secondHand;
+    
 
     public Transform playerHead;
 
-    private SteamVR_Controller.Device Controller
+    public SteamVR_Controller.Device Controller
     {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
     }
@@ -75,6 +74,12 @@ public abstract class Controllers : MonoBehaviour {
             return false;
     }
 
+
+    public void ControllerVibrate()
+    {
+        print("gets called");
+        Controller.TriggerHapticPulse(500);
+    }
     /*
      * 
      * misc gets

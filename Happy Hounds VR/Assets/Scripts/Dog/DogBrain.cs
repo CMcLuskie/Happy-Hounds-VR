@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,12 +13,16 @@ public class DogBrain : Dog {
 
     private void OnEnable()
     {
-        Controls.DogCall += DogCall;
+        LeftControl.DogCall += DogCall;
+        Controls.HeadScratch += HeadScratch;
+        Controls.BodyScratch += BodyScratch;
     }
+
+    
 
     private void OnDisable()
     {
-        Controls.DogCall -= DogCall;
+        LeftControl.DogCall -= DogCall;
     }
 
     // Use this for initialization
@@ -33,23 +38,34 @@ public class DogBrain : Dog {
 
         if (!isLerping)
         {
-            Wandering();
+            animator.SetFloat("Move", 0.5f);
         }
 	}
 
     void Wandering()
     {
         // Lerping(gridScript.GetRandomNode());
-        TempWander(gridScript.GetRandomNode());
+       // TempWander(gridScript.GetRandomNode());
         animator.SetFloat("Move", .6f);
     }
 
     void DogCall(Vector3 playerPos)
     {
+        isWandering = false;
+        attentionGiven = true;
         Node node = gridScript.coordToNode(playerPos);
         // Lerping(node);
-        TempWander(gridScript.coordToNode(playerPos));
+        TempWander(playerPos);
         animator.SetFloat("Move", 6f);
 
+    }
+
+    private void HeadScratch()
+    {
+      
+    }
+    private void BodyScratch()
+    {
+        throw new NotImplementedException();
     }
 }
