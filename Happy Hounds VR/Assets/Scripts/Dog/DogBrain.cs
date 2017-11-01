@@ -40,6 +40,13 @@ public class DogBrain : Dog {
         {
             animator.SetFloat("Move", 0.5f);
         }
+
+        if (transform.position.y < 0)
+        {
+            Vector3 fix = new Vector3(transform.position.x, 0, transform.position.z);
+            transform.position = fix;
+        }
+            
 	}
 
     void Wandering()

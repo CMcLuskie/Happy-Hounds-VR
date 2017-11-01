@@ -1149,6 +1149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeCoords: []
   blockedNodes: []
+  lengthX: 28
+  lengthZ: 28
+  gridCorner: {x: 14, y: 0, z: 14}
   dogYPos: 0.5
   showNodes: 0
 --- !u!4 &1260262325
@@ -1241,7 +1244,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1416556554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.32, y: 1.42, z: -1.7014401}
+  m_LocalPosition: {x: 0, y: 0, z: 14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

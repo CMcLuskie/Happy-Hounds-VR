@@ -8,8 +8,12 @@ public class Grid : MonoBehaviour
     public List<Vector3> blockedNodes;
     public Node[] nodes;
 
-    int lengthX = 28;
-    int lengthZ = 28;
+    [SerializeField]
+    protected int lengthX = 28;
+    [SerializeField]
+    protected int lengthZ = 28;
+    [SerializeField]
+    protected Vector3 gridCorner;
 
     public float dogYPos;
 
@@ -38,8 +42,8 @@ public class Grid : MonoBehaviour
     /// <returns></returns>
     public Node coordToNode(Vector3 coord)
     {
-        int x = (int)coord.x + 14;
-        int z = (int)coord.z + 14;
+        int x = (int)coord.x + lengthX / 2;
+        int z = (int)coord.z + lengthZ / 2;
 
         if(x < 0 ||x >= lengthX || z < 0 || z >= lengthZ)
         {
@@ -59,7 +63,7 @@ public class Grid : MonoBehaviour
         {
             for(int j= 0; j < lengthZ; j++)
             {
-                nodeCoords.Add(new Vector3(14 - i, dogYPos, 14 - j));
+                nodeCoords.Add(new Vector3(gridCorner.x - i, dogYPos, gridCorner.z - j));
             }
         }
 
@@ -110,7 +114,9 @@ public class Grid : MonoBehaviour
     {
         foreach(Vector3 v in nodeCoords)
         {
+            float sphereScale = .5f;
             GameObject nodeObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            nodeObject.transform.localScale = new Vector3(sphereScale, sphereScale, sphereScale);
             nodeObject.transform.position = v;
         }
     }

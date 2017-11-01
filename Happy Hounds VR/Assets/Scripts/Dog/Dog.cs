@@ -129,7 +129,8 @@ public abstract class Dog : MonoBehaviour
         Node currentNode = gridScript.coordToNode(transform.position);
         //to pathfind
         List<Node> path = new List<Node>();
-        path = Pathfinding(currentNode, end);
+        path = PathfindingBFS(currentNode, end);
+        print(path[3].coord);
 
         //for lerping
         StartCoroutine(DogLerp(path));
@@ -228,6 +229,41 @@ public abstract class Dog : MonoBehaviour
         return GetFoundPath(null);
     }
 
+    public List<Node> PathfindingBFS(Node startNode, Node endNode)
+    {
+        startNode.visited = true;
+
+        Queue<Node> nodesStack = new Queue<Node>();
+        nodesStack.Enqueue(startNode);
+
+
+        while (nodesStack.Count > 0)
+        {
+            Node currentNode = nodesStack.Dequeue();
+            
+
+            if (currentNode == endNode)
+            {
+                return GetFoundPath(endNode);
+            }
+
+            List<Node> connectedNodes = currentNode.connectedNodes;
+            int connectedNodesCount = connectedNodes.Count;
+            for (int connectedNodesIndex = 0; connectedNodesIndex < connectedNodesCount; ++connectedNodesIndex)
+            {
+                Node connectedNode = connectedNodes[connectedNodesIndex];
+                if (!connectedNode.visited)
+                {
+                    connectedNode.visited = true;
+                    connectedNode.parent = currentNode;
+
+                    nodesStack.Enqueue(connectedNode);
+                }
+            }
+        }
+
+        return GetFoundPath(null);
+    }
     private int ManhattanDistanceHeuristic(int currentX, int currentY, int targetX, int targetY)
     {
         int xDist = Mathf.Abs(currentX - targetX);

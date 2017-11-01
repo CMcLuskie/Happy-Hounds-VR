@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Node :IComparable<Node>
 {
+    public bool visited;
 
     public Vector3 coord;
 
