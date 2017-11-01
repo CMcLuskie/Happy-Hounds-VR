@@ -130,6 +130,7 @@ public abstract class Dog : MonoBehaviour
         //to pathfind
         List<Node> path = new List<Node>();
         path = Pathfinding(currentNode, end);
+
         //for lerping
         StartCoroutine(DogLerp(path));
         isLerping = true;
@@ -197,16 +198,16 @@ public abstract class Dog : MonoBehaviour
                 GetFoundPath(endNode);
             }
 
-            Node[] connectedNodes = gridScript.connectedNodes(currentNode);
+            List<Node> connectedNodes = currentNode.connectedNodes;
 
-            int connectedNodesCount = connectedNodes.Length;
+            int connectedNodesCount = connectedNodes.Count;
             for (int i = 0; i < connectedNodesCount; i++)
             {
                 Node connectedNode = connectedNodes[i];
                 if (closedList.Contains(connectedNode))
                     continue;
 
-                int g = currentNode.g;
+                int g = currentNode.g + 10;
                 int h = EuclideanDistanceHeuristic((int)connectedNode.coord.x, (int)connectedNode.coord.z, (int)endNode.coord.x, (int)endNode.coord.z);
                 int f = g + h;
                 if (f <= connectedNode.f || !(openList.Contains(connectedNode)))
@@ -223,6 +224,7 @@ public abstract class Dog : MonoBehaviour
                 }
             }
         }
+        Debug.Log("Path not found!");
         return GetFoundPath(null);
     }
 

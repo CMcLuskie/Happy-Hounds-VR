@@ -44,7 +44,7 @@ public class DogBrain : Dog {
 
     void Wandering()
     {
-        // Lerping(gridScript.GetRandomNode());
+         Lerping(gridScript.GetRandomNode());
        // TempWander(gridScript.GetRandomNode());
         animator.SetFloat("Move", .6f);
     }

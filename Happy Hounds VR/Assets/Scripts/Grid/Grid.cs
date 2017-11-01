@@ -40,6 +40,12 @@ public class Grid : MonoBehaviour
     {
         int x = (int)coord.x + 14;
         int z = (int)coord.z + 14;
+
+        if(x < 0 ||x >= lengthX || z < 0 || z >= lengthZ)
+        {
+            return null;
+        }
+
         int nodeIndex = z + x * lengthZ;
         return nodes[nodeIndex];
     }
@@ -75,6 +81,26 @@ public class Grid : MonoBehaviour
             node.coord = nodeCoords[i];
             nodes[i] = node;
         }
+
+        for (int i = 0; i < nodeCoords.Count; i++)
+        {
+            Node node = nodes[i];
+            for (int x = 0; x < 3; x++)
+            {
+                for (int z = 0; z < 3; z++)
+                {
+                    Vector3 neighbourPos = node.coord;
+                    neighbourPos.x = 1.0f + x;
+                    neighbourPos.z = 1.0f + z;
+                    Node neighbour = coordToNode(neighbourPos);
+
+                    if(node != null)
+                    {
+                        node.connectedNodes.Add(neighbour);
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -97,33 +123,5 @@ public class Grid : MonoBehaviour
     {
         int i = Random.Range(0, nodes.Length);
         return nodes[i];
-    }
-
-    /// <summary>
-    /// hi
-    /// </summary>
-    /// <param name="node"></param>
-    /// <returns>
-    /// connected nodes
-    /// </returns>
-    public Node[] connectedNodes(Node node)
-    {
-        List<Node> connected = new List<Node>();
-
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                Node connectedNode = new Node();
-                connectedNode.coord = new Vector3(node.coord.x - 1 + i, node.coord.y, node.coord.z - 1 + j);
-                
-                connected.Add(connectedNode);
-
-                if (connectedNode == node)
-                    connected.Remove(node);
-            }
-        }
-
-        return connected.ToArray();
     }
 }
