@@ -5,12 +5,15 @@ using UnityEngine;
 public abstract class Dog : MonoBehaviour
 {
     public enum Direction { Forward, Back, Left, Right }; //for movement
+    public enum PathfindingTypes { AStar, BFS};
 
     public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience };//for stats
 
     public enum FoodTypes { Pup, Adult, Senior };
     private int foodType;
 
+
+    public bool interrupted;
     public int rotationSpeed;
 
     Vector3 goalPos;
@@ -129,9 +132,15 @@ public abstract class Dog : MonoBehaviour
         Node currentNode = gridScript.coordToNode(transform.position);
         //to pathfind
         List<Node> path = new List<Node>();
-        path = PathfindingBFS(currentNode, end);
-        print(path[3].coord);
-
+        path = Pathfinding(PathfindingTypes.BFS, currentNode, end);
+        for (int i = 0; i < path.Count; i++)
+        {
+            print(path[i].coord);
+        }
+        for (int i= 0; i < path[1].connectedNodes.Count; i++)
+        {
+            print("current nodes: " + path[1].coord + "connected nodes" + path[1].connectedNodes[i].coord);
+        }
         //for lerping
         StartCoroutine(DogLerp(path));
         isLerping = true;
@@ -152,16 +161,16 @@ public abstract class Dog : MonoBehaviour
             Node targetNode = path[0];
             path.Remove(targetNode);
             Vector3 target = targetNode.coord;
-
+            
             float totalTime = 1;
             float currentTime = 0;
 
             while (currentTime < totalTime)
             {
                 currentTime += Time.deltaTime;
+                transform.LookAt(target);
                 transform.position = Vector3.Lerp(current, target, currentTime / totalTime);
-
-                if (currentTime >= totalTime)
+                if (currentTime >=  totalTime)
                     isLerping = false;
 
                 yield return 0;
@@ -174,96 +183,109 @@ public abstract class Dog : MonoBehaviour
 
 
     /// <summary>
-    /// Pathfinding uses A*
+    /// uses either AStar or BFS
     /// </summary>
+    /// <param name="pathfindingTypes"></param>
     /// <param name="startNode"></param>
     /// <param name="endNode"></param>
     /// <returns></returns>
-    public List<Node> Pathfinding(Node startNode, Node endNode)
+    public List<Node> Pathfinding(PathfindingTypes pathfindingTypes, Node startNode, Node endNode)
     {
-        List<Node> openList = new List<Node>();
-        List<Node> closedList = new List<Node>();
-
-        openList.Add(startNode);
-
-        while (openList.Count > 0)
+        switch (pathfindingTypes)
         {
-            openList.Sort();
-            Node currentNode = openList[0];
-            openList.Remove(currentNode);
-            closedList.Add(currentNode);
+            case PathfindingTypes.AStar:
+                List<Node> openList = new List<Node>();
+                List<Node> closedList = new List<Node>();
 
+                openList.Add(startNode);
 
-            if (currentNode == endNode)
-            {
-                GetFoundPath(endNode);
-            }
-
-            List<Node> connectedNodes = currentNode.connectedNodes;
-
-            int connectedNodesCount = connectedNodes.Count;
-            for (int i = 0; i < connectedNodesCount; i++)
-            {
-                Node connectedNode = connectedNodes[i];
-                if (closedList.Contains(connectedNode))
-                    continue;
-
-                int g = currentNode.g + 10;
-                int h = EuclideanDistanceHeuristic((int)connectedNode.coord.x, (int)connectedNode.coord.z, (int)endNode.coord.x, (int)endNode.coord.z);
-                int f = g + h;
-                if (f <= connectedNode.f || !(openList.Contains(connectedNode)))
+                while (openList.Count > 0)
                 {
+                    openList.Sort();
+                    Node currentNode = openList[0];
+                    openList.Remove(currentNode);
+                    closedList.Add(currentNode);
 
-                    connectedNode.g = g;
-                    connectedNode.f = f;
+
+                    if (currentNode == endNode)
+                    {
+                        GetFoundPath(endNode);
+                    }
+
+                    List<Node> connectedNodes = currentNode.connectedNodes;
+
+                    int connectedNodesCount = connectedNodes.Count;
+                    for (int i = 0; i < connectedNodesCount; i++)
+                    {
+                        Node connectedNode = connectedNodes[i];
+                        if (closedList.Contains(connectedNode))
+                            continue;
+
+                        int g = currentNode.g + 10;
+                        int h = EuclideanDistanceHeuristic((int)connectedNode.coord.x, (int)connectedNode.coord.z, (int)endNode.coord.x, (int)endNode.coord.z);
+                        int f = g + h;
+                        if (f <= connectedNode.f || !(openList.Contains(connectedNode)))
+                        {
+
+                            connectedNode.g = g;
+                            connectedNode.f = f;
+                        }
+
+                        if (!(openList.Contains(connectedNode)))
+                        {
+                            connectedNode.parent = currentNode;
+                            openList.Add(connectedNode);
+                        }
+                    }
                 }
 
-                if (!(openList.Contains(connectedNode)))
+                Debug.Log("Path not found!");
+                return GetFoundPath(null);
+
+            case PathfindingTypes.BFS:
+                startNode.visited = true;
+
+                Queue<Node> nodesStack = new Queue<Node>();
+                nodesStack.Enqueue(startNode);
+
+
+                while (nodesStack.Count > 0)
                 {
-                    connectedNode.parent = currentNode;
-                    openList.Add(connectedNode);
+                    //if (interrupted)
+                    //    break;
+
+
+                    Node currentNode = nodesStack.Dequeue();
+
+
+                    if (currentNode == endNode)
+                    {
+
+                        return GetFoundPath(endNode);
+                    }
+
+                    List<Node> connectedNodes = currentNode.connectedNodes;
+                    int connectedNodesCount = connectedNodes.Count;
+                    for (int connectedNodesIndex = 0; connectedNodesIndex < connectedNodesCount; ++connectedNodesIndex)
+                    {
+                        Node connectedNode = connectedNodes[connectedNodesIndex];
+                        if (!connectedNode.visited)
+                        {
+                            connectedNode.visited = true;
+                            connectedNode.parent = currentNode;
+
+                            nodesStack.Enqueue(connectedNode);
+                        }
+                    }
                 }
-            }
+                Debug.Log("Path not found!");
+                return GetFoundPath(null);
         }
         Debug.Log("Path not found!");
         return GetFoundPath(null);
+
     }
 
-    public List<Node> PathfindingBFS(Node startNode, Node endNode)
-    {
-        startNode.visited = true;
-
-        Queue<Node> nodesStack = new Queue<Node>();
-        nodesStack.Enqueue(startNode);
-
-
-        while (nodesStack.Count > 0)
-        {
-            Node currentNode = nodesStack.Dequeue();
-            
-
-            if (currentNode == endNode)
-            {
-                return GetFoundPath(endNode);
-            }
-
-            List<Node> connectedNodes = currentNode.connectedNodes;
-            int connectedNodesCount = connectedNodes.Count;
-            for (int connectedNodesIndex = 0; connectedNodesIndex < connectedNodesCount; ++connectedNodesIndex)
-            {
-                Node connectedNode = connectedNodes[connectedNodesIndex];
-                if (!connectedNode.visited)
-                {
-                    connectedNode.visited = true;
-                    connectedNode.parent = currentNode;
-
-                    nodesStack.Enqueue(connectedNode);
-                }
-            }
-        }
-
-        return GetFoundPath(null);
-    }
     private int ManhattanDistanceHeuristic(int currentX, int currentY, int targetX, int targetY)
     {
         int xDist = Mathf.Abs(currentX - targetX);

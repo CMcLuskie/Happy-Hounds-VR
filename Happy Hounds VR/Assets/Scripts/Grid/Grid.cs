@@ -42,8 +42,8 @@ public class Grid : MonoBehaviour
     /// <returns></returns>
     public Node coordToNode(Vector3 coord)
     {
-        int x = (int)coord.x + lengthX / 2;
-        int z = (int)coord.z + lengthZ / 2;
+        int x = (int)coord.x + 14;
+        int z = (int)coord.z + 14;
 
         if(x < 0 ||x >= lengthX || z < 0 || z >= lengthZ)
         {
@@ -86,7 +86,7 @@ public class Grid : MonoBehaviour
             nodes[i] = node;
         }
 
-        for (int i = 0; i < nodeCoords.Count; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
             Node node = nodes[i];
             for (int x = 0; x < 3; x++)
@@ -94,10 +94,10 @@ public class Grid : MonoBehaviour
                 for (int z = 0; z < 3; z++)
                 {
                     Vector3 neighbourPos = node.coord;
-                    neighbourPos.x = 1.0f + x;
-                    neighbourPos.z = 1.0f + z;
-                    Node neighbour = coordToNode(neighbourPos);
+                    neighbourPos.x +=  x - 1;
+                    neighbourPos.z +=  z - 1;
 
+                    Node neighbour = coordToNode(neighbourPos);
                     if(node != null)
                     {
                         node.connectedNodes.Add(neighbour);
@@ -105,8 +105,12 @@ public class Grid : MonoBehaviour
                 }
             }
         }
+        print(nodes[404].coord);
+        print(nodeCoords[404]);
     }
 
+
+    
     /// <summary>
     /// used for visualisation of nodes for debugging
     /// </summary>

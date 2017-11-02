@@ -13,16 +13,18 @@ public class DogBrain : Dog {
 
     private void OnEnable()
     {
-        LeftControl.DogCall += DogCall;
-        Controls.HeadScratch += HeadScratch;
-        Controls.BodyScratch += BodyScratch;
+        SecondHand.DogCall += DogCall;
+        MainHand.HeadScratch += HeadScratch;
+        MainHand.BodyScratch += BodyScratch;
     }
 
     
 
     private void OnDisable()
     {
-        LeftControl.DogCall -= DogCall;
+        SecondHand.DogCall -= DogCall;
+        MainHand.HeadScratch -= HeadScratch;
+        MainHand.BodyScratch -= BodyScratch;
     }
 
     // Use this for initialization
@@ -73,6 +75,5 @@ public class DogBrain : Dog {
     }
     private void BodyScratch()
     {
-        throw new NotImplementedException();
     }
 }
