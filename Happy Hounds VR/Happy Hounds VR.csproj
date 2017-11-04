@@ -89,6 +89,7 @@
     <Compile Include="Assets\ScribblePhysics\Scripts\ScribblePhysicsObjectScript.cs" />
     <Compile Include="Assets\Scripts\Dog\Dog.cs" />
     <Compile Include="Assets\Scripts\Dog\DogBrain.cs" />
+    <Compile Include="Assets\Scripts\Dog\DogEyes.cs" />
     <Compile Include="Assets\Scripts\Grid\Grid.cs" />
     <Compile Include="Assets\Scripts\Grid\Node.cs" />
     <Compile Include="Assets\Scripts\Player\ControllerManager.cs" />

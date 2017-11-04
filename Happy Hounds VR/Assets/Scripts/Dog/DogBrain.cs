@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class DogBrain : Dog {
 
     public float wanderTimer;
-    
+
+    bool pickedUp;
     float move;
     
     bool wandering;
@@ -16,6 +18,8 @@ public class DogBrain : Dog {
         SecondHand.DogCall += DogCall;
         MainHand.HeadScratch += HeadScratch;
         MainHand.BodyScratch += BodyScratch;
+        MainHand.DogPickedUp += DogPickedUp;
+        MainHand.DogDropped += DogDropped;
     }
 
     
@@ -25,6 +29,9 @@ public class DogBrain : Dog {
         SecondHand.DogCall -= DogCall;
         MainHand.HeadScratch -= HeadScratch;
         MainHand.BodyScratch -= BodyScratch;
+        MainHand.DogPickedUp -= DogPickedUp;
+        MainHand.DogDropped -= DogDropped;
+
     }
 
     // Use this for initialization
@@ -46,9 +53,13 @@ public class DogBrain : Dog {
         if (isWandering && !isLerping)
             Wandering();
 
-        if (transform.position.y < 0)
+        if ((transform.position.y < 0.22f) && (!pickedUp))
         {
-            Vector3 fix = new Vector3(transform.position.x, 0, transform.position.z);
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.useGravity = false;
+            
+            Vector3 fix = new Vector3(transform.position.x, 0.22f , transform.position.z);
+
             transform.position = fix;
         }
          
@@ -77,5 +88,15 @@ public class DogBrain : Dog {
     private void BodyScratch()
     {
 
+    }
+
+    private void DogPickedUp()
+    {
+        pickedUp = true;
+        GetComponent<Rigidbody>().useGravity = true;
+    }
+    private void DogDropped()
+    {
+        pickedUp = false;
     }
 }

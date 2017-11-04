@@ -49,6 +49,11 @@ public class SecondHand : Controllers {
             Vector3 pos = new Vector3(transform.position.x, .22f, transform.position.z);
             DogCall(pos);
         }
+
+        if (petting)
+            ControllerVibrate(500);
+        else
+            ControllerVibrate(0);
     }
 
     

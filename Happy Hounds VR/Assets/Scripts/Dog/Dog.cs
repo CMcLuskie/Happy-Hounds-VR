@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody))]
-public abstract class Dog : MonoBehaviour
+ public abstract class Dog : MonoBehaviour
 {
     public enum Direction { Forward, Back, Left, Right }; //for movement
     public enum PathfindingTypes { AStar, BFS};
@@ -14,6 +13,9 @@ public abstract class Dog : MonoBehaviour
 
 
     public bool interrupted;
+    public bool toySeen;
+
+
     public int rotationSpeed;
 
     Vector3 goalPos;
@@ -351,6 +353,8 @@ public abstract class Dog : MonoBehaviour
 
     }
 
+    
+
     /*
          * 
          * 
@@ -361,7 +365,7 @@ public abstract class Dog : MonoBehaviour
          * 
          */
 
-public void TempWander(Vector3 end)
+    public void TempWander(Vector3 end)
     {
         isLerping = true;
         transform.LookAt(end);
