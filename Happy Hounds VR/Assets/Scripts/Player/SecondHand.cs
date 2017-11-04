@@ -40,7 +40,7 @@ public class SecondHand : Controllers {
             }
             else if (GetTouchpadPos().x < 0)
             {
-                DogSit(playerHead.transform.position);
+               //DogSit(playerHead.transform.position);
             }
         }
 

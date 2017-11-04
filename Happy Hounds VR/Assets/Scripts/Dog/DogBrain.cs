@@ -43,18 +43,21 @@ public class DogBrain : Dog {
             animator.SetFloat("Move", 0.5f);
         }
 
+        if (isWandering && !isLerping)
+            Wandering();
+
         if (transform.position.y < 0)
         {
             Vector3 fix = new Vector3(transform.position.x, 0, transform.position.z);
             transform.position = fix;
         }
-            
+         
+           
 	}
 
     void Wandering()
     {
-         Lerping(gridScript.GetRandomNode());
-       // TempWander(gridScript.GetRandomNode());
+        Lerping(gridScript.GetRandomNode(), 1);
         animator.SetFloat("Move", .6f);
     }
 
@@ -63,10 +66,8 @@ public class DogBrain : Dog {
         isWandering = false;
         attentionGiven = true;
         Node node = gridScript.coordToNode(playerPos);
-        // Lerping(node);
-        TempWander(playerPos);
+        Lerping(node, 2);
         animator.SetFloat("Move", 6f);
-
     }
 
     private void HeadScratch()
@@ -75,5 +76,6 @@ public class DogBrain : Dog {
     }
     private void BodyScratch()
     {
+
     }
 }
