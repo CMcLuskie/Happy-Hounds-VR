@@ -130,17 +130,10 @@ public abstract class Dog : MonoBehaviour
     {
         //to get start node
         Node currentNode = gridScript.coordToNode(transform.position);
+        print(currentNode.coord);
         //to pathfind
         List<Node> path = new List<Node>();
         path = Pathfinding(PathfindingTypes.BFS, currentNode, end);
-        for (int i = 0; i < path.Count; i++)
-        {
-            print(path[i].coord);
-        }
-        for (int i= 0; i < path[1].connectedNodes.Count; i++)
-        {
-            print("current nodes: " + path[1].coord + "connected nodes" + path[1].connectedNodes[i].coord);
-        }
         //for lerping
         StartCoroutine(DogLerp(path));
         isLerping = true;
@@ -149,17 +142,18 @@ public abstract class Dog : MonoBehaviour
     IEnumerator DogLerp(List<Node> path)
     {
 
-        print("pathLength = " + path.Count);
-        //pops to get current node
-        Node currentNode = path[0];
-        path.Remove(currentNode);
-        Vector3 current = currentNode.coord;
-
+        print("pathLength = " + path.Count);        
         while (path.Count > 0)
         {
+            //this is to avoid error when 
+            if (path.Count == 1)
+                break;
+
+            Node currentNode = path[0];
+            path.Remove(currentNode);
+            Vector3 current = currentNode.coord;
             //pops to get target
             Node targetNode = path[0];
-            path.Remove(targetNode);
             Vector3 target = targetNode.coord;
             
             float totalTime = 1;
@@ -170,8 +164,12 @@ public abstract class Dog : MonoBehaviour
                 currentTime += Time.deltaTime;
                 transform.LookAt(target);
                 transform.position = Vector3.Lerp(current, target, currentTime / totalTime);
-                if (currentTime >=  totalTime)
+                if (currentTime >= totalTime && path.Count == 1)
+                {
                     isLerping = false;
+                    path.Remove(targetNode);
+                }
+                
 
                 yield return 0;
 

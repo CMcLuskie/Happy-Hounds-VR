@@ -42,16 +42,18 @@ public class Grid : MonoBehaviour
     /// <returns></returns>
     public Node coordToNode(Vector3 coord)
     {
-        int x = (int)coord.x + 14;
-        int z = (int)coord.z + 14;
+        coord.x = Mathf.Round(coord.x);
+        coord.y = dogYPos;
+        coord.z = Mathf.Round(coord.z);
 
-        if(x < 0 ||x >= lengthX || z < 0 || z >= lengthZ)
+        for (int i=0; i<nodes.Length; i++)
         {
-            return null;
+            if (nodes[i].coord == coord)
+            {
+                return nodes[i];
+            }
         }
-
-        int nodeIndex = z + x * lengthZ;
-        return nodes[nodeIndex];
+        return nodes[0];
     }
 
     /// <summary>
@@ -132,6 +134,7 @@ public class Grid : MonoBehaviour
     public Node GetRandomNode()
     {
         int i = Random.Range(0, nodes.Length);
+        print("fucking last point: " + nodes[i].coord);
         return nodes[i];
     }
 }
