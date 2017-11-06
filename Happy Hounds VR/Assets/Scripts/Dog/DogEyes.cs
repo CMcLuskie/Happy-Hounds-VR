@@ -5,15 +5,8 @@ using UnityEngine;
 public class DogEyes : Dog {
 
     public DogBrain dogBrainScript;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public GameObject bodyCam;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,5 +25,19 @@ public class DogEyes : Dog {
             dogBrainScript.ToyPos(other.gameObject);
          dogBrainScript.toySeen = true;
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Toy")
+        {
+            StartCoroutine(BodyCamTimer());
+        }
+    }
+
+    IEnumerator BodyCamTimer()
+    {
+        bodyCam.SetActive(true);
+        yield return new WaitForSeconds(3);
+        bodyCam.SetActive(false);
     }
 }

@@ -111,6 +111,7 @@ using UnityEngine;
 
     public virtual void Move(Direction dir, float speed)
     {
+        animator.SetFloat("Move", 4f);
         switch (dir)
         {
             //But what's your opinion on the death rate of bees

@@ -66,8 +66,12 @@ public class DogBrain : Dog {
             Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
             transform.SetPositionAndRotation(transform.position, quar);
 
-            if (DistanceToToy().x < 1 || DistanceToToy().y < 1)
+            if (DistanceToToy()< 1)
+            {
                 toySeen = false;
+                animator.SetFloat("Move", 0.5f);
+            }
+                
 
             if (higherX(targetPos))
                 Move(Direction.Right, 0.01f);
@@ -94,7 +98,7 @@ public class DogBrain : Dog {
         attentionGiven = true;
         Node node = gridScript.coordToNode(playerPos);
         Lerping(node, 2);
-        animator.SetFloat("Move", 6f);
+        animator.SetFloat("Move", 5f);
     }
 
     private void HeadScratch()
@@ -122,25 +126,27 @@ public class DogBrain : Dog {
         targetPos.y = transform.position.y;
     }
 
-    private Vector3 DistanceToToy()
+    private int DistanceToToy()
     {
-        Vector3 difference = new Vector3(0, 0, 0);
+        int difference = 0;
+        Vector3 differenceVector = new Vector3(0, 0, 0);
         if (targetPos.x < transform.position.x)
         {
-            difference.x = transform.position.x - targetPos.x; 
+            differenceVector.x = transform.position.x - targetPos.x; 
         }
         else
         {
-            difference.x = targetPos.x - transform.position.x;
+            differenceVector.x = targetPos.x - transform.position.x;
         }
         if (targetPos.z < transform.position.z)
         {
-            difference.z = transform.position.z - targetPos.z;
+            differenceVector.z = transform.position.z - targetPos.z;
         }
         else
         {
-            difference.z = targetPos.z - transform.position.z;
+            differenceVector.z = targetPos.z - transform.position.z;
         }
+        difference = (int)differenceVector.x + (int)differenceVector.z;
         return difference;
     }
 
