@@ -10,9 +10,10 @@ public class DogBrain : Dog {
 
     bool pickedUp;
     float move;
-    
+
     bool wandering;
 
+    Vector3 targetPos;
     private void OnEnable()
     {
         SecondHand.DogCall += DogCall;
@@ -22,7 +23,7 @@ public class DogBrain : Dog {
         MainHand.DogDropped += DogDropped;
     }
 
-    
+
 
     private void OnDisable()
     {
@@ -35,13 +36,13 @@ public class DogBrain : Dog {
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         GetGridObject();
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
         if (Input.GetKeyDown(KeyCode.Space))
             Wandering();
 
@@ -55,16 +56,31 @@ public class DogBrain : Dog {
 
         if ((transform.position.y < 0.22f) && (!pickedUp))
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.useGravity = false;
-            
-            Vector3 fix = new Vector3(transform.position.x, 0.22f , transform.position.z);
-
+            Vector3 fix = new Vector3(transform.position.x, 0.22f, transform.position.z);
             transform.position = fix;
         }
-         
-           
-	}
+
+        if (toySeen)
+        {           
+            transform.LookAt(targetPos);
+            Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+            transform.SetPositionAndRotation(transform.position, quar);
+
+            if (DistanceToToy().x < 1 || DistanceToToy().y < 1)
+                toySeen = false;
+
+            if (higherX(targetPos))
+                Move(Direction.Right, 0.01f);
+            else
+                Move(Direction.Left, 0.01f);
+
+            if (higherZ(targetPos))
+                Move(Direction.Forward, 0.01f);
+            else
+                Move(Direction.Back, 0.01f);
+        }
+
+    }
 
     void Wandering()
     {
@@ -83,7 +99,7 @@ public class DogBrain : Dog {
 
     private void HeadScratch()
     {
-      
+
     }
     private void BodyScratch()
     {
@@ -99,4 +115,49 @@ public class DogBrain : Dog {
     {
         pickedUp = false;
     }
+
+    public void ToyPos(GameObject toy)
+    {
+        targetPos = toy.transform.position;
+        targetPos.y = transform.position.y;
+    }
+
+    private Vector3 DistanceToToy()
+    {
+        Vector3 difference = new Vector3(0, 0, 0);
+        if (targetPos.x < transform.position.x)
+        {
+            difference.x = transform.position.x - targetPos.x; 
+        }
+        else
+        {
+            difference.x = targetPos.x - transform.position.x;
+        }
+        if (targetPos.z < transform.position.z)
+        {
+            difference.z = transform.position.z - targetPos.z;
+        }
+        else
+        {
+            difference.z = targetPos.z - transform.position.z;
+        }
+        return difference;
+    }
+
+    private bool higherX(Vector3 toyPos)
+    {
+        if (toyPos.x > transform.position.x)
+            return true;
+        else
+            return false;
+    }
+
+    private bool higherZ(Vector3 toyPos)
+    {
+        if (toyPos.z > transform.position.z)
+            return true;
+        else
+            return false;
+    }
+
 }

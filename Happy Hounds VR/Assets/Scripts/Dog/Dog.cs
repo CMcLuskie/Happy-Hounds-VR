@@ -11,6 +11,7 @@ using UnityEngine;
     public enum FoodTypes { Pup, Adult, Senior };
     private int foodType;
 
+    
 
     public bool interrupted;
     public bool toySeen;
@@ -108,22 +109,22 @@ using UnityEngine;
         return foodType;
     }
 
-    public virtual void Move(Direction dir)
+    public virtual void Move(Direction dir, float speed)
     {
         switch (dir)
         {
             //But what's your opinion on the death rate of bees
             case Direction.Forward:
-                transform.localPosition += Vector3.forward * 2;
+                transform.localPosition += Vector3.forward * speed;
                 break;
             case Direction.Back:
-                transform.localPosition += Vector3.back * 2;
+                transform.localPosition += Vector3.back * speed;
                 break;
             case Direction.Left:
-                transform.localPosition += Vector3.left * 2;
+                transform.localPosition += Vector3.left * speed;
                 break;
             case Direction.Right:
-                transform.localPosition += Vector3.right * 2;
+                transform.localPosition += Vector3.right * speed;
                 break;
         }
     }

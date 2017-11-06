@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DogEyes : Dog {
 
+    public DogBrain dogBrainScript;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,7 +19,18 @@ public class DogEyes : Dog {
     {
         if (other.tag == "Toy")
         {
-            toySeen = true;
+            dogBrainScript.toySeen = true;
+            dogBrainScript.ToyPos(other.gameObject);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Toy")
+        { 
+
+            dogBrainScript.ToyPos(other.gameObject);
+         dogBrainScript.toySeen = true;
         }
     }
 }
