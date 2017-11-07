@@ -9,8 +9,6 @@ TagManager:
   - Grid
   - Head
   - Body
-  - Toy
-  - Dog
   layers:
   - Default
   - TransparentFX

@@ -28,7 +28,8 @@ public class MainHand : Controllers {
     [HideInInspector]
     public bool shouldTeleport;
 
-    
+    //petting
+    public bool petting;
     //events
     public delegate void OnControllerInput(Vector3 playerPos);
     public static event OnControllerInput DogCall;
@@ -81,8 +82,6 @@ public class MainHand : Controllers {
 
         if (petting)
             ControllerVibrate(500);
-        else
-            ControllerVibrate(0);
     }
 
 
@@ -93,9 +92,12 @@ public class MainHand : Controllers {
     public void InstantiateLaser()
     {
         RaycastHit hit;
+
         if (Physics.Raycast
             (trackedObj.transform.position, transform.forward, out hit, 100, teleportMask))
-        { 
+        {
+            print("cunt");
+
             hitPoint = hit.point;
             ShowLaser(hit);
             reticle.SetActive(true);

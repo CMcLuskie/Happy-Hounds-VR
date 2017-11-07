@@ -3,19 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class DogBrain : Dog {
 
     public float wanderTimer;
+<<<<<<< HEAD
 
     public bool toyCaught;
     public bool followPlayer;
 
     bool pickedUp;
+=======
+    
+>>>>>>> parent of ec4e8df... Code/Tidy Update
     float move;
-
+    
     bool wandering;
 
+<<<<<<< HEAD
     GameObject toy;
 
     public Transform player;
@@ -23,66 +27,46 @@ public class DogBrain : Dog {
 
 
     Vector3 targetPos;
+=======
+>>>>>>> parent of ec4e8df... Code/Tidy Update
     private void OnEnable()
     {
         SecondHand.DogCall += DogCall;
         MainHand.HeadScratch += HeadScratch;
         MainHand.BodyScratch += BodyScratch;
-        MainHand.DogPickedUp += DogPickedUp;
-        MainHand.DogDropped += DogDropped;
     }
 
-
+    
 
     private void OnDisable()
     {
         SecondHand.DogCall -= DogCall;
         MainHand.HeadScratch -= HeadScratch;
         MainHand.BodyScratch -= BodyScratch;
-        MainHand.DogPickedUp -= DogPickedUp;
-        MainHand.DogDropped -= DogDropped;
-
     }
 
     // Use this for initialization
-    void Start()
+    void Start ()
     {
         GetGridObject();
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update () {
         if (Input.GetKeyDown(KeyCode.Space))
             Wandering();
-
-        if (!pickedUp)
-        {
-            Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
-            transform.SetPositionAndRotation(transform.position, quar);
-        }
-
-        if (OutOfBounds())
-        {
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            transform.position = new Vector3(-9, 0.22f, -6);
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            
-        }
-
 
         if (!isLerping)
         {
             animator.SetFloat("Move", 0.5f);
         }
 
-        if (isWandering && !isLerping)
-            Wandering();
-
-        if ((transform.position.y < 0.22f) && (!pickedUp))
+        if (transform.position.y < 0)
         {
-            Vector3 fix = new Vector3(transform.position.x, 0.22f, transform.position.z);
+            Vector3 fix = new Vector3(transform.position.x, 0, transform.position.z);
             transform.position = fix;
         }
+<<<<<<< HEAD
 
         if (toySeen)
         {
@@ -163,10 +147,15 @@ public class DogBrain : Dog {
         }
 
     }
+=======
+            
+	}
+>>>>>>> parent of ec4e8df... Code/Tidy Update
 
     void Wandering()
     {
-        Lerping(gridScript.GetRandomNode(), 1);
+         Lerping(gridScript.GetRandomNode());
+       // TempWander(gridScript.GetRandomNode());
         animator.SetFloat("Move", .6f);
     }
 
@@ -175,16 +164,19 @@ public class DogBrain : Dog {
         isWandering = false;
         attentionGiven = true;
         Node node = gridScript.coordToNode(playerPos);
-        Lerping(node, 2);
-        animator.SetFloat("Move", 5f);
+        // Lerping(node);
+        TempWander(playerPos);
+        animator.SetFloat("Move", 6f);
+
     }
 
     private void HeadScratch()
     {
-
+      
     }
     private void BodyScratch()
     {
+<<<<<<< HEAD
 
     }
 
@@ -262,6 +254,8 @@ public class DogBrain : Dog {
     {
         targetPos = toy.transform.position;
         targetPos.y = transform.position.y;
+=======
+>>>>>>> parent of ec4e8df... Code/Tidy Update
     }
 
     private int DistanceToToy()

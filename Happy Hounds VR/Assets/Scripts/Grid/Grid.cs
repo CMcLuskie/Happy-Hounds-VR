@@ -22,7 +22,7 @@ public class Grid : MonoBehaviour
     private void Start()
     {
         InstantiateGrid();
-
+        
         if (showNodes)
             ShowNodes();
     }
@@ -46,7 +46,7 @@ public class Grid : MonoBehaviour
         coord.y = dogYPos;
         coord.z = Mathf.Round(coord.z);
 
-        for (int i = 0; i < nodes.Length; i++)
+        for (int i=0; i<nodes.Length; i++)
         {
             if (nodes[i].coord == coord)
             {
@@ -63,7 +63,7 @@ public class Grid : MonoBehaviour
     {
         for (int i = 0; i < lengthX; i++)
         {
-            for (int j = 0; j < lengthZ; j++)
+            for(int j= 0; j < lengthZ; j++)
             {
                 nodeCoords.Add(new Vector3(gridCorner.x - i, dogYPos, gridCorner.z - j));
             }
@@ -81,12 +81,11 @@ public class Grid : MonoBehaviour
     void InstantiateNodes()
     {
         nodes = new Node[nodeCoords.Count];
-        for (int i = 0; i < nodeCoords.Count; i++)
+        for(int i=0; i < nodeCoords.Count; i++)
         {
             Node node = new Node();
             node.coord = nodeCoords[i];
             nodes[i] = node;
-            print("Node" + i + nodes[i].coord);
         }
 
         for (int i = 0; i < nodes.Length; i++)
@@ -97,27 +96,29 @@ public class Grid : MonoBehaviour
                 for (int z = 0; z < 3; z++)
                 {
                     Vector3 neighbourPos = node.coord;
-                    neighbourPos.x += x - 1;
-                    neighbourPos.z += z - 1;
+                    neighbourPos.x +=  x - 1;
+                    neighbourPos.z +=  z - 1;
 
                     Node neighbour = coordToNode(neighbourPos);
-                    if (node != null)
+                    if(node != null)
                     {
                         node.connectedNodes.Add(neighbour);
                     }
                 }
             }
         }
+        print(nodes[404].coord);
+        print(nodeCoords[404]);
     }
 
 
-
+    
     /// <summary>
     /// used for visualisation of nodes for debugging
     /// </summary>
     void ShowNodes()
     {
-        foreach (Vector3 v in nodeCoords)
+        foreach(Vector3 v in nodeCoords)
         {
             float sphereScale = .5f;
             GameObject nodeObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -136,12 +137,4 @@ public class Grid : MonoBehaviour
         print("fucking last point: " + nodes[i].coord);
         return nodes[i];
     }
-
-    //this is used for debugging only
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-            for (int i = 0; i < nodes[439].connectedNodes.Count; i++)
-                print("Node 439 neighbour " + i + ": " + nodes[439].connectedNodes[i].coord); 
-                    }
 }
