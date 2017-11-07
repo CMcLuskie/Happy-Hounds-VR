@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SecondHand : Controllers {
 
+    public DogBrain dogBrainScript;
     public delegate void OnControllerInput(Vector3 playerPos);
     public static event OnControllerInput DogCall;
     public static event OnControllerInput DogSit;
@@ -34,21 +35,27 @@ public class SecondHand : Controllers {
 
         if (TouchpadPressDown())
         {
-            if (GetTouchpadPos().x > 0)
-            {
-                DogCall(playerHead.transform.position);
-            }
-            else if (GetTouchpadPos().x < 0)
-            {
-                DogSit(playerHead.transform.position);
-            }
+            //if (GetTouchpadPos().x > 0)
+            //{
+            //    DogCall(playerHead.transform.position);
+            //}
+            //else if (GetTouchpadPos().x < 0)
+            //{
+            //   //DogSit(playerHead.transform.position);
+            //}
         }
 
         if (GripButtonDown())
         {
-            Vector3 pos = new Vector3(transform.position.x, .22f, transform.position.z);
-            DogCall(pos);
+            //Vector3 pos = new Vector3(transform.position.x, .22f, transform.position.z);
+            //DogCall(pos);
+            dogBrainScript.followPlayer = true;
         }
+
+        if (petting)
+            ControllerVibrate(500);
+        else
+            ControllerVibrate(0);
     }
 
     

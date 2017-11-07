@@ -4,9 +4,16 @@ using UnityEngine;
 using Valve.VR;
 
 public abstract class Controllers : MonoBehaviour {
+    public delegate void OnPickUp();
+    public static OnPickUp DogPickedUp;
+    public static OnPickUp DogDropped;
 
     [HideInInspector]
     public SteamVR_TrackedObject trackedObj;
+
+    
+
+    public bool petting;
 
     //grab variables
     [HideInInspector]
@@ -95,9 +102,7 @@ public abstract class Controllers : MonoBehaviour {
         SetCollidingObject(other);
         if ((other.tag == "Head") || (other.tag == "Body"))
         {
-            //petting = true;
-            ControllerVibrate(500);
-            //HeadScratch();
+            petting = true;
         }
     }
 
@@ -108,14 +113,15 @@ public abstract class Controllers : MonoBehaviour {
 
     public void OnTriggerExit(Collider other)
     {
+        if ((other.tag == "Head") || (other.tag == "Body"))
+        {
+            petting = false;
+        }
+
         if (!collidingObject)
             return;
         collidingObject = null;
-        if ((other.tag == "Head") || (other.tag == "Body"))
-        {
-            ControllerVibrate(0);
-
-        }
+        
     }//Triggers
     /*
      * 
@@ -155,6 +161,8 @@ public abstract class Controllers : MonoBehaviour {
         Debug.Log("Grab Object");
         objectInHand = collidingObject;//moves GO to players hand
         collidingObject = null;//removes it from colliding object variable
+        if (objectInHand.tag == "Dog")
+            DogPickedUp();
         var joint = AddFixJoint(); //sets joint variable
         joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
     }
@@ -179,6 +187,8 @@ public abstract class Controllers : MonoBehaviour {
             objectInHand.GetComponent<Rigidbody>().velocity = ControllerVelocity();
             objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity();
         }
+        if (objectInHand.tag == "Dog")
+            DogDropped();
         objectInHand = null;
     }//Grab
 }

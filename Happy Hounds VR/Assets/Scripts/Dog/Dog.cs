@@ -1,19 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody))]
-public abstract class Dog : MonoBehaviour
+ public abstract class Dog : MonoBehaviour
 {
     public enum Direction { Forward, Back, Left, Right }; //for movement
     public enum PathfindingTypes { AStar, BFS};
-
+    public enum Steering { Wander, Run};
     public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience };//for stats
 
     public enum FoodTypes { Pup, Adult, Senior };
     private int foodType;
 
+    
 
     public bool interrupted;
+    public bool toySeen;
+
+
     public int rotationSpeed;
 
     Vector3 goalPos;
@@ -106,27 +109,33 @@ public abstract class Dog : MonoBehaviour
         return foodType;
     }
 
-    public virtual void Move(Direction dir)
+    public virtual void Move(Direction dir, float speed)
     {
+        animator.SetFloat("Move", 4f);
         switch (dir)
         {
             //But what's your opinion on the death rate of bees
             case Direction.Forward:
-                transform.localPosition += Vector3.forward * 2;
+                transform.localPosition += Vector3.forward * speed;
                 break;
             case Direction.Back:
-                transform.localPosition += Vector3.back * 2;
+                transform.localPosition += Vector3.back * speed;
                 break;
             case Direction.Left:
-                transform.localPosition += Vector3.left * 2;
+                transform.localPosition += Vector3.left * speed;
                 break;
             case Direction.Right:
-                transform.localPosition += Vector3.right * 2;
+                transform.localPosition += Vector3.right * speed;
                 break;
         }
     }
 
-    public virtual void Lerping(Node end)
+    /// <summary>
+    /// Gathers Values for the lerp
+    /// </summary>
+    /// <param name="end"></param>
+    /// <param name="dogSpeed"></param>
+    public virtual void Lerping(Node end, int dogSpeed)
     {
         //to get start node
         Node currentNode = gridScript.coordToNode(transform.position);
@@ -135,11 +144,17 @@ public abstract class Dog : MonoBehaviour
         List<Node> path = new List<Node>();
         path = Pathfinding(PathfindingTypes.BFS, currentNode, end);
         //for lerping
-        StartCoroutine(DogLerp(path));
+        StartCoroutine(DogLerp(path, dogSpeed));
         isLerping = true;
     }
 
-    IEnumerator DogLerp(List<Node> path)
+    /// <summary>
+    /// Lerps the dog between nodes
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="dogSpeed"></param>
+    /// <returns></returns>
+    IEnumerator DogLerp(List<Node> path, int dogSpeed)
     {
 
         print("pathLength = " + path.Count);        
@@ -156,7 +171,7 @@ public abstract class Dog : MonoBehaviour
             Node targetNode = path[0];
             Vector3 target = targetNode.coord;
             
-            float totalTime = 1;
+            float totalTime = 1 / dogSpeed;
             float currentTime = 0;
 
             while (currentTime < totalTime)
@@ -192,96 +207,105 @@ public abstract class Dog : MonoBehaviour
         switch (pathfindingTypes)
         {
             case PathfindingTypes.AStar:
-                List<Node> openList = new List<Node>();
-                List<Node> closedList = new List<Node>();
-
-                openList.Add(startNode);
-
-                while (openList.Count > 0)
-                {
-                    openList.Sort();
-                    Node currentNode = openList[0];
-                    openList.Remove(currentNode);
-                    closedList.Add(currentNode);
-
-
-                    if (currentNode == endNode)
-                    {
-                        GetFoundPath(endNode);
-                    }
-
-                    List<Node> connectedNodes = currentNode.connectedNodes;
-
-                    int connectedNodesCount = connectedNodes.Count;
-                    for (int i = 0; i < connectedNodesCount; i++)
-                    {
-                        Node connectedNode = connectedNodes[i];
-                        if (closedList.Contains(connectedNode))
-                            continue;
-
-                        int g = currentNode.g + 10;
-                        int h = EuclideanDistanceHeuristic((int)connectedNode.coord.x, (int)connectedNode.coord.z, (int)endNode.coord.x, (int)endNode.coord.z);
-                        int f = g + h;
-                        if (f <= connectedNode.f || !(openList.Contains(connectedNode)))
-                        {
-
-                            connectedNode.g = g;
-                            connectedNode.f = f;
-                        }
-
-                        if (!(openList.Contains(connectedNode)))
-                        {
-                            connectedNode.parent = currentNode;
-                            openList.Add(connectedNode);
-                        }
-                    }
-                }
-
-                Debug.Log("Path not found!");
-                return GetFoundPath(null);
+                return AStar(startNode, endNode);
 
             case PathfindingTypes.BFS:
-                startNode.visited = true;
-
-                Queue<Node> nodesStack = new Queue<Node>();
-                nodesStack.Enqueue(startNode);
-
-
-                while (nodesStack.Count > 0)
-                {
-                    //if (interrupted)
-                    //    break;
-
-
-                    Node currentNode = nodesStack.Dequeue();
-
-
-                    if (currentNode == endNode)
-                    {
-
-                        return GetFoundPath(endNode);
-                    }
-
-                    List<Node> connectedNodes = currentNode.connectedNodes;
-                    int connectedNodesCount = connectedNodes.Count;
-                    for (int connectedNodesIndex = 0; connectedNodesIndex < connectedNodesCount; ++connectedNodesIndex)
-                    {
-                        Node connectedNode = connectedNodes[connectedNodesIndex];
-                        if (!connectedNode.visited)
-                        {
-                            connectedNode.visited = true;
-                            connectedNode.parent = currentNode;
-
-                            nodesStack.Enqueue(connectedNode);
-                        }
-                    }
-                }
-                Debug.Log("Path not found!");
-                return GetFoundPath(null);
+                return BreadthFirstSearch(startNode, endNode);              
         }
         Debug.Log("Path not found!");
         return GetFoundPath(null);
+    }
 
+    public List<Node> AStar(Node startNode, Node endNode)
+    {
+        List<Node> openList = new List<Node>();
+        List<Node> closedList = new List<Node>();
+
+        openList.Add(startNode);
+
+        while (openList.Count > 0)
+        {
+            openList.Sort();
+            Node currentNode = openList[0];
+            openList.Remove(currentNode);
+            closedList.Add(currentNode);
+
+
+            if (currentNode == endNode)
+            {
+                GetFoundPath(endNode);
+            }
+
+            List<Node> connectedNodes = currentNode.connectedNodes;
+
+            int connectedNodesCount = connectedNodes.Count;
+            for (int i = 0; i < connectedNodesCount; i++)
+            {
+                Node connectedNode = connectedNodes[i];
+                if (closedList.Contains(connectedNode))
+                    continue;
+
+                int g = currentNode.g + 10;
+                int h = EuclideanDistanceHeuristic((int)connectedNode.coord.x, (int)connectedNode.coord.z, (int)endNode.coord.x, (int)endNode.coord.z);
+                int f = g + h;
+                if (f <= connectedNode.f || !(openList.Contains(connectedNode)))
+                {
+
+                    connectedNode.g = g;
+                    connectedNode.f = f;
+                }
+
+                if (!(openList.Contains(connectedNode)))
+                {
+                    connectedNode.parent = currentNode;
+                    openList.Add(connectedNode);
+                }
+            }
+        }
+
+        Debug.Log("Path not found!");
+        return GetFoundPath(null);
+    }
+
+    public List<Node> BreadthFirstSearch(Node startNode, Node endNode)
+    {
+        startNode.visited = true;
+
+        Queue<Node> nodesStack = new Queue<Node>();
+        nodesStack.Enqueue(startNode);
+
+
+        while (nodesStack.Count > 0)
+        {
+            //if (interrupted)
+            //    break;
+
+
+            Node currentNode = nodesStack.Dequeue();
+
+
+            if (currentNode == endNode)
+            {
+
+                return GetFoundPath(endNode);
+            }
+
+            List<Node> connectedNodes = currentNode.connectedNodes;
+            int connectedNodesCount = connectedNodes.Count;
+            for (int connectedNodesIndex = 0; connectedNodesIndex < connectedNodesCount; ++connectedNodesIndex)
+            {
+                Node connectedNode = connectedNodes[connectedNodesIndex];
+                if (!connectedNode.visited)
+                {
+                    connectedNode.visited = true;
+                    connectedNode.parent = currentNode;
+
+                    nodesStack.Enqueue(connectedNode);
+                }
+            }
+        }
+        Debug.Log("Path not found!");
+        return GetFoundPath(null);
     }
 
     private int ManhattanDistanceHeuristic(int currentX, int currentY, int targetX, int targetY)
@@ -331,6 +355,8 @@ public abstract class Dog : MonoBehaviour
 
     }
 
+    
+
     /*
          * 
          * 
@@ -341,7 +367,7 @@ public abstract class Dog : MonoBehaviour
          * 
          */
 
-public void TempWander(Vector3 end)
+    public void TempWander(Vector3 end)
     {
         isLerping = true;
         transform.LookAt(end);
