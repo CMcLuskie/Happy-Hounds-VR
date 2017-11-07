@@ -8,24 +8,20 @@ public class DogBrain : Dog {
 
     public float wanderTimer;
 
-<<<<<<< HEAD
     public bool toyCaught;
     public bool followPlayer;
-=======
->>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
+
     bool pickedUp;
     float move;
 
     bool wandering;
 
-<<<<<<< HEAD
     GameObject toy;
 
     public Transform player;
     Vector3 playerFeet;
 
-=======
->>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
+
     Vector3 targetPos;
     private void OnEnable()
     {
@@ -89,7 +85,6 @@ public class DogBrain : Dog {
         }
 
         if (toySeen)
-<<<<<<< HEAD
         {
             GoToPoint(targetPos);
         }
@@ -144,7 +139,6 @@ public class DogBrain : Dog {
             return true;
         else
             return false;
-=======
         {           
             transform.LookAt(targetPos);
             Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
@@ -168,7 +162,6 @@ public class DogBrain : Dog {
                 Move(Direction.Back, 0.01f);
         }
 
->>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
     }
 
     void Wandering()
@@ -203,7 +196,6 @@ public class DogBrain : Dog {
     private void DogDropped()
     {
         pickedUp = false;
-<<<<<<< HEAD
     }
 
     public void ToyPos(GameObject toy)
@@ -263,8 +255,7 @@ public class DogBrain : Dog {
     {
         if (other.tag == "Player")
             followPlayer = false;
-=======
->>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
+
     }
 
     public void ToyPos(GameObject toy)
