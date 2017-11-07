@@ -6,7 +6,11 @@ public class DogEyes : Dog {
 
     public DogBrain dogBrainScript;
 
+<<<<<<< HEAD
     public GameObject tempCam;
+=======
+    public GameObject bodyCam;
+>>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,16 +32,27 @@ public class DogEyes : Dog {
     }
     private void OnTriggerExit(Collider other)
     {
+<<<<<<< HEAD
         if((other.tag == "Toy") && !(gameObject.name == "tempCam"))
         { 
+=======
+        if(other.tag == "Toy")
+        {
+>>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
             StartCoroutine(BodyCamTimer());
         }
     }
 
     IEnumerator BodyCamTimer()
     {
+<<<<<<< HEAD
         tempCam.SetActive(true);
         yield return new WaitForSeconds(3);
         tempCam.SetActive(false);
+=======
+        bodyCam.SetActive(true);
+        yield return new WaitForSeconds(3);
+        bodyCam.SetActive(false);
+>>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
     }
 }

@@ -8,18 +8,24 @@ public class DogBrain : Dog {
 
     public float wanderTimer;
 
+<<<<<<< HEAD
     public bool toyCaught;
     public bool followPlayer;
+=======
+>>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
     bool pickedUp;
     float move;
 
     bool wandering;
 
+<<<<<<< HEAD
     GameObject toy;
 
     public Transform player;
     Vector3 playerFeet;
 
+=======
+>>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
     Vector3 targetPos;
     private void OnEnable()
     {
@@ -83,6 +89,7 @@ public class DogBrain : Dog {
         }
 
         if (toySeen)
+<<<<<<< HEAD
         {
             GoToPoint(targetPos);
         }
@@ -137,6 +144,31 @@ public class DogBrain : Dog {
             return true;
         else
             return false;
+=======
+        {           
+            transform.LookAt(targetPos);
+            Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+            transform.SetPositionAndRotation(transform.position, quar);
+
+            if (DistanceToToy()< 1)
+            {
+                toySeen = false;
+                animator.SetFloat("Move", 0.5f);
+            }
+                
+
+            if (higherX(targetPos))
+                Move(Direction.Right, 0.01f);
+            else
+                Move(Direction.Left, 0.01f);
+
+            if (higherZ(targetPos))
+                Move(Direction.Forward, 0.01f);
+            else
+                Move(Direction.Back, 0.01f);
+        }
+
+>>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
     }
 
     void Wandering()
@@ -171,6 +203,7 @@ public class DogBrain : Dog {
     private void DogDropped()
     {
         pickedUp = false;
+<<<<<<< HEAD
     }
 
     public void ToyPos(GameObject toy)
@@ -230,5 +263,54 @@ public class DogBrain : Dog {
     {
         if (other.tag == "Player")
             followPlayer = false;
+=======
+>>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
     }
+
+    public void ToyPos(GameObject toy)
+    {
+        targetPos = toy.transform.position;
+        targetPos.y = transform.position.y;
+    }
+
+    private int DistanceToToy()
+    {
+        int difference = 0;
+        Vector3 differenceVector = new Vector3(0, 0, 0);
+        if (targetPos.x < transform.position.x)
+        {
+            differenceVector.x = transform.position.x - targetPos.x; 
+        }
+        else
+        {
+            differenceVector.x = targetPos.x - transform.position.x;
+        }
+        if (targetPos.z < transform.position.z)
+        {
+            differenceVector.z = transform.position.z - targetPos.z;
+        }
+        else
+        {
+            differenceVector.z = targetPos.z - transform.position.z;
+        }
+        difference = (int)differenceVector.x + (int)differenceVector.z;
+        return difference;
+    }
+
+    private bool higherX(Vector3 toyPos)
+    {
+        if (toyPos.x > transform.position.x)
+            return true;
+        else
+            return false;
+    }
+
+    private bool higherZ(Vector3 toyPos)
+    {
+        if (toyPos.z > transform.position.z)
+            return true;
+        else
+            return false;
+    }
+
 }

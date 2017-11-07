@@ -35,6 +35,7 @@ public class SecondHand : Controllers {
 
         if (TouchpadPressDown())
         {
+<<<<<<< HEAD
             //if (GetTouchpadPos().x > 0)
             //{
             //    DogCall(playerHead.transform.position);
@@ -43,6 +44,16 @@ public class SecondHand : Controllers {
             //{
             //   //DogSit(playerHead.transform.position);
             //}
+=======
+            if (GetTouchpadPos().x > 0)
+            {
+                DogCall(playerHead.transform.position);
+            }
+            else if (GetTouchpadPos().x < 0)
+            {
+               //DogSit(playerHead.transform.position);
+            }
+>>>>>>> 8962adc0a80569f3d2c26d8d514ceef1b0afa548
         }
 
         if (GripButtonDown())
