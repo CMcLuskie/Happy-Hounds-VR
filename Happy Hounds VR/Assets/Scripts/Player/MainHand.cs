@@ -96,8 +96,6 @@ public class MainHand : Controllers {
         if (Physics.Raycast
             (trackedObj.transform.position, transform.forward, out hit, 100, teleportMask))
         {
-            print("cunt");
-
             hitPoint = hit.point;
             ShowLaser(hit);
             reticle.SetActive(true);

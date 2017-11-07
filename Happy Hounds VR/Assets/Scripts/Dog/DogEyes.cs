@@ -12,7 +12,7 @@ public class DogEyes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Toy")
+        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught))
         {
             dogBrainScript.toySeen = true;
             dogBrainScript.ToyPos(other.gameObject);
@@ -21,7 +21,7 @@ public class DogEyes : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Toy")
+        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught))
         { 
 
             dogBrainScript.ToyPos(other.gameObject);
