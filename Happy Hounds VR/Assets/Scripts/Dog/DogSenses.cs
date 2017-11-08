@@ -8,22 +8,24 @@ public class DogSenses : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Toy")
-            dogBrainScript.closeToToy = true;
+        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught))
+            dogBrainScript.CloseToSomething(DogBrain.Seekable.Toy);
         else if (other.tag == "Player")
-            dogBrainScript.closeToPlayer = true;
+            dogBrainScript.CloseToSomething(DogBrain.Seekable.Player);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        
+        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught))
+            dogBrainScript.CloseToSomething(DogBrain.Seekable.Toy);
+        else if (other.tag == "Player")
+            dogBrainScript.CloseToSomething(DogBrain.Seekable.Player);
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Toy")
-            dogBrainScript.closeToToy = false;
+            dogBrainScript.toySeen = false;
         else if (other.tag == "Player")
             dogBrainScript.closeToPlayer = false;
-
     }
 }

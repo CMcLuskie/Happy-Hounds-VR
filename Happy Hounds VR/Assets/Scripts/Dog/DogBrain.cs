@@ -32,7 +32,7 @@ public class DogBrain : Dog {
 
     Vector3 targetPos;
 
-    enum Seekable { Player, Toy };
+    public enum Seekable { Player, Toy };
 
     private void OnEnable()
     {
@@ -77,39 +77,44 @@ public class DogBrain : Dog {
             ResetPosition();
         }
 
-        //if (closeToPlayer)
-        //    CloseToSomething(Seekable.Player);
-        //if (closeToToy)
-        //    CloseToSomething(Seekable.Toy);
-
         if (toySeen)
         {
-            GoToPoint(targetPos, Seekable.Toy);
+            GoToPoint(targetPos, .01f);
         }
+
         if (toyCaught)
-        {
-            GoToPoint(PlayerPos(), Seekable.Player);
-            newToy.transform.position = mouth.position;
+        {            
+            if(!closeToPlayer)
+            {
+                followPlayer = true;
+                newToy.transform.position = mouth.position;
+            }
+            if (closeToPlayer)
+                DropToy();
         }
 
         if (followPlayer)
-            GoToPoint(PlayerPos(), Seekable.Player);
+            GoToPoint(PlayerPos(), .01f);
 
 
     }
 
-    //void CloseToSomething(Seekable seek)
-    //{
-    //    switch (seek)
-    //    {
-    //        case Seekable.Player:
-    //            followPlayer = false;
-    //            break;
-    //        case Seekable.Toy:
-    //            toySeen = false;
-    //            break;
-    //    }
-    //}
+    public void CloseToSomething(Seekable seek)
+    {
+        switch (seek)
+        {
+            case Seekable.Player:
+                followPlayer = false;
+                closeToPlayer = true;
+             break;
+            case Seekable.Toy:
+                toySeen = false;
+                PickUpToy();
+                break;
+        }
+    }
+
+    
     private void ResetPosition()
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
@@ -117,53 +122,46 @@ public class DogBrain : Dog {
         transform.SetPositionAndRotation(new Vector3(-10, .22f, -10), quar);
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
-    private void GoToPoint(Vector3 pos, Seekable seek)
+
+    private void GoToPoint(Vector3 pos, float speed)
     {
         transform.LookAt(pos);
         Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
         transform.SetPositionAndRotation(transform.position, quar);
 
-        //if (DistanceToPoint(pos) < 1)
-        //{
-        //    Debug.Log("THIS");
-        //    switch (seek)
-        //    {
-        //        case Seekable.Player:
-        //            followPlayer = false;
-        //            break;
-        //        case Seekable.Toy:
-        //            toySeen = false;
-        //            PickUpToy();
-        //            break;
-        //    }
-        //    animator.SetFloat("Move", 0.5f);
-
-        //}
-        //else if (DistanceToPoint(pos) < 2)
-        //    animator.SetFloat("Move", 2.6f);
-        //else if (DistanceToPoint(pos) < 3)
-        //    animator.SetFloat("Move", 3.6f);
-        //else if (DistanceToPoint(pos) < 4)
-        //    animator.SetFloat("Move", 4.6f);
-
         animator.SetFloat("Move", 2.6f);
 
         if (higherX(pos))
-            Move(Direction.Right, 0.01f);
+            Move(Direction.Right, speed);
         else
-            Move(Direction.Left, 0.01f);
+            Move(Direction.Left, speed);
 
         if (higherZ(pos))
-            Move(Direction.Forward, 0.01f);
+            Move(Direction.Forward, speed);
         else
-            Move(Direction.Back, 0.01f);
+            Move(Direction.Back, speed);
     }
 
     void PickUpToy()
     {
-        Destroy(GameObject.FindGameObjectWithTag("Toy"));
-        newToy = Instantiate(toyPrefab, mouth.position, Quaternion.identity);
+        if (!toyCaught)
+        {
+            print("pick up");
+            Destroy(GameObject.FindGameObjectWithTag("Toy"));
+            newToy = Instantiate(toyPrefab, mouth.position, Quaternion.identity);
+        }
         toyCaught = true;
+        pickedUp = true;
+    }
+
+    void DropToy()
+    {
+        toyCaught = false;
+        Vector3 newPos = new Vector3();
+        newPos = new Vector3(-10, .22f, -10);
+        while (transform.position != newPos)
+            GoToPoint(newPos, .01f);
+        transform.LookAt(PlayerPos());
     }
 
     private bool OutOfBounds()
@@ -265,22 +263,6 @@ public class DogBrain : Dog {
         playerFeet = player.transform.position;
         playerFeet.y = 0.22f;
         return playerFeet;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if ((other.tag == "Player") && (gameObject.tag == "Dog"))
-        {
-            if (toyCaught)
-                toyCaught = false;
-            followPlayer = false;
-
-        }
-        followPlayer = false;
-
-        if ((other.tag == "Toy") && !(toyCaught))
-            closeToToy = true;
-
     }
 
 }

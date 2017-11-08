@@ -104,6 +104,12 @@ public abstract class Controllers : MonoBehaviour {
     public void OnTriggerStay(Collider other)
     {
         SetCollidingObject(other);
+        if ((other.tag == "Head") || (other.tag == "Body"))
+        {
+            //petting = true;
+            ControllerVibrate(500);
+            //HeadScratch();
+        }
     }
 
     public void OnTriggerExit(Collider other)

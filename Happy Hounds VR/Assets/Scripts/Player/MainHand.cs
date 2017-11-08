@@ -9,7 +9,7 @@ public class MainHand : Controllers {
     //public bool mainHand;
     //public bool secondHand;
 
-    
+    public GameObject toyPrefab;
 
     //laser variables
     public GameObject laserPrefab;
@@ -82,6 +82,12 @@ public class MainHand : Controllers {
 
         if (petting)
             ControllerVibrate(500);
+
+        if (GripButtonDown())
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Toy"));
+            Instantiate(toyPrefab, transform.position, Quaternion.identity);
+        }
     }
 
 
