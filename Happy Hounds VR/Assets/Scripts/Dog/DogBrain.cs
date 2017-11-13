@@ -29,10 +29,13 @@ public class DogBrain : Dog {
     public bool toySeen;
     public Transform player;
 
+    public Transform foodBowl;
+    public Transform waterBowl;
 
     Vector3 targetPos;
 
     public enum Seekable { Player, Toy };
+    enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood};
 
     #region Unity Methods
         private void OnEnable()
@@ -52,6 +55,8 @@ public class DogBrain : Dog {
         {
             MainHand.HeadScratch -= HeadScratch;
             MainHand.BodyScratch -= BodyScratch;
+            MainHand.StopBodyScratch -= StopBodyScratch;
+            MainHand.StopHeadScratch -= StopHeadScratch;
             SecondHand.DogSit -= DogSit;
             SecondHand.DogCall -= DogCall;
     }
@@ -85,20 +90,10 @@ public class DogBrain : Dog {
             ResetPosition();
         }
 
-        if (toySeen)
-        {
-            GoToPoint(targetPos, .01f);
-        }
 
         if (toyCaught)
         {            
-            if(!closeToPlayer)
-            {
-                followPlayer = true;
-                newToy.transform.position = mouth.position;
-            }
-            if (closeToPlayer)
-                DropToy();
+            
         }
 
         if (followPlayer)
@@ -110,8 +105,27 @@ public class DogBrain : Dog {
         }
     }
 
+    void DecisionMaker(DogBehaviours behaviours)
+    {
+      
+        switch (behaviours)
+        {
+            case DogBehaviours.FollowFood:
+
+                break;
+            case DogBehaviours.FollowPlayer:
+
+                break;
+            case DogBehaviours.FollowToy:
+
+                break;
+            case DogBehaviours.Wandering:
+
+                break;
+        }
+    }
     #region Toy
-        void PickUpToy()
+    void PickUpToy()
         {
             if (!toyCaught)
             {
