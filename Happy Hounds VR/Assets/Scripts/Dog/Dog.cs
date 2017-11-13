@@ -4,53 +4,46 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class Dog : MonoBehaviour
 {
-    public enum Direction { Forward, Back, Left, Right }; //for movement
-    public enum PathfindingTypes { AStar, BFS};
 
-    public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience };//for stats
+    #region Variables
+        //Movement
+        public enum Direction { Forward, Back, Left, Right }; //for movement
+        public enum PathfindingTypes { AStar, BFS};
+        public bool interrupted;
+        public bool isLerping = false;
+        public bool isWandering = true;
+        public bool attentionGiven = false;
+        public int rotationSpeed;
+        Vector3 goalPos;
 
-    public enum FoodTypes { Pup, Adult, Senior };
-    private int foodType;
+        //Stats
+        public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience };//for stats
+        float happiness;
+        float hunger;
+        float thirst;
+        float cleanliness;
+        float obedience;
 
+        //age
+        [SerializeField]
+        protected bool pup;
+        [SerializeField]
+        protected bool adult;
+        [SerializeField]
+        protected bool senior;
 
-    public bool interrupted;
-    public int rotationSpeed;
+        //Food Type
+        public enum FoodTypes { Pup, Adult, Senior };
+        private int foodType;
 
-    Vector3 goalPos;
+        //GameObjects and components
+        public Animator animator;
+        GameObject grid;
+        public Grid gridScript;
+        GameObject player;
+        #endregion
 
-    public Animator animator;
-
-    [SerializeField]
-    protected bool pup;
-    [SerializeField]
-    protected bool adult;
-    [SerializeField]
-    protected bool senior;
-
-    float happiness;
-    float hunger;
-    float thirst;
-    float cleanliness;
-    float obedience;
-
-    public bool isLerping = false;
-    public bool isWandering = true;
-    public bool attentionGiven = false;
-
-    GameObject grid;
-    public Grid gridScript;
-
-    void Start()
-    {
-        SetFoodType();
-    }
-
-    public virtual void GetGridObject()
-    {
-        grid = GameObject.FindGameObjectWithTag("Grid");
-        gridScript = grid.GetComponent<Grid>();
-    }
-
+    #region Stats
     private void SetFoodType()
     {
         if (pup)
@@ -105,7 +98,9 @@ public abstract class Dog : MonoBehaviour
     {
         return foodType;
     }
+    #endregion
 
+    #region Movement
     public virtual void Move(Direction dir, float speed)
     {
         switch (dir)
@@ -126,6 +121,46 @@ public abstract class Dog : MonoBehaviour
         }
     }
 
+    #region Steering Behaviour
+
+    public void GoToPoint(Vector3 pos, float speed)
+    {
+        transform.LookAt(pos);
+        Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+        transform.SetPositionAndRotation(transform.position, quar);
+
+        animator.SetFloat("Move", 2.6f);
+
+        if (higherX(pos))
+            Move(Direction.Right, speed);
+        else
+            Move(Direction.Left, speed);
+
+        if (higherZ(pos))
+            Move(Direction.Forward, speed);
+        else
+            Move(Direction.Back, speed);
+    }
+
+    private bool higherX(Vector3 toyPos)
+    {
+        if (toyPos.x > transform.position.x)
+            return true;
+        else
+            return false;
+    }
+
+    private bool higherZ(Vector3 toyPos)
+    {
+        if (toyPos.z > transform.position.z)
+            return true;
+        else
+            return false;
+    }
+#endregion 
+
+
+    #region Lerping
     public virtual void Lerping(Node end)
     {
         //to get start node
@@ -177,9 +212,9 @@ public abstract class Dog : MonoBehaviour
         }
 
     }
+#endregion
 
-
-
+    #region Pathfinding
     /// <summary>
     /// uses either AStar or BFS
     /// </summary>
@@ -326,24 +361,33 @@ public abstract class Dog : MonoBehaviour
         return foundPath;
     }
 
-    void LookatTarget()
-    {
+    #endregion
 
+    #endregion
+
+    #region Player
+
+        public Vector3 PlayerPos()
+        {
+            Vector3 playerFeet = new Vector3();
+            playerFeet = player.transform.position;
+            playerFeet.y = 0.22f;
+            return playerFeet;
+        }
+        #endregion
+    #region Bug Prevention
+    public  void ResetPosition()
+    {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+        transform.SetPositionAndRotation(new Vector3(-10, .22f, -10), quar);
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 
+    #endregion
 
-
-    /*
-         * 
-         * 
-         * TEMP
-         * 
-         * 
-         * 
-         * 
-         */
-
-public void TempWander(Vector3 end)
+    #region Temp
+    public void TempWander(Vector3 end)
     {
         isLerping = true;
         transform.LookAt(end);
@@ -365,4 +409,5 @@ public void TempWander(Vector3 end)
             yield return 0;
         }
     }
+#endregion
 }

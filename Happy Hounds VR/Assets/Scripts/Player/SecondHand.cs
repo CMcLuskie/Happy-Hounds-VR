@@ -61,7 +61,6 @@ public class SecondHand : Controllers {
 
         if (GripButtonDown())
         {
-            Vector3 pos = new Vector3(transform.position.x, .22f, transform.position.z);
             dogBrainScript.followPlayer = true;
         }
     }

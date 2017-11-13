@@ -32,7 +32,6 @@ public class MainHand : Controllers {
     public bool petting;
     //events
     public delegate void OnControllerInput(Vector3 playerPos);
-    public static event OnControllerInput DogCall;
     public delegate void OnDogInteraction();
     public static event OnDogInteraction HeadScratch;
     public static event OnDogInteraction StopHeadScratch;

@@ -7,7 +7,6 @@ public class DogEyes : MonoBehaviour
 
     public DogBrain dogBrainScript;
 
-
     public GameObject tempCam;
 
     private void OnTriggerEnter(Collider other)
