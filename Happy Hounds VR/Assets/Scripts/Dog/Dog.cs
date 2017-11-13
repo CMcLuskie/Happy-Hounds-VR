@@ -131,15 +131,15 @@ public abstract class Dog : MonoBehaviour
 
         animator.SetFloat("Move", 2.6f);
 
-        if (higherX(pos))
-            Move(Direction.Right, speed);
-        else
-            Move(Direction.Left, speed);
+        //if (higherX(pos))
+        //    Move(Direction.Right, speed);
+        //else
+        //    Move(Direction.Left, speed);
 
-        if (higherZ(pos))
-            Move(Direction.Forward, speed);
-        else
-            Move(Direction.Back, speed);
+        //if (higherZ(pos))
+        //    Move(Direction.Forward, speed);
+        //else
+        //    Move(Direction.Back, speed);
     }
 
     private bool higherX(Vector3 toyPos)
@@ -375,6 +375,7 @@ public abstract class Dog : MonoBehaviour
             return playerFeet;
         }
         #endregion
+
     #region Bug Prevention
     public  void ResetPosition()
     {

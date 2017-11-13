@@ -14,17 +14,17 @@ public class DogEyes : MonoBehaviour
         if ((other.tag == "Toy") && !(dogBrainScript.toyCaught))
         {
             dogBrainScript.toySeen = true;
-            dogBrainScript.ToyPos(other.gameObject);
+            dogBrainScript.toy = gameObject;
+            print("ball pos: " + dogBrainScript.toy.transform.position);
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if ((other.tag == "Toy") && !(dogBrainScript.toyCaught))
-        { 
-
-            dogBrainScript.ToyPos(other.gameObject);
+        {             
             dogBrainScript.toySeen = true;
+            dogBrainScript.toy = gameObject;
         }
     }
     private void OnTriggerExit(Collider other)

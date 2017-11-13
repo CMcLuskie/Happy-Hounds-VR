@@ -11,28 +11,32 @@ public class DogBrain : Dog {
 
     [SerializeField]
     protected Transform mouth;
+    [SerializeField]
+    protected Transform player;
+    [SerializeField]
+    protected Transform foodBowl;
+    [SerializeField]
+    protected Transform waterBowl;
 
-    public float wanderTimer;
-
-    public bool toyCaught;
-    public bool followPlayer;
+    float wanderTimer;
 
     bool pickedUp;
     float move;
 
-    bool wandering;
+     
+
+    private bool wandering;
     public bool closeToToy;
     public bool closeToPlayer;
-
-    GameObject toy;
-
     public bool toySeen;
-    public Transform player;
+    public bool toyCaught;
+    public bool followPlayer;
+    [HideInInspector]
+    public GameObject toy;
 
-    public Transform foodBowl;
-    public Transform waterBowl;
+    
+    
 
-    Vector3 targetPos;
 
     public enum Seekable { Player, Toy };
     enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood};
@@ -69,6 +73,7 @@ public class DogBrain : Dog {
 
     #endregion
 
+    #region Decisions
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -87,17 +92,17 @@ public class DogBrain : Dog {
 
         if (OutOfBounds())
         {
-            ResetPosition();
+           // ResetPosition();
         }
 
+        if (toySeen)
+            DecisionMaker(DogBehaviours.FollowToy);
 
         if (toyCaught)
-        {            
-            
-        }
+            followPlayer = true;
 
         if (followPlayer)
-            GoToPoint(PlayerPos(), .01f);
+            DecisionMaker(DogBehaviours.FollowPlayer);
 
         if (pickedUp)
         {
@@ -111,19 +116,21 @@ public class DogBrain : Dog {
         switch (behaviours)
         {
             case DogBehaviours.FollowFood:
-
-                break;
+                GoToPoint(foodBowl.position, 0.01f);
+                break; 
             case DogBehaviours.FollowPlayer:
-
+                GoToPoint(PlayerPos(), 0.01f);
                 break;
             case DogBehaviours.FollowToy:
-
+                GoToPoint(ToyPos(toy), 0.01f);
                 break;
             case DogBehaviours.Wandering:
-
+                GoToPoint(gridScript.GetRandomNode().coord, 0.01f);
                 break;
         }
     }
+#endregion
+
     #region Toy
     void PickUpToy()
         {
@@ -147,10 +154,12 @@ public class DogBrain : Dog {
             transform.LookAt(PlayerPos());
         }
 
-        public void ToyPos(GameObject toy)
+        public Vector3 ToyPos(GameObject toy)
         {
+            Vector3 targetPos = new Vector3();
             targetPos = toy.transform.position;
             targetPos.y = transform.position.y;
+            return targetPos;
         }
 
         #endregion
@@ -202,21 +211,21 @@ public class DogBrain : Dog {
     {
         int difference = 0;
         Vector3 differenceVector = new Vector3(0, 0, 0);
-        if (targetPos.x < transform.position.x)
+        if (target.x < transform.position.x)
         {
-            differenceVector.x = transform.position.x - targetPos.x;
+            differenceVector.x = transform.position.x - target.x;
         }
         else
         {
-            differenceVector.x = targetPos.x - transform.position.x;
+            differenceVector.x = target.x - transform.position.x;
         }
-        if (targetPos.z < transform.position.z)
+        if (target.z < transform.position.z)
         {
-            differenceVector.z = transform.position.z - targetPos.z;
+            differenceVector.z = transform.position.z - target.z;
         }
         else
         {
-            differenceVector.z = targetPos.z - transform.position.z;
+            differenceVector.z = target.z - transform.position.z;
         }
         difference = (int)differenceVector.x + (int)differenceVector.z;
         print(difference);
