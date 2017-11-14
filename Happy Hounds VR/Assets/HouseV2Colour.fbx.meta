@@ -85,6 +85,27 @@ ModelImporter:
     100154: Window3
     100156: Windows
     100158: Tree10
+    100160: castlpillers
+    100162: DogFoodCan
+    100164: DogFoodCan2
+    100166: flag
+    100168: Food
+    100170: FoodBag
+    100172: FoodBowl
+    100174: kennel1
+    100176: polySurface1
+    100178: polySurface2
+    100180: polySurface3
+    100182: polySurface4
+    100184: sand1
+    100186: sandcastle2
+    100188: Sandpit
+    100190: sandpit
+    100192: screws
+    100194: screws2
+    100196: setofpit1
+    100198: Water
+    100200: WaterBowl
     400000: Bush
     400002: Bush 1
     400004: Bush1
@@ -165,6 +186,27 @@ ModelImporter:
     400154: Window3
     400156: Windows
     400158: Tree10
+    400160: castlpillers
+    400162: DogFoodCan
+    400164: DogFoodCan2
+    400166: flag
+    400168: Food
+    400170: FoodBag
+    400172: FoodBowl
+    400174: kennel1
+    400176: polySurface1
+    400178: polySurface2
+    400180: polySurface3
+    400182: polySurface4
+    400184: sand1
+    400186: sandcastle2
+    400188: Sandpit
+    400190: sandpit
+    400192: screws
+    400194: screws2
+    400196: setofpit1
+    400198: Water
+    400200: WaterBowl
     2300000: Bush
     2300002: Bush 1
     2300004: Bush1
@@ -224,6 +266,24 @@ ModelImporter:
     2300112: Tree8
     2300114: Tree9
     2300116: Tree10
+    2300118: castlpillers
+    2300120: DogFoodCan
+    2300122: DogFoodCan2
+    2300124: flag
+    2300126: FoodBag
+    2300128: FoodBowl
+    2300130: kennel1
+    2300132: polySurface1
+    2300134: polySurface2
+    2300136: polySurface3
+    2300138: polySurface4
+    2300140: sand1
+    2300142: sandcastle2
+    2300144: sandpit
+    2300146: screws2
+    2300148: setofpit1
+    2300150: Water
+    2300152: WaterBowl
     3300000: Bush
     3300002: Bush 1
     3300004: Bush1
@@ -283,6 +343,24 @@ ModelImporter:
     3300112: Tree8
     3300114: Tree9
     3300116: Tree10
+    3300118: castlpillers
+    3300120: DogFoodCan
+    3300122: DogFoodCan2
+    3300124: flag
+    3300126: FoodBag
+    3300128: FoodBowl
+    3300130: kennel1
+    3300132: polySurface1
+    3300134: polySurface2
+    3300136: polySurface3
+    3300138: polySurface4
+    3300140: sand1
+    3300142: sandcastle2
+    3300144: sandpit
+    3300146: screws2
+    3300148: setofpit1
+    3300150: Water
+    3300152: WaterBowl
     4300000: FWall
     4300002: LWall
     4300004: Floor1
@@ -342,6 +420,24 @@ ModelImporter:
     4300112: Tree8
     4300114: Tree9
     4300116: Tree10
+    4300118: setofpit1
+    4300120: sandpit
+    4300122: polySurface1
+    4300124: polySurface2
+    4300126: polySurface3
+    4300128: polySurface4
+    4300130: screws2
+    4300132: castlpillers
+    4300134: sandcastle2
+    4300136: flag
+    4300138: sand1
+    4300140: kennel1
+    4300142: FoodBowl
+    4300144: WaterBowl
+    4300146: Water
+    4300148: FoodBag
+    4300150: DogFoodCan
+    4300152: DogFoodCan2
     9500000: //RootNode
   materials:
     importMaterials: 1
