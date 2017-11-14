@@ -340,7 +340,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4608550541951066, guid: f09ade4f1fe047240b2809b490839c43, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4488067983486046, guid: f09ade4f1fe047240b2809b490839c43, type: 2}
       propertyPath: m_RootOrder
@@ -386,6 +386,18 @@ Prefab:
       value: 
       objectReference: {fileID: 1825905673460736, guid: cfdbcc03a3dc6ae4789c6178f1518062,
         type: 2}
+    - target: {fileID: 4616684322008864, guid: f09ade4f1fe047240b2809b490839c43, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616684322008864, guid: f09ade4f1fe047240b2809b490839c43, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616684322008864, guid: f09ade4f1fe047240b2809b490839c43, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2.76
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f09ade4f1fe047240b2809b490839c43, type: 2}
   m_IsPrefabParent: 0
@@ -533,6 +545,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 262240179}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
 --- !u!1 &307864643 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 1d6b6e9a1c221f146b4629001a6dfc20, type: 3}
@@ -565,6 +578,9 @@ MonoBehaviour:
   dogBrainScript: {fileID: 998870050}
   tempCam: {fileID: 2101193078}
 --- !u!43 &322246075
+=======
+--- !u!43 &263262529
+>>>>>>> 56a8a6f76518c9c858bfda0dd377f18bbd653526
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -692,6 +708,40 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+<<<<<<< HEAD
+=======
+--- !u!1 &307864643 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 1d6b6e9a1c221f146b4629001a6dfc20, type: 3}
+  m_PrefabInternal: {fileID: 1203406872}
+--- !u!64 &307864645
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 307864643}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 1d6b6e9a1c221f146b4629001a6dfc20, type: 3}
+--- !u!114 &307864649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 307864643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250e769b2c2d11245be680247f557a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dogBrainScript: {fileID: 998870050}
+  tempCam: {fileID: 2101193078}
+>>>>>>> 56a8a6f76518c9c858bfda0dd377f18bbd653526
 --- !u!1 &497773571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,11 +1240,19 @@ Prefab:
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 1453420601}
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 322246075}
+=======
+      objectReference: {fileID: 1303084716}
+    - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 263262529}
+>>>>>>> 56a8a6f76518c9c858bfda0dd377f18bbd653526
     - target: {fileID: 408470, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -1317,6 +1375,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!21 &1303084716
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1342288948 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100100, guid: 6f42763f9bc19d844be2e009975602e2, type: 3}
@@ -1514,7 +1605,7 @@ Transform:
   m_LocalScale: {x: 8.0380125, y: 8.038018, z: 8.038018}
   m_Children: []
   m_Father: {fileID: 618807086}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2101193080
 MeshRenderer:
