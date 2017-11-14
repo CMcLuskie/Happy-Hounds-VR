@@ -11,19 +11,20 @@ public class DogEyes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught) && !(dogBrainScript.closeToPlayer))
+        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught))
         {
             dogBrainScript.toySeen = true;
-            dogBrainScript.toy = other.gameObject;
+            dogBrainScript.toy = gameObject;
+            print("ball pos: " + dogBrainScript.toy.transform.position);
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught) && !(dogBrainScript.closeToPlayer))
+        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught))
         {             
             dogBrainScript.toySeen = true;
-            dogBrainScript.toy = other.gameObject;
+            dogBrainScript.toy = gameObject;
         }
     }
     private void OnTriggerExit(Collider other)
