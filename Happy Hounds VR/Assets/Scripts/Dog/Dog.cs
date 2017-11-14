@@ -40,8 +40,9 @@ public abstract class Dog : MonoBehaviour
         public Animator animator;
         GameObject grid;
         public Grid gridScript;
-        GameObject player;
-        #endregion
+        [SerializeField]
+         protected Transform player;
+    #endregion
 
     #region Stats
     private void SetFoodType()
@@ -131,15 +132,15 @@ public abstract class Dog : MonoBehaviour
 
         animator.SetFloat("Move", 2.6f);
 
-        //if (higherX(pos))
-        //    Move(Direction.Right, speed);
-        //else
-        //    Move(Direction.Left, speed);
+        if (higherX(pos))
+            Move(Direction.Right, speed);
+        else
+            Move(Direction.Left, speed);
 
-        //if (higherZ(pos))
-        //    Move(Direction.Forward, speed);
-        //else
-        //    Move(Direction.Back, speed);
+        if (higherZ(pos))
+            Move(Direction.Forward, speed);
+        else
+            Move(Direction.Back, speed);
     }
 
     private bool higherX(Vector3 toyPos)
@@ -370,7 +371,7 @@ public abstract class Dog : MonoBehaviour
         public Vector3 PlayerPos()
         {
             Vector3 playerFeet = new Vector3();
-            playerFeet = player.transform.position;
+            playerFeet = player.position;
             playerFeet.y = 0.22f;
             return playerFeet;
         }

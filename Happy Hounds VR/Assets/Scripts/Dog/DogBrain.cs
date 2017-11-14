@@ -12,8 +12,6 @@ public class DogBrain : Dog {
     [SerializeField]
     protected Transform mouth;
     [SerializeField]
-    protected Transform player;
-    [SerializeField]
     protected Transform foodBowl;
     [SerializeField]
     protected Transform waterBowl;
@@ -25,7 +23,6 @@ public class DogBrain : Dog {
 
      
 
-    private bool wandering;
     public bool closeToToy;
     public bool closeToPlayer;
     public bool toySeen;
@@ -33,10 +30,6 @@ public class DogBrain : Dog {
     public bool followPlayer;
     [HideInInspector]
     public GameObject toy;
-
-    
-    
-
 
     public enum Seekable { Player, Toy };
     enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood};
@@ -106,7 +99,7 @@ public class DogBrain : Dog {
 
         if (pickedUp)
         {
-            Debug.Log("PickedUp");
+
         }
     }
 
@@ -117,15 +110,33 @@ public class DogBrain : Dog {
         {
             case DogBehaviours.FollowFood:
                 GoToPoint(foodBowl.position, 0.01f);
+
                 break; 
             case DogBehaviours.FollowPlayer:
                 GoToPoint(PlayerPos(), 0.01f);
+
+                if (toyCaught)
+                {
+                    if (closeToPlayer)
+                        DropToy();
+                    else
+                        newToy.transform.position = mouth.position;
+                }
+                    
                 break;
             case DogBehaviours.FollowToy:
                 GoToPoint(ToyPos(toy), 0.01f);
+
+                if (toyCaught)
+                {
+                    followPlayer = true;
+                    toySeen = false;
+                }
+
                 break;
             case DogBehaviours.Wandering:
                 GoToPoint(gridScript.GetRandomNode().coord, 0.01f);
+
                 break;
         }
     }
@@ -147,10 +158,10 @@ public class DogBrain : Dog {
         void DropToy()
         {
             toyCaught = false;
-            Vector3 newPos = new Vector3();
-            newPos = new Vector3(-10, .22f, -10);
-            while (transform.position != newPos)
-                GoToPoint(newPos, .01f);
+            //Vector3 newPos = new Vector3();
+            //newPos = new Vector3(-10, .22f, -10);
+            //while (transform.position != newPos)
+            //    GoToPoint(newPos, .01f);
             transform.LookAt(PlayerPos());
         }
 
