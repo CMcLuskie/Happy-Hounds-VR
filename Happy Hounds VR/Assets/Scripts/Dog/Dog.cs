@@ -378,12 +378,22 @@ public abstract class Dog : MonoBehaviour
         #endregion
 
     #region Bug Prevention
+
+    /// <summary>
+    /// this resets all 3 coords, and rotation of the dog
+    /// </summary>
     public  void ResetPosition()
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
-        transform.SetPositionAndRotation(new Vector3(-10, .22f, -10), quar);
+        transform.SetPositionAndRotation(new Vector3(-10, 0, -10), quar);
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+    }
+
+    public void ResetYPosition()
+    {
+        Vector3 fix = new Vector3(transform.position.x, 0, transform.position.z);
+        transform.position = fix;
     }
 
     #endregion

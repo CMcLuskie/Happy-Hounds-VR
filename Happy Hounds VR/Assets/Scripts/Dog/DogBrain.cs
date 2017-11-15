@@ -18,21 +18,30 @@ public class DogBrain : Dog {
 
     float wanderTimer;
 
-    bool pickedUp;
     float move;
 
-     
 
+    [HideInInspector]
     public bool closeToToy;
+    [HideInInspector]
     public bool closeToPlayer;
+    [HideInInspector]
     public bool toySeen;
+    [HideInInspector]
     public bool toyCaught;
+    [HideInInspector]
     public bool followPlayer;
+    [HideInInspector]
+    public bool isSitting;
+    [HideInInspector]
+    public bool isPickedUp;
+    private bool ballInterest;
+
     [HideInInspector]
     public GameObject toy;
 
     public enum Seekable { Player, Toy };
-    enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood};
+    enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, Sitting, PickedUp};
 
     #region Unity Methods
         private void OnEnable()
@@ -61,35 +70,28 @@ public class DogBrain : Dog {
         // Use this for initialization
         void Start()
         {
-
+        ballInterest = true;
         }
 
     #endregion
 
     #region Decisions
     // Update is called once per frame
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-            Wandering();
+    void Update()
+    {
 
-        if (!isLerping)
-        {
-            animator.SetFloat("Move", 0.5f);
-        }
+        if (isSitting)
+            DecisionMaker(DogBehaviours.Sitting);
 
-        if (transform.position.y < 0.22f)
-        {
-            Vector3 fix = new Vector3(transform.position.x, 0.22f, transform.position.z);
-            transform.position = fix;
-        }
+        if (transform.position.y < 0)
+            ResetYPosition();
 
         if (OutOfBounds())
-        {
-           // ResetPosition();
-        }
+            ResetPosition();
 
-        if (toySeen)
-            DecisionMaker(DogBehaviours.FollowToy);
+        if (ballInterest)
+            if (toySeen)
+                DecisionMaker(DogBehaviours.FollowToy);
 
         if (toyCaught)
             followPlayer = true;
@@ -97,10 +99,9 @@ public class DogBrain : Dog {
         if (followPlayer)
             DecisionMaker(DogBehaviours.FollowPlayer);
 
-        if (pickedUp)
-        {
-
-        }
+        if (isPickedUp)
+            DecisionMaker(DogBehaviours.PickedUp);
+       
     }
 
     void DecisionMaker(DogBehaviours behaviours)
@@ -118,7 +119,10 @@ public class DogBrain : Dog {
                 if (toyCaught)
                 {
                     if (closeToPlayer)
+                    {
                         DropToy();
+                        StartCoroutine(BallInterestTimer());
+                    }                        
                     else
                         newToy.transform.position = mouth.position;
                 }
@@ -152,7 +156,6 @@ public class DogBrain : Dog {
                 newToy = Instantiate(toyPrefab, mouth.position, Quaternion.identity);
             }
             toyCaught = true;
-            pickedUp = true;
         }
 
         void DropToy()
@@ -205,12 +208,12 @@ public class DogBrain : Dog {
     }
     private void DogPickedUp()
         {
-            pickedUp = true;
+        isPickedUp = false;
             GetComponent<Rigidbody>().useGravity = true;
         }
         private void DogDropped()
         {
-            pickedUp = false;
+            isPickedUp = false;
         }
 
         
@@ -275,5 +278,15 @@ public class DogBrain : Dog {
 
     }
 
+    #endregion
+
+    #region Bug Prevention
+    
+    IEnumerator BallInterestTimer()
+    {
+        ballInterest = false;
+        yield return new WaitForSeconds(10);
+        ballInterest = true;
+    }
     #endregion
 }
