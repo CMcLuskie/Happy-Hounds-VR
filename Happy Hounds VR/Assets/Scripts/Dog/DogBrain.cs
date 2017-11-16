@@ -79,6 +79,8 @@ public class DogBrain : Dog {
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+            animator.SetFloat("Move", 2.6f);
 
         if (isSitting)
             DecisionMaker(DogBehaviours.Sitting);
