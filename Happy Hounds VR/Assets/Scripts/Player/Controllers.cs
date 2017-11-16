@@ -27,11 +27,7 @@ public abstract class Controllers : MonoBehaviour {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
 
-    /*
-     * 
-     * Start of button press bools
-     * 
-     */
+    #region Input
     public bool TouchpadPressDown()
     {
         if (Controller.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
@@ -85,11 +81,14 @@ public abstract class Controllers : MonoBehaviour {
         Vector2 touchpad = Controller.GetAxis(EVRButtonId.k_EButton_Axis0);
         return touchpad;
     }
+
+#endregion
     public void ControllerVibrate(ushort vibration)
     {
         Controller.TriggerHapticPulse(vibration);
     }
 
+#region Triggers
     public void OnTriggerEnter(Collider other)
     {
         SetCollidingObject(other);
@@ -122,12 +121,10 @@ public abstract class Controllers : MonoBehaviour {
             ControllerVibrate(0);
 
         }
-    }//Triggers
-    /*
-     * 
-     * misc gets
-     * 
-     */
+    }
+    #endregion
+
+#region gets
     public Vector3 ControllerVelocity()
     {
         return Controller.velocity;
@@ -144,7 +141,9 @@ public abstract class Controllers : MonoBehaviour {
         playerPos.y = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>().dogYPos;
         return playerPos;
     }
+    #endregion
 
+#region pick up
     public void SetCollidingObject(Collider col)
     {
         if (collidingObject || !col.GetComponent<Rigidbody>())//doesnt make GO potential grab if player already is holding something
@@ -186,5 +185,6 @@ public abstract class Controllers : MonoBehaviour {
             objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity();
         }
         objectInHand = null;
-    }//Grab
+    }
+#endregion
 }

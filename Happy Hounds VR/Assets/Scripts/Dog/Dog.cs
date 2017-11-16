@@ -26,15 +26,9 @@ public abstract class Dog : MonoBehaviour
 
         //age
         [SerializeField]
-        protected bool pup;
-        [SerializeField]
-        protected bool adult;
-        [SerializeField]
-        protected bool senior;
+        protected enum Age { Pup, Adult, Senior};
 
-        //Food Type
-        public enum FoodTypes { Pup, Adult, Senior };
-        private int foodType;
+        
 
         //GameObjects and components
         public Animator animator;
@@ -45,18 +39,6 @@ public abstract class Dog : MonoBehaviour
     #endregion
 
     #region Stats
-    private void SetFoodType()
-    {
-        if (pup)
-            foodType = (int)FoodTypes.Pup;
-        if (adult)
-            foodType = (int)FoodTypes.Adult;
-        if (senior)
-            foodType = (int)FoodTypes.Senior;
-    }
-
-
-
     public float GetDogStats(Stats stats)
     {
         switch (stats)
@@ -93,11 +75,6 @@ public abstract class Dog : MonoBehaviour
                 return obedience;
         }
         return 0;
-    }
-
-    public int GetFoodType()
-    {
-        return foodType;
     }
     #endregion
 

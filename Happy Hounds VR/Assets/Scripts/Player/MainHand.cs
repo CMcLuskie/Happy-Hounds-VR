@@ -86,7 +86,7 @@ public class MainHand : Controllers {
         {
             Destroy(GameObject.FindGameObjectWithTag("Toy"));
             GameObject dog = GameObject.FindGameObjectWithTag("Body");
-            dog.GetComponent<DogBrain>().toy = null;
+           // dog.GetComponent<DogBrain>().toy = null;
             Instantiate(toyPrefab, transform.position, Quaternion.identity);
         }
     }
