@@ -35,13 +35,16 @@ public class DogBrain : Dog {
     public bool isSitting;
     [HideInInspector]
     public bool isPickedUp;
+    
     private bool ballInterest;
+    bool isWaking;
 
     [HideInInspector]
     public GameObject toy;
 
     public enum Seekable { Player, Toy };
     enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, Sitting, PickedUp};
+
 
     #region Unity Methods
         private void OnEnable()
@@ -70,7 +73,8 @@ public class DogBrain : Dog {
         // Use this for initialization
         void Start()
         {
-        ballInterest = true;
+        ChangeState(DogBehaviours.Sitting);
+        idleTimer = 0;
         }
 
     #endregion
@@ -80,7 +84,7 @@ public class DogBrain : Dog {
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            animator.SetFloat("Move", 2.6f);
+            ChangeState(DogBehaviours.FollowFood);
 
         if (isSitting)
             DecisionMaker(DogBehaviours.Sitting);
@@ -103,16 +107,45 @@ public class DogBrain : Dog {
 
         if (isPickedUp)
             DecisionMaker(DogBehaviours.PickedUp);
-       
+
+        if (isHungry)
+            DecisionMaker(DogBehaviours.FollowFood);
+
+        if (isSitting)
+        {
+            idleTimer += Time.deltaTime;
+            if ((idleTimer > 15 && idleTimer < 16) || (idleTimer > 25 && idleTimer < 26))
+                ScratchCheck();
+            else
+                animator.SetBool("Scratch", false);
+            animator.SetFloat("IdleLength", idleTimer);
+        }
+
+        if (isWaking)
+        { 
+            idleTimer -= Time.deltaTime * 4;
+            animator.SetFloat("IdleLength", idleTimer);
+            if (idleTimer <= 0)
+            {
+                idleTimer = 0;
+                isWaking = false;
+            }
+        }
+
     }
 
+    void ScratchCheck()
+    {
+            animator.SetBool("Scratch", true);
+    }
     void DecisionMaker(DogBehaviours behaviours)
     {
       
         switch (behaviours)
         {
             case DogBehaviours.FollowFood:
-                GoToPoint(foodBowl.position, 0.01f);
+                if (!isSitting)
+                    GoToPoint(foodBowl.position, 0.01f);
 
                 break; 
             case DogBehaviours.FollowPlayer:
@@ -143,6 +176,58 @@ public class DogBrain : Dog {
             case DogBehaviours.Wandering:
                 GoToPoint(gridScript.GetRandomNode().coord, 0.01f);
 
+                break;
+        }
+    }
+
+    void ChangeState(DogBehaviours behaviours)
+    {
+        if (behaviours != DogBehaviours.Sitting)
+            WakeUp();
+        switch (behaviours)
+        {
+            case DogBehaviours.FollowFood:
+                isHungry = true;
+                isThirtsy = false;
+                followPlayer = false;
+                isPickedUp = false;
+                ballInterest = false;
+                break;
+            case DogBehaviours.FollowPlayer:
+                isHungry = false;
+                isThirtsy = false;
+                followPlayer = true;
+                isPickedUp = false;
+                ballInterest = false;
+                break;
+            case DogBehaviours.FollowToy:
+                isHungry = false;
+                isThirtsy = false;
+                followPlayer = false;
+                isSitting = false;
+                isPickedUp = false;
+                ballInterest = true;
+                break;
+            case DogBehaviours.PickedUp:
+                isHungry = false;
+                isThirtsy = false;
+                followPlayer = false;
+                isPickedUp = true;
+                ballInterest = false;
+                break;
+            case DogBehaviours.Sitting:
+                isHungry = false;
+                isThirtsy = false;
+                followPlayer = false;
+                isPickedUp = false;
+                ballInterest = false;
+                break;
+            case DogBehaviours.Wandering:
+                isHungry = false;
+                isThirtsy = false;
+                followPlayer = false;
+                isPickedUp = false;
+                ballInterest = false;
                 break;
         }
     }
@@ -290,5 +375,17 @@ public class DogBrain : Dog {
         yield return new WaitForSeconds(10);
         ballInterest = true;
     }
+
+    /// <summary>
+    /// this takes the dog out of its idle animations
+    /// </summary>
+    void WakeUp()
+    {
+        isWaking = true;
+        isSitting = false;
+
+    }
+
+
     #endregion
 }

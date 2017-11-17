@@ -24,18 +24,27 @@ public abstract class Dog : MonoBehaviour
         float cleanliness;
         float obedience;
 
-        //age
-        [SerializeField]
+    [HideInInspector]
+    public bool isHungry;
+    [HideInInspector]
+    public bool isThirtsy;
+
+    //age
+    [SerializeField]
         protected enum Age { Pup, Adult, Senior};
 
-        
+    public float idleTimer;
 
-        //GameObjects and components
-        public Animator animator;
-        GameObject grid;
-        public Grid gridScript;
-        [SerializeField]
-         protected Transform player;
+
+    //GameObjects and components
+    [SerializeField]
+    protected Animator animator;
+    [SerializeField]
+    protected List<Animation> walkingAnimations;
+    GameObject grid;
+    public Grid gridScript;
+    [SerializeField]
+    protected Transform player;
     #endregion
 
     #region Stats
@@ -103,21 +112,26 @@ public abstract class Dog : MonoBehaviour
 
     public void GoToPoint(Vector3 pos, float speed)
     {
-        transform.LookAt(pos);
-        Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
-        transform.SetPositionAndRotation(transform.position, quar);
+        if (idleTimer == 0)
+        {
+            transform.LookAt(pos);
+            Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+            transform.SetPositionAndRotation(transform.position, quar);
+            animator.SetFloat("Move", 2.6f);
 
-        animator.SetFloat("Move", 2.6f);
+            if (!ClosetoPointX(pos))
+                if (higherX(pos))
+                    Move(Direction.Right, speed);
+                else
+                    Move(Direction.Left, speed);
 
-        if (higherX(pos))
-            Move(Direction.Right, speed);
-        else
-            Move(Direction.Left, speed);
+            if (!ClosetoPointZ(pos))
+                if (higherZ(pos))
+                    Move(Direction.Forward, speed);
+                else
+                    Move(Direction.Back, speed);
 
-        if (higherZ(pos))
-            Move(Direction.Forward, speed);
-        else
-            Move(Direction.Back, speed);
+        }
     }
 
     private bool higherX(Vector3 toyPos)
@@ -373,6 +387,32 @@ public abstract class Dog : MonoBehaviour
         transform.position = fix;
     }
 
+    public bool ClosetoPointX(Vector3 point)
+    {
+        int distanceX = (int)(transform.position.x - point.x);
+        if (distanceX < 0)
+            distanceX *= -1;
+
+        if (distanceX < 0.5f)
+            return true;
+        else
+            return false;
+        
+    }
+
+    public bool ClosetoPointZ(Vector3 point)
+    {
+        int distanceZ = (int)(transform.position.z - point.z);
+        if (distanceZ < 0)
+            distanceZ *= -1;
+
+        if (distanceZ < 0.5f)
+            return true;
+        else
+            return false;
+    }
+
+
     #endregion
 
     #region Temp
@@ -398,5 +438,12 @@ public abstract class Dog : MonoBehaviour
             yield return 0;
         }
     }
-#endregion
+    #endregion
+
+   
 }
+
+
+
+
+
