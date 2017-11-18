@@ -144,12 +144,17 @@ public class DogBrain : Dog {
         switch (behaviours)
         {
             case DogBehaviours.FollowFood:
-                if (!isSitting)
-                    GoToPoint(foodBowl.position, 0.01f);
+                    GoToPoint(foodBowl.position, 0.01f, 0.3f);
+                if(ClosetoPoint(foodBowl.transform.position, 0.3f))
+                {
+                    animator.SetBool("Consume", true);
+                    animator.SetBool("Eat", true);
+                }
+                
 
                 break; 
             case DogBehaviours.FollowPlayer:
-                GoToPoint(PlayerPos(), 0.01f);
+                GoToPoint(PlayerPos(), 0.01f, 1);
 
                 if (toyCaught)
                 {
@@ -164,7 +169,7 @@ public class DogBrain : Dog {
                     
                 break;
             case DogBehaviours.FollowToy:
-                GoToPoint(ToyPos(toy), 0.01f);
+                GoToPoint(ToyPos(toy), 0.01f, 0.4f);
 
                 if (toyCaught)
                 {
@@ -174,7 +179,7 @@ public class DogBrain : Dog {
 
                 break;
             case DogBehaviours.Wandering:
-                GoToPoint(gridScript.GetRandomNode().coord, 0.01f);
+                GoToPoint(gridScript.GetRandomNode().coord, 0.01f, 200f);
 
                 break;
         }

@@ -110,7 +110,7 @@ public abstract class Dog : MonoBehaviour
 
     #region Steering Behaviour
 
-    public void GoToPoint(Vector3 pos, float speed)
+    public void GoToPoint(Vector3 pos, float speed, float distance)
     {
         if (idleTimer == 0)
         {
@@ -119,18 +119,22 @@ public abstract class Dog : MonoBehaviour
             transform.SetPositionAndRotation(transform.position, quar);
             animator.SetFloat("Move", 2.6f);
 
-            if (!ClosetoPointX(pos))
+
+
+            if (!ClosetoPoint(pos, distance))
+            { 
                 if (higherX(pos))
                     Move(Direction.Right, speed);
                 else
                     Move(Direction.Left, speed);
 
-            if (!ClosetoPointZ(pos))
-                if (higherZ(pos))
+                 if (higherZ(pos))
                     Move(Direction.Forward, speed);
-                else
+                  else
                     Move(Direction.Back, speed);
-
+            }
+            if (ClosetoPoint(pos, distance))
+                animator.SetFloat("Move", 0f);
         }
     }
 
@@ -387,26 +391,12 @@ public abstract class Dog : MonoBehaviour
         transform.position = fix;
     }
 
-    public bool ClosetoPointX(Vector3 point)
+    public bool ClosetoPoint(Vector3 point, float finalDist)
     {
-        int distanceX = (int)(transform.position.x - point.x);
-        if (distanceX < 0)
-            distanceX *= -1;
+        Vector3 direction = point - transform.position;
+        float distance = direction.magnitude;
 
-        if (distanceX < 0.5f)
-            return true;
-        else
-            return false;
-        
-    }
-
-    public bool ClosetoPointZ(Vector3 point)
-    {
-        int distanceZ = (int)(transform.position.z - point.z);
-        if (distanceZ < 0)
-            distanceZ *= -1;
-
-        if (distanceZ < 0.5f)
+        if (distance < finalDist)
             return true;
         else
             return false;
