@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
@@ -18,6 +19,7 @@ public abstract class Dog : MonoBehaviour
 
         //Stats
         public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience };//for stats
+    List<float> statList;
         float happiness;
         float hunger;
         float thirst;
@@ -84,6 +86,44 @@ public abstract class Dog : MonoBehaviour
                 return obedience;
         }
         return 0;
+    }
+
+    void InitialiseStatList()
+    {
+        statList = new List<float>();
+        statList.Add(happiness);
+        statList.Add(hunger);
+        statList.Add(thirst);
+        statList.Add(cleanliness);
+        statList.Add(obedience);
+    }
+    public void InitialiseStats(float total)
+    {
+        InitialiseStatList();
+        for (int i = 0; i < statList.Count; i++)
+        {
+            if (total <= 50)
+                statList[i] = UnityEngine.Random.Range(0, total);
+            else
+                statList[i] = UnityEngine.Random.Range(0, 75);
+
+            if (statList[i] < 20)
+                statList[i] += 20;
+
+            if (total - statList[i] < 0)
+                total -= statList[i];
+        }
+        PrintStats();
+
+    }
+
+    private void PrintStats()
+    {
+        print("happiness: " + statList[(int)Stats.Happiness]);
+        print("hunger: " + statList[(int)Stats.Hunger]);
+        print("thirst: " + statList[(int)Stats.Thirst]);
+        print("cleanliness: " + statList[(int)Stats.Cleanliness]);
+        print("obedience: " + statList[(int)Stats.Obedience]);
     }
     #endregion
 

@@ -35,7 +35,11 @@ public class DogBrain : Dog {
     public bool isSitting;
     [HideInInspector]
     public bool isPickedUp;
-    
+    [HideInInspector]
+    public bool isEating;
+    [HideInInspector]
+    public bool isDrinking;
+
     private bool ballInterest;
     bool isWaking;
 
@@ -43,7 +47,7 @@ public class DogBrain : Dog {
     public GameObject toy;
 
     public enum Seekable { Player, Toy };
-    enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, Sitting, PickedUp};
+    enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, FollowWater, Eating, Drinking, Sitting, PickedUp};
 
 
     #region Unity Methods
@@ -73,7 +77,7 @@ public class DogBrain : Dog {
         // Use this for initialization
         void Start()
         {
-        ChangeState(DogBehaviours.Sitting);
+        InitialiseStats(200);
         idleTimer = 0;
         }
 
@@ -144,13 +148,23 @@ public class DogBrain : Dog {
         switch (behaviours)
         {
             case DogBehaviours.FollowFood:
+
                     GoToPoint(foodBowl.position, 0.01f, 0.3f);
-                if(ClosetoPoint(foodBowl.transform.position, 0.3f))
-                {
-                    animator.SetBool("Consume", true);
-                    animator.SetBool("Eat", true);
-                }
+                //if(ClosetoPoint(foodBowl.transform.position, 0.3f))
                 
+                break;
+
+            case DogBehaviours.Eating:
+                animator.SetBool("Consume", true);
+                animator.SetBool("Eat", true);
+                break;
+
+            case DogBehaviours.Drinking:
+
+                break;
+
+            case DogBehaviours.FollowWater:
+
 
                 break; 
             case DogBehaviours.FollowPlayer:
