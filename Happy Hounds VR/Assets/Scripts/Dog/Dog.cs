@@ -19,17 +19,10 @@ public abstract class Dog : MonoBehaviour
 
         //Stats
         public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience };//for stats
-    List<float> statList;
-        float happiness;
-        float hunger;
-        float thirst;
-        float cleanliness;
-        float obedience;
+        public List<float> statList;
+        
 
-    [HideInInspector]
-    public bool isHungry;
-    [HideInInspector]
-    public bool isThirtsy;
+    
 
     //age
     [SerializeField]
@@ -41,8 +34,6 @@ public abstract class Dog : MonoBehaviour
     //GameObjects and components
     [SerializeField]
     protected Animator animator;
-    [SerializeField]
-    protected List<Animation> walkingAnimations;
     GameObject grid;
     public Grid gridScript;
     [SerializeField]
@@ -55,35 +46,35 @@ public abstract class Dog : MonoBehaviour
         switch (stats)
         {
             case Stats.Happiness:
-                if (happiness > 100)
+                if (statList[(int)Stats.Happiness] > 100)
                 {
-                    happiness = 100;
+                    statList[(int)Stats.Happiness] = 100;
                 }
-                return happiness;
+                return statList[(int)Stats.Happiness];
             case Stats.Hunger:
-                if (hunger > 100)
+                if (statList[(int)Stats.Hunger] > 100)
                 {
-                    hunger = 100;
+                    statList[(int)Stats.Hunger] = 100;
                 }
-                return hunger;
+                return statList[(int)Stats.Hunger];
             case Stats.Thirst:
-                if (thirst > 100)
+                if (statList[(int)Stats.Thirst] > 100)
                 {
-                    thirst = 100;
+                    statList[(int)Stats.Thirst] = 100;
                 }
-                return thirst;
+                return statList[(int)Stats.Thirst];
             case Stats.Cleanliness:
-                if (cleanliness > 100)
+                if (statList[(int)Stats.Cleanliness] > 100)
                 {
-                    cleanliness = 100;
+                    statList[(int)Stats.Cleanliness] = 100;
                 }
-                return cleanliness;
+                return statList[(int)Stats.Cleanliness];
             case Stats.Obedience:
-                if (obedience > 100)
+                if (statList[(int)Stats.Obedience] > 100)
                 {
-                    obedience = 100;
+                    statList[(int)Stats.Obedience] = 100;
                 }
-                return obedience;
+                return statList[(int)Stats.Happiness];
         }
         return 0;
     }
@@ -91,11 +82,8 @@ public abstract class Dog : MonoBehaviour
     void InitialiseStatList()
     {
         statList = new List<float>();
-        statList.Add(happiness);
-        statList.Add(hunger);
-        statList.Add(thirst);
-        statList.Add(cleanliness);
-        statList.Add(obedience);
+        for (int i = 0; i < 6; i++)
+            statList.Add(0);
     }
     public void InitialiseStats(float total)
     {
@@ -124,6 +112,24 @@ public abstract class Dog : MonoBehaviour
         print("thirst: " + statList[(int)Stats.Thirst]);
         print("cleanliness: " + statList[(int)Stats.Cleanliness]);
         print("obedience: " + statList[(int)Stats.Obedience]);
+    }
+
+    public bool isHungry()
+    {
+
+        if ((statList[(int)Stats.Hunger] < 80)
+            && (statList[(int)Stats.Hunger] < statList[(int)Stats.Thirst]))
+            return true;
+
+        else return false;
+    }
+
+    public bool isThirsty()
+    {
+        if (statList[(int)Stats.Thirst] < 80)
+            return true;
+
+        else return false;
     }
     #endregion
 
@@ -157,12 +163,12 @@ public abstract class Dog : MonoBehaviour
             transform.LookAt(pos);
             Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
             transform.SetPositionAndRotation(transform.position, quar);
-            animator.SetFloat("Move", 2.6f);
-
 
 
             if (!ClosetoPoint(pos, distance))
-            { 
+            {
+                animator.SetFloat("Move", 2.6f);
+
                 if (higherX(pos))
                     Move(Direction.Right, speed);
                 else
@@ -436,10 +442,11 @@ public abstract class Dog : MonoBehaviour
         Vector3 direction = point - transform.position;
         float distance = direction.magnitude;
 
+        
         if (distance < finalDist)
             return true;
         else
-            return false;
+        return false;
     }
 
 

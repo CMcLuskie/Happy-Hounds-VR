@@ -20,7 +20,7 @@ public class DogBrain : Dog {
 
     float move;
 
-
+    Vector3 wanderPos;
     [HideInInspector]
     public bool closeToToy;
     [HideInInspector]
@@ -79,6 +79,7 @@ public class DogBrain : Dog {
         {
         InitialiseStats(200);
         idleTimer = 0;
+        wanderPos = new Vector3(100, 100, 100);
         }
 
     #endregion
@@ -87,8 +88,12 @@ public class DogBrain : Dog {
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Space))
-            ChangeState(DogBehaviours.FollowFood);
+            DecisionMaker(DogBehaviours.FollowFood);
+
+        if (isWandering)
+            DecisionMaker(DogBehaviours.Wandering);
 
         if (isSitting)
             DecisionMaker(DogBehaviours.Sitting);
@@ -112,8 +117,11 @@ public class DogBrain : Dog {
         if (isPickedUp)
             DecisionMaker(DogBehaviours.PickedUp);
 
-        if (isHungry)
-            DecisionMaker(DogBehaviours.FollowFood);
+        //if (isHungry() && !isDrinking)
+        //    DecisionMaker(DogBehaviours.FollowFood);
+
+        //if (isThirsty() && (statList[(int)Stats.Thirst] < statList[(int)Stats.Hunger]))
+        //    DecisionMaker(DogBehaviours.FollowWater);
 
         if (isSitting)
         {
@@ -136,36 +144,52 @@ public class DogBrain : Dog {
             }
         }
 
+        if (isEating)
+        {
+            statList[(int)Stats.Hunger] += Time.deltaTime * 2;
+            if (GetDogStats(Stats.Hunger) >= 80)
+                ChangeState(DogBehaviours.Sitting);
+        }
+
     }
 
     void ScratchCheck()
     {
             animator.SetBool("Scratch", true);
     }
+
     void DecisionMaker(DogBehaviours behaviours)
     {
-      
+        //this is just to make sure idle timer doesnt keep running
+        if (behaviours != DogBehaviours.Sitting)
+            WakeUp();
         switch (behaviours)
         {
             case DogBehaviours.FollowFood:
-
                     GoToPoint(foodBowl.position, 0.01f, 0.3f);
-                //if(ClosetoPoint(foodBowl.transform.position, 0.3f))
-                
+                if (ClosetoPoint(foodBowl.transform.position, 0.3f))
+                    DecisionMaker(DogBehaviours.Eating);
                 break;
 
             case DogBehaviours.Eating:
+                isEating = true;
                 animator.SetBool("Consume", true);
                 animator.SetBool("Eat", true);
+
+                if (GetDogStats(Stats.Hunger) >= 80)
+                    ChangeState(DogBehaviours.Wandering);
                 break;
 
             case DogBehaviours.Drinking:
-
+                GoToPoint(waterBowl.position, 0.01f, 0.3f);
+                if (GetDogStats(Stats.Thirst) >= 80)
+                    ChangeState(DogBehaviours.Wandering);
                 break;
 
             case DogBehaviours.FollowWater:
 
-
+                if (ClosetoPoint(waterBowl.transform.position, 0.3f))
+                    DecisionMaker(DogBehaviours.Drinking);
                 break; 
             case DogBehaviours.FollowPlayer:
                 GoToPoint(PlayerPos(), 0.01f, 1);
@@ -193,7 +217,10 @@ public class DogBrain : Dog {
 
                 break;
             case DogBehaviours.Wandering:
-                GoToPoint(gridScript.GetRandomNode().coord, 0.01f, 200f);
+                if(transform.position== wanderPos)
+                   wanderPos = gridScript.GetRandomNode().coord;
+
+                GoToPoint(wanderPos, 0.01f, 200f);
 
                 break;
         }
@@ -206,44 +233,46 @@ public class DogBrain : Dog {
         switch (behaviours)
         {
             case DogBehaviours.FollowFood:
-                isHungry = true;
-                isThirtsy = false;
+                
+                followPlayer = false;
+                isPickedUp = false;
+                ballInterest = false;
+                break;
+            case DogBehaviours.Eating:
+                
+                isEating = true;
                 followPlayer = false;
                 isPickedUp = false;
                 ballInterest = false;
                 break;
             case DogBehaviours.FollowPlayer:
-                isHungry = false;
-                isThirtsy = false;
+                
                 followPlayer = true;
                 isPickedUp = false;
                 ballInterest = false;
+                
                 break;
             case DogBehaviours.FollowToy:
-                isHungry = false;
-                isThirtsy = false;
+                
                 followPlayer = false;
                 isSitting = false;
                 isPickedUp = false;
                 ballInterest = true;
                 break;
             case DogBehaviours.PickedUp:
-                isHungry = false;
-                isThirtsy = false;
+               
                 followPlayer = false;
                 isPickedUp = true;
                 ballInterest = false;
                 break;
             case DogBehaviours.Sitting:
-                isHungry = false;
-                isThirtsy = false;
+                
                 followPlayer = false;
                 isPickedUp = false;
                 ballInterest = false;
                 break;
             case DogBehaviours.Wandering:
-                isHungry = false;
-                isThirtsy = false;
+                
                 followPlayer = false;
                 isPickedUp = false;
                 ballInterest = false;

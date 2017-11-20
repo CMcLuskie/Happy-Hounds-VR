@@ -132,7 +132,6 @@ public class Grid : MonoBehaviour
     public Node GetRandomNode()
     {
         int i = Random.Range(0, nodes.Length);
-        print("fucking last point: " + nodes[i].coord);
         return nodes[i];
     }
 }
