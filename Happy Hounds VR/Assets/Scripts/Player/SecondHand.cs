@@ -61,7 +61,7 @@ public class SecondHand : Controllers {
 
         if (GripButtonDown())
         {
-            dogBrainScript.followPlayer = true;
+            dogBrainScript.ChangeBehaviour(DogBrain.DogBehaviours.FollowPlayer);
         }
     }
 

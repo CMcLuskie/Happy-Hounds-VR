@@ -18,7 +18,7 @@ public abstract class Dog : MonoBehaviour
         Vector3 goalPos;
 
         //Stats
-        public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience };//for stats
+        public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience, Energy };//for stats
         public List<float> statList;
         
 
@@ -117,7 +117,7 @@ public abstract class Dog : MonoBehaviour
     public bool isHungry()
     {
 
-        if ((statList[(int)Stats.Hunger] < 80)
+        if ((statList[(int)Stats.Hunger] < 50)
             && (statList[(int)Stats.Hunger] < statList[(int)Stats.Thirst]))
             return true;
 
@@ -126,7 +126,7 @@ public abstract class Dog : MonoBehaviour
 
     public bool isThirsty()
     {
-        if ((statList[(int)Stats.Thirst] < 80) 
+        if ((statList[(int)Stats.Thirst] < 50) 
             && (statList[(int)Stats.Thirst] < statList[(int)Stats.Hunger]))
             return true;
 
@@ -166,7 +166,7 @@ public abstract class Dog : MonoBehaviour
             transform.SetPositionAndRotation(transform.position, quar);
 
 
-            if (!ClosetoPoint(pos, distance))
+            if (!ClosetoPoint(transform.position, pos, distance))
             {
                 animator.SetFloat("Move", 2.6f);
 
@@ -180,7 +180,7 @@ public abstract class Dog : MonoBehaviour
                   else
                     Move(Direction.Back, speed);
             }
-            if (ClosetoPoint(pos, distance))
+            if (ClosetoPoint(transform.position, pos, distance))
                 animator.SetFloat("Move", 0f);
         }
     }
@@ -438,9 +438,9 @@ public abstract class Dog : MonoBehaviour
         transform.position = fix;
     }
 
-    public bool ClosetoPoint(Vector3 point, float finalDist)
+    public bool ClosetoPoint(Vector3 current, Vector3 point, float finalDist)
     {
-        Vector3 direction = point - transform.position;
+        Vector3 direction = point - current;
         float distance = direction.magnitude;
 
         

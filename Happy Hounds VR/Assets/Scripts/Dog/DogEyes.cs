@@ -11,27 +11,27 @@ public class DogEyes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught) && !(dogBrainScript.closeToPlayer))
+        if ((other.tag == "Toy") && (dogBrainScript.previousBehaviour != DogBrain.DogBehaviours.FollowToy))
         {
-            dogBrainScript.toySeen = true;
+            dogBrainScript.ChangeBehaviour(DogBrain.DogBehaviours.FollowToy);
             dogBrainScript.toy = other.gameObject;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if ((other.tag == "Toy") && !(dogBrainScript.toyCaught) && !(dogBrainScript.closeToPlayer))
-        {             
-            dogBrainScript.toySeen = true;
+        if ((other.tag == "Toy") && (dogBrainScript.previousBehaviour != DogBrain.DogBehaviours.FollowToy))
+        { 
+            dogBrainScript.ChangeBehaviour(DogBrain.DogBehaviours.FollowToy);
             dogBrainScript.toy = other.gameObject;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if ((other.tag == "Toy") && !(gameObject.name == "tempCam"))
-        {
-                StartCoroutine(BodyCamTimer());
-        }
+        //if ((other.tag == "Toy") && !(gameObject.name == "tempCam"))
+        //{
+        //        StartCoroutine(BodyCamTimer());
+        //}
     }
 
     IEnumerator BodyCamTimer()

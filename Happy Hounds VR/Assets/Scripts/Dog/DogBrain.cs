@@ -6,6 +6,8 @@ using UnityEngine;
 public class DogBrain : Dog {
 
     [SerializeField]
+    protected PlayerStats playerStatsScript;
+    [SerializeField]
     protected GameObject toyPrefab;
     GameObject newToy;
 
@@ -15,31 +17,15 @@ public class DogBrain : Dog {
     protected Transform foodBowl;
     [SerializeField]
     protected Transform waterBowl;
+    [SerializeField]
+    protected Transform foodBag;
 
     float wanderTimer;
 
     float move;
 
     Vector3 wanderPos;
-    [HideInInspector]
-    public bool closeToToy;
-    [HideInInspector]
-    public bool closeToPlayer;
-    [HideInInspector]
-    public bool toySeen;
-    [HideInInspector]
-    public bool toyCaught;
-    [HideInInspector]
-    public bool followPlayer;
-    [HideInInspector]
-    public bool isSitting;
-    [HideInInspector]
-    public bool isPickedUp;
-    // [HideInInspector]
-    public bool isEating;
-    [HideInInspector]
-    public bool isDrinking;
-
+    
     private bool ballInterest;
     bool isWaking;
 
@@ -47,8 +33,8 @@ public class DogBrain : Dog {
     public GameObject toy;
 
     public enum Seekable { Player, Toy };
-    enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, FollowWater, Eating, Drinking, Sitting, PickedUp };
-    DogBehaviours previousBehaviour;
+    public enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, FollowWater, Eating, Drinking, Sitting, PickedUp };
+    public DogBehaviours previousBehaviour;
     DogBehaviours currentBehaviour;
 
     #region Unity Methods
@@ -81,6 +67,7 @@ public class DogBrain : Dog {
         InitialiseStats(200);
         idleTimer = 0;
         wanderPos = new Vector3(100, 100, 100);
+        ChangeBehaviour(DogBehaviours.Wandering);
     }
 
     #endregion
@@ -89,7 +76,7 @@ public class DogBrain : Dog {
     // Update is called once per frame
     void Update()
     {
-        DecisionMaker(DogBehaviours.Sitting);
+        DecisionMaker(currentBehaviour);
 
         if (transform.position.y < 0)
             ResetYPosition();
@@ -122,87 +109,102 @@ public class DogBrain : Dog {
 
     void DecisionMaker(DogBehaviours behaviours)
     {
-        Debug.Log(behaviours);
+        print(behaviours);
         //this is just to make sure idle timer doesnt keep running
         if (behaviours != DogBehaviours.Sitting)
             WakeUp();
         switch (behaviours)
         {
             case DogBehaviours.FollowFood:
-                
+                FollowFood();
                 break;
-
             case DogBehaviours.Eating:
-                
-
-                print(GetDogStats(Stats.Hunger));
-                reak;
-
-            case DogBehaviours.Drinking:
-                GoToPoint(waterBowl.position, 0.01f, 0.3f);
-                if (GetDogStats(Stats.Thirst) >= 80)
-                    ChangeState(DogBehaviours.Wandering);
+                Eating();
                 break;
-
+            case DogBehaviours.Drinking:
+                Drinking();
+                break;
             case DogBehaviours.FollowWater:
-
-                if (ClosetoPoint(waterBowl.transform.position, 0.3f))
-                    DecisionMaker(DogBehaviours.Drinking);
+                FollowWater();
                 break;
             case DogBehaviours.FollowPlayer:
-                GoToPoint(PlayerPos(), 0.01f, 1);
-
-                if (toyCaught)
-                {
-                    if (closeToPlayer)
-                    {
-                        DropToy();
-                        StartCoroutine(BallInterestTimer());
-                    }
-                    else
-                        newToy.transform.position = mouth.position;
-                }
-
+                FollowPlayer();
                 break;
             case DogBehaviours.FollowToy:
-                GoToPoint(ToyPos(toy), 0.01f, 0.4f);
-
-                if (toyCaught)
-                {
-                    followPlayer = true;
-                    toySeen = false;
-                }
-
+                FollowToy();
                 break;
             case DogBehaviours.Wandering:
-                
-
+                Wandering();
                 break;
 
 
         }
     }
 
-   
-
     #region Behaviours
 
-    private void FollowPlayer() { }
+    private void FollowPlayer()
+    {
 
-    private void FollowToy() { }
+        float followTimer = 0;
+        followTimer += Time.deltaTime;
+        if(followTimer>= 10)
+        {
+            if (statList[(int)Stats.Energy] < 60)
+                ChangeBehaviour(DogBehaviours.Sitting);
+            else
+                ChangeBehaviour(DogBehaviours.Wandering);
+        }
+
+        if (!ClosetoPoint(transform.position, PlayerPos(), 1))
+            GoToPoint(PlayerPos(), 0.01f, 1);
+
+        if(ClosetoPoint(transform.position, PlayerPos(), 1))
+        {
+            if ((previousBehaviour == DogBehaviours.FollowToy))
+                DropToy();
+
+            ChangeBehaviour(DogBehaviours.Sitting);
+        }        
+    }
+
+    private void FollowToy()
+    {
+        GoToPoint(ToyPos(toy), 0.01f, 0.4f);
+
+        if (ClosetoPoint(transform.position, ToyPos(toy), 0.2f))
+        {
+            PickUpToy();
+            ChangeBehaviour(DogBehaviours.FollowPlayer);
+        }
+    }
 
     private void FollowFood()
     {
-        GoToPoint(foodBowl.position, 0.01f, 0.3f);
-        if (ClosetoPoint(foodBowl.transform.position, 0.3f))
-            DecisionMaker(DogBehaviours.Eating);
+        if (playerStatsScript.pickedUpFood)
+        {
+            GoToPoint(foodBag.position, 0.01f, 0.3f);
+            //implement jump later
+        }
+        else
+        {
+            GoToPoint(foodBowl.position, 0.01f, 0.3f);
+            if ((ClosetoPoint(transform.position, foodBowl.transform.position, 0.3f)) && (statList[(int)Stats.Hunger] < 80))
+                ChangeBehaviour(DogBehaviours.Eating);
+        }
+            
     }
 
-    private void FollowWater() { }
+    private void FollowWater()
+    {
+        GoToPoint(waterBowl.position, 0.01f, 0.3f);
+        if (ClosetoPoint(transform.position, waterBowl.transform.position, 0.3f) && (statList[(int)Stats.Thirst] < 80))
+            ChangeBehaviour(DogBehaviours.Drinking);
+    }
 
     private void Eating()
     {
-        isEating = true;
+
         animator.SetBool("Consume", true);
         animator.SetBool("Eat", true);
 
@@ -213,6 +215,8 @@ public class DogBrain : Dog {
 
     private void Drinking()
     {
+        animator.SetBool("Consume", true);
+        animator.SetBool("Drink", true);
         statList[(int)Stats.Thirst] += Time.deltaTime * 2;
         if (GetDogStats(Stats.Thirst) == 100)
             ChangeBehaviour(DogBehaviours.Wandering);
@@ -220,23 +224,66 @@ public class DogBrain : Dog {
 
     private void Sitting()
     {
+        #region Idle
         idleTimer += Time.deltaTime;
-        if ((idleTimer > 15 && idleTimer < 16) || (idleTimer > 25 && idleTimer < 26))
-            ScratchCheck();
-        else
-            animator.SetBool("Scratch", false);
         animator.SetFloat("IdleLength", idleTimer);
+        if (statList[(int)Stats.Energy] < 50)
+        {
+            if ((idleTimer > 15 && idleTimer < 16) || (idleTimer > 25 && idleTimer < 26))
+                ScratchCheck();
+            else
+                animator.SetBool("Scratch", false);
+        }
+        else if (idleTimer >= 20)
+        {
+            WakeUp();
+            ChangeBehaviour(DogBehaviours.Wandering);
+        }
+        #endregion
+
+        if (playerStatsScript.pickedUpToy)
+        {
+            WakeUp();
+            ChangeBehaviour(DogBehaviours.FollowToy);
+        }
+
+        if (playerStatsScript.calledDog)
+        {
+            WakeUp();
+            ChangeBehaviour(DogBehaviours.FollowPlayer);
+        }
+
     }
 
     private void Wandering()
     {
         if (transform.position == wanderPos)
             wanderPos = gridScript.GetRandomNode().coord;
-
         GoToPoint(wanderPos, 0.01f, 200f);
+
+        if (playerStatsScript.calledSit)
+            ChangeBehaviour(DogBehaviours.Sitting);
+
+        if (playerStatsScript.pickedUpToy)
+            ChangeBehaviour(DogBehaviours.FollowToy);
+
+        if (playerStatsScript.calledDog)
+            ChangeBehaviour(DogBehaviours.FollowPlayer);
+
+        if (playerStatsScript.pickedUpFood)
+        {
+            if ((statList[(int)Stats.Hunger] < 80) && (ClosetoPoint(transform.position, PlayerPos(), 5)))
+                ChangeBehaviour(DogBehaviours.FollowFood);
+        }
+
+        if (isHungry())
+            ChangeBehaviour(DogBehaviours.FollowFood);
+
+        if (isThirsty())
+            ChangeBehaviour(DogBehaviours.FollowWater);
     }
 
-    private void ChangeBehaviour(DogBehaviours latest)
+    public void ChangeBehaviour(DogBehaviours latest)
     {
         previousBehaviour = currentBehaviour;
         currentBehaviour = latest;
@@ -248,24 +295,33 @@ public class DogBrain : Dog {
     #region Toy
     void PickUpToy()
         {
-            if (!toyCaught)
-            {
-                print("pick up");
-                Destroy(GameObject.FindGameObjectWithTag("Toy"));
-                newToy = Instantiate(toyPrefab, mouth.position, Quaternion.identity);
-            }
-            toyCaught = true;
+        if(ClosetoPoint(mouth.position,toy.transform.position, 0.2f))
+        {
+            toy.transform.position = mouth.position;
+            var joint = AddFixJoint();
+            joint.connectedBody = toy.GetComponent<Rigidbody>();
+            
         }
 
-        void DropToy()
-        {
-            toyCaught = false;
-            //Vector3 newPos = new Vector3();
-            //newPos = new Vector3(-10, .22f, -10);
-            //while (transform.position != newPos)
-            //    GoToPoint(newPos, .01f);
-            transform.LookAt(PlayerPos());
         }
+    private FixedJoint AddFixJoint()
+    {
+        //creates new joint
+        FixedJoint fx = gameObject.AddComponent<FixedJoint>();
+        //sets joint so it doesnt break easily
+        fx.breakForce = 20000;
+        fx.breakTorque = 20000;
+        return fx;
+    }
+    void DropToy()
+    {
+        if (GetComponent<FixedJoint>())
+        {
+            GetComponent<FixedJoint>().connectedBody = null;
+            Destroy(GetComponent<FixedJoint>());
+            
+        }            
+    }
 
         public Vector3 ToyPos(GameObject toy)
         {
@@ -305,15 +361,7 @@ public class DogBrain : Dog {
     {
         throw new NotImplementedException();
     }
-    private void DogPickedUp()
-        {
-        isPickedUp = false;
-            GetComponent<Rigidbody>().useGravity = true;
-        }
-        private void DogDropped()
-        {
-            isPickedUp = false;
-        }
+    
 
         
 
@@ -345,20 +393,20 @@ public class DogBrain : Dog {
         return difference;
     }
 
-        public void CloseToSomething(Seekable seek)
-    {
-        switch (seek)
-        {
-            case Seekable.Player:
-                followPlayer = false;
-                closeToPlayer = true;
-             break;
-            case Seekable.Toy:
-                toySeen = false;
-                PickUpToy();
-                break;
-        }
-    }
+    //    public void CloseToSomething(Seekable seek)
+    //{
+    //    switch (seek)
+    //    {
+    //        case Seekable.Player:
+    //            followPlayer = false;
+    //            closeToPlayer = true;
+    //         break;
+    //        case Seekable.Toy:
+    //            toySeen = false;
+    //            PickUpToy();
+    //            break;
+    //    }
+    //}
 
    
 
@@ -390,8 +438,6 @@ public class DogBrain : Dog {
     void WakeUp()
     {
         isWaking = true;
-        isSitting = false;
-
     }
 
 

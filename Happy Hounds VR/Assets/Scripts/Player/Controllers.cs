@@ -5,6 +5,9 @@ using Valve.VR;
 
 public abstract class Controllers : MonoBehaviour {
 
+    [SerializeField]
+    protected PlayerStats playerStatsScript;
+
     [HideInInspector]
     public SteamVR_TrackedObject trackedObj;
 
@@ -12,7 +15,6 @@ public abstract class Controllers : MonoBehaviour {
     [HideInInspector]
     public GameObject collidingObject;
     [HideInInspector]
-
     public GameObject objectInHand;
 
     public Transform playerHead;
@@ -159,6 +161,9 @@ public abstract class Controllers : MonoBehaviour {
     {
         Debug.Log("Grab Object");
         objectInHand = collidingObject;//moves GO to players hand
+        if (objectInHand.tag == "Toy")
+            playerStatsScript.pickedUpToy = true;
+
         collidingObject = null;//removes it from colliding object variable
         var joint = AddFixJoint(); //sets joint variable
         joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
@@ -184,6 +189,9 @@ public abstract class Controllers : MonoBehaviour {
             objectInHand.GetComponent<Rigidbody>().velocity = ControllerVelocity();
             objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity();
         }
+        if (objectInHand.tag == "Toy")
+            playerStatsScript.pickedUpToy = false;
+
         objectInHand = null;
     }
 #endregion

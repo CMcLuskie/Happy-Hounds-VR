@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainHand : Controllers {
 
-
+    public PlayerStats stats;
     //General variables
     //public bool mainHand;
     //public bool secondHand;
