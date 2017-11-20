@@ -126,7 +126,8 @@ public abstract class Dog : MonoBehaviour
 
     public bool isThirsty()
     {
-        if (statList[(int)Stats.Thirst] < 80)
+        if ((statList[(int)Stats.Thirst] < 80) 
+            && (statList[(int)Stats.Thirst] < statList[(int)Stats.Hunger]))
             return true;
 
         else return false;
