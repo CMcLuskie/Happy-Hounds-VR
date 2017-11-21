@@ -7,28 +7,26 @@ public abstract class Dog : MonoBehaviour
 {
 
     #region Variables
-        //Movement
-        public enum Direction { Forward, Back, Left, Right }; //for movement
-        public enum PathfindingTypes { AStar, BFS};
-        public bool interrupted;
-        public bool isLerping = false;
-        public bool isWandering = true;
-        public bool attentionGiven = false;
-        public int rotationSpeed;
-        Vector3 goalPos;
+     //Movement
+     public enum Direction { Forward, Back, Left, Right }; //for movement
+     public enum PathfindingTypes { AStar, BFS};
+     public bool interrupted;
+     public bool isLerping = false;
+     public bool isWandering = true;
+     public bool attentionGiven = false;
+     public int rotationSpeed;
+     Vector3 goalPos;
 
-        //Stats
-        public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience, Energy };//for stats
-        public List<float> statList;
-        
-
-    
+     //Stats
+     public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience, Energy };//for stats
+     public List<float> statList;
 
     //age
     [SerializeField]
-        protected enum Age { Pup, Adult, Senior};
+    protected enum Age { Pup, Adult, Senior};
 
     public float idleTimer;
+
 
 
     //GameObjects and components
@@ -38,6 +36,9 @@ public abstract class Dog : MonoBehaviour
     public Grid gridScript;
     [SerializeField]
     protected Transform player;
+    public  List<GameObject> costumeList;
+    public List<String> costumeStringList;
+    protected enum Costumes { Wings, Crown, Glasses, Hat};
     #endregion
 
     #region Stats
@@ -488,7 +489,69 @@ public abstract class Dog : MonoBehaviour
     }
     #endregion
 
-   
+    #region Costumes
+
+    public void InitCostumeList()
+    {
+        print("here");
+        costumeList[(int)Costumes.Wings] = GameObject.FindGameObjectWithTag("Wings");
+        costumeList[(int)Costumes.Crown] = GameObject.FindGameObjectWithTag("Crown");
+        costumeList[(int)Costumes.Glasses] = GameObject.FindGameObjectWithTag("Glasses");
+        costumeList[(int)Costumes.Hat] = GameObject.FindGameObjectWithTag("Hat");
+
+        for (int i = 0; i < costumeList.Count; i++)
+        {
+            costumeStringList.Add(costumeList[i].name);
+        }
+    }
+
+    /// <summary>
+    /// will put a costume ont he dog
+    /// </summary>
+    /// <param name="costume"></param>
+    public void ActivateCostume(string costume)
+    {
+        switch (costume)
+        {
+            case "Wings":
+                costumeList[(int)Costumes.Wings].SetActive(true);
+                break;
+            case "Crown":
+                costumeList[(int)Costumes.Crown].SetActive(true);
+                break;
+            case "Glasses":
+                costumeList[(int)Costumes.Glasses].SetActive(true);
+                break;
+            case "Hat":
+                costumeList[(int)Costumes.Hat].SetActive(true);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// will take a costume off the dog
+    /// </summary>
+    /// <param name="costume"></param>
+    public void DeactivateCostume(string costume)
+    {
+        switch (costume)
+        {
+            case "Wings":
+                costumeList[(int)Costumes.Wings].SetActive(false);
+                break;
+            case "Crown":
+                costumeList[(int)Costumes.Crown].SetActive(false);
+                break;
+            case "Glasses":
+                costumeList[(int)Costumes.Glasses].SetActive(false);
+                break;
+            case "Hat":
+                costumeList[(int)Costumes.Hat].SetActive(false);
+                break;
+        }
+    }
+#endregion
+
 }
 
 

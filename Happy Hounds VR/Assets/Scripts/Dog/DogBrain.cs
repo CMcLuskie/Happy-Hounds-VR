@@ -66,13 +66,17 @@ public class DogBrain : Dog {
     void Start()
     {
         InitialiseStats(200);
-        idleTimer = 0;
-        wanderPos = new Vector3(100, 100, 100);
-        ChangeBehaviour(DogBehaviours.FollowPlayer);
-        isWaking = false;
-        idleTimerOn = false;
+        InitCostumeList();
+        InitVariables();
+        ChangeBehaviour(DogBehaviours.FollowPlayer);        
     }
 
+    void InitVariables()
+    {
+        isWaking = false;
+        idleTimerOn = false;
+        idleTimer = 0;
+    }
     #endregion
 
     #region Decisions

@@ -26,7 +26,8 @@ public class ButtonResponder : MonoBehaviour {
 		} else CurrentModel = 0;
 		CurrentModelSelected = GameObjects [CurrentModel].GetComponent<Animate>();
 		Camera.GetComponentInChildren<MouseOrbitImprovedMod> ().target = GameObjects [CurrentModel].transform;
-		GetComponentInChildren<Text>().text = CurrentModelSelected.name;
+        //I Love celine Dion <3
+        GetComponentInChildren<Text>().text = CurrentModelSelected.name;
 	}
 	public void StandButtonClicked()
 	{

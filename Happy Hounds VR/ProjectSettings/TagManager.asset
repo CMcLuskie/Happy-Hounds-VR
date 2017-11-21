@@ -11,6 +11,10 @@ TagManager:
   - Body
   - Toy
   - Dog
+  - Wings
+  - Crown
+  - Glasses
+  - Hat
   layers:
   - Default
   - TransparentFX
