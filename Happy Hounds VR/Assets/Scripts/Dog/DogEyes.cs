@@ -13,17 +13,19 @@ public class DogEyes : MonoBehaviour
     {
         if ((other.tag == "Toy") && (dogBrainScript.previousBehaviour != DogBrain.DogBehaviours.FollowToy))
         {
-            dogBrainScript.ChangeBehaviour(DogBrain.DogBehaviours.FollowToy);
             dogBrainScript.toy = other.gameObject;
+
+            dogBrainScript.ChangeBehaviour(DogBrain.DogBehaviours.FollowToy);
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if ((other.tag == "Toy") && (dogBrainScript.previousBehaviour != DogBrain.DogBehaviours.FollowToy))
-        { 
-            dogBrainScript.ChangeBehaviour(DogBrain.DogBehaviours.FollowToy);
+        {
             dogBrainScript.toy = other.gameObject;
+
+            dogBrainScript.ChangeBehaviour(DogBrain.DogBehaviours.FollowToy);
         }
     }
     private void OnTriggerExit(Collider other)

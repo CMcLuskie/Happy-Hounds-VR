@@ -88,19 +88,30 @@ public abstract class Dog : MonoBehaviour
     public void InitialiseStats(float total)
     {
         InitialiseStatList();
-        for (int i = 0; i < statList.Count; i++)
-        {
-            if (total <= 50)
-                statList[i] = UnityEngine.Random.Range(0, total);
-            else
-                statList[i] = UnityEngine.Random.Range(0, 75);
+        #region random stats
+        //for (int i = 0; i < statList.Count; i++)
+        //{
+        //    if (total <= 50)
+        //        statList[i] = UnityEngine.Random.Range(0, total);
+        //    else
+        //        statList[i] = UnityEngine.Random.Range(0, 75);
 
-            if (statList[i] < 20)
-                statList[i] += 20;
+        //    if (statList[i] < 20)
+        //        statList[i] += 20;
 
-            if (total - statList[i] < 0)
-                total -= statList[i];
-        }
+        //    if (total - statList[i] < 0)
+        //        total -= statList[i];
+        //}
+        #endregion
+
+        #region demo stats
+        statList[(int)Stats.Happiness] = 60;
+        statList[(int)Stats.Hunger] = 80;
+        statList[(int)Stats.Thirst] = 80;
+        statList[(int)Stats.Cleanliness] = 100;
+        statList[(int)Stats.Obedience] = 100;
+        statList[(int)Stats.Energy] = 20;
+        #endregion
         PrintStats();
 
     }
@@ -164,7 +175,6 @@ public abstract class Dog : MonoBehaviour
             transform.LookAt(pos);
             Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
             transform.SetPositionAndRotation(transform.position, quar);
-
 
             if (!ClosetoPoint(transform.position, pos, distance))
             {
@@ -443,7 +453,7 @@ public abstract class Dog : MonoBehaviour
         Vector3 direction = point - current;
         float distance = direction.magnitude;
 
-        
+
         if (distance < finalDist)
             return true;
         else

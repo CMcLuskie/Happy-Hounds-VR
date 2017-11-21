@@ -25,9 +25,10 @@ public class DogBrain : Dog {
     float move;
 
     Vector3 wanderPos;
-    
+
+    private bool idleTimerOn;
     private bool ballInterest;
-    bool isWaking;
+    public bool isWaking;
 
     [HideInInspector]
     public GameObject toy;
@@ -67,7 +68,9 @@ public class DogBrain : Dog {
         InitialiseStats(200);
         idleTimer = 0;
         wanderPos = new Vector3(100, 100, 100);
-        ChangeBehaviour(DogBehaviours.Wandering);
+        ChangeBehaviour(DogBehaviours.FollowPlayer);
+        isWaking = false;
+        idleTimerOn = false;
     }
 
     #endregion
@@ -84,7 +87,8 @@ public class DogBrain : Dog {
         if (OutOfBounds())
             ResetPosition();
 
-        
+        if (idleTimerOn)
+            idleTimer += Time.deltaTime;
 
         if (isWaking)
         {
@@ -111,7 +115,7 @@ public class DogBrain : Dog {
     {
         print(behaviours);
         //this is just to make sure idle timer doesnt keep running
-        if (behaviours != DogBehaviours.Sitting)
+        if (previousBehaviour == DogBehaviours.Sitting)
             WakeUp();
         switch (behaviours)
         {
@@ -135,6 +139,9 @@ public class DogBrain : Dog {
                 break;
             case DogBehaviours.Wandering:
                 Wandering();
+                break;
+            case DogBehaviours.Sitting:
+                Sitting();
                 break;
 
 
@@ -209,8 +216,14 @@ public class DogBrain : Dog {
         animator.SetBool("Eat", true);
 
         statList[(int)Stats.Hunger] += Time.deltaTime * 2;
-        if (GetDogStats(Stats.Hunger) >= 100)
-            ChangeBehaviour(DogBehaviours.Wandering);
+            
+            if (GetDogStats(Stats.Hunger) == 100)
+        {
+            animator.SetBool("Consume", false);
+            animator.SetBool("Eat", false);
+            wanderPos = gridScript.GetRandomNode().coord;
+            ChangeBehaviour(DogBehaviours.Sitting);
+        }
     }
 
     private void Drinking()
@@ -219,13 +232,19 @@ public class DogBrain : Dog {
         animator.SetBool("Drink", true);
         statList[(int)Stats.Thirst] += Time.deltaTime * 2;
         if (GetDogStats(Stats.Thirst) == 100)
-            ChangeBehaviour(DogBehaviours.Wandering);
+        {
+            animator.SetBool("Consume", false);
+            animator.SetBool("Drink", false);
+            wanderPos = gridScript.GetRandomNode().coord;
+            ChangeBehaviour(DogBehaviours.Sitting);
+        }
+            
     }
 
     private void Sitting()
     {
         #region Idle
-        idleTimer += Time.deltaTime;
+        idleTimerOn = true;
         animator.SetFloat("IdleLength", idleTimer);
         if (statList[(int)Stats.Energy] < 50)
         {
@@ -257,10 +276,11 @@ public class DogBrain : Dog {
 
     private void Wandering()
     {
-        if (transform.position == wanderPos)
-            wanderPos = gridScript.GetRandomNode().coord;
-        GoToPoint(wanderPos, 0.01f, 200f);
 
+        if (ClosetoPoint(transform.position, wanderPos, 1))
+            wanderPos = gridScript.GetRandomNode().coord;
+
+        GoToPoint(wanderPos, 0.01f, 0);
         if (playerStatsScript.calledSit)
             ChangeBehaviour(DogBehaviours.Sitting);
 
@@ -287,7 +307,8 @@ public class DogBrain : Dog {
     {
         previousBehaviour = currentBehaviour;
         currentBehaviour = latest;
-        DecisionMaker(currentBehaviour);
+        if (currentBehaviour == DogBehaviours.Wandering)
+            wanderPos = gridScript.GetRandomNode().coord;
     }
 #endregion
     #endregion
