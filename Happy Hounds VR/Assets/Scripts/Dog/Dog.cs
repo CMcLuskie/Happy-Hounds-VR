@@ -20,6 +20,8 @@ public abstract class Dog : MonoBehaviour
      //Stats
      public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience, Energy };//for stats
      public List<float> statList;
+     public enum StatDepletion { Happiness, Hunger, Thirst, Cleanliness, Obedience, Energy };
+     public List<float> statDepletions;
 
     //age
     [SerializeField]
@@ -75,7 +77,15 @@ public abstract class Dog : MonoBehaviour
                 {
                     statList[(int)Stats.Obedience] = 100;
                 }
-                return statList[(int)Stats.Happiness];
+                return statList[(int)Stats.Obedience];
+
+            case Stats.Energy:
+                if (statList[(int)Stats.Energy] > 100)
+                {
+                    statList[(int)Stats.Energy] = 100;
+                }
+                return statList[(int)Stats.Energy];
+                
         }
         return 0;
     }
@@ -106,12 +116,12 @@ public abstract class Dog : MonoBehaviour
         #endregion
 
         #region demo stats
-        statList[(int)Stats.Happiness] = 60;
+        statList[(int)Stats.Happiness] = 80;
         statList[(int)Stats.Hunger] = 80;
         statList[(int)Stats.Thirst] = 80;
         statList[(int)Stats.Cleanliness] = 100;
         statList[(int)Stats.Obedience] = 100;
-        statList[(int)Stats.Energy] = 20;
+        statList[(int)Stats.Energy] = 100;
         #endregion
         PrintStats();
 

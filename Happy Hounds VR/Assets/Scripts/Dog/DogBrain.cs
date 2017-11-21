@@ -26,6 +26,7 @@ public class DogBrain : Dog {
 
     Vector3 wanderPos;
 
+    
     private bool idleTimerOn;
     private bool ballInterest;
     public bool isWaking;
@@ -65,10 +66,10 @@ public class DogBrain : Dog {
     // Use this for initialization
     void Start()
     {
+        ChangeBehaviour(DogBehaviours.FollowPlayer);
         InitialiseStats(200);
         InitCostumeList();
         InitVariables();
-        ChangeBehaviour(DogBehaviours.FollowPlayer);        
     }
 
     void InitVariables()
@@ -105,7 +106,12 @@ public class DogBrain : Dog {
             }
         }
 
-        
+        #region StatModification
+        statList[(int)Stats.Hunger] -= Time.deltaTime / statList[(int)StatDepletion.Hunger];
+        statList[(int)Stats.Thirst] -= Time.deltaTime / statList[(int)StatDepletion.Thirst];
+        statList[(int)Stats.Energy] -= Time.deltaTime / statList[(int)StatDepletion.Energy];
+        statList[(int)Stats.Cleanliness] -= Time.deltaTime / statList[(int)StatDepletion.Cleanliness];
+#endregion
 
 
     }
@@ -175,7 +181,16 @@ public class DogBrain : Dog {
             if ((previousBehaviour == DogBehaviours.FollowToy))
                 DropToy();
 
-            ChangeBehaviour(DogBehaviours.Sitting);
+            if ((GetDogStats(Stats.Happiness) >= 80) && GetDogStats(Stats.Energy) >= 80)
+            {
+                statList[(int)Stats.Energy] -= Time.deltaTime;
+                animator.SetBool("Jump", true);
+            }
+            else
+            {
+                animator.SetBool("Jump", false);
+                ChangeBehaviour(DogBehaviours.Sitting);
+            }
         }        
     }
 
