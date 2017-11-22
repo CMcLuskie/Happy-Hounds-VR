@@ -501,7 +501,8 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLUseWasm: 0
   webGLCompressionFormat: 1
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: VIU_BINDING_INTERFACE_SWITCH;VIU_EXTERNAL_CAMERA_SWITCH;VIU_PLUGIN;VIU_STEAMVR
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}

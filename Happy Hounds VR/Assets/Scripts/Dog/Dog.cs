@@ -84,8 +84,7 @@ public abstract class Dog : MonoBehaviour
                 {
                     statList[(int)Stats.Energy] = 100;
                 }
-                return statList[(int)Stats.Energy];
-                
+                return statList[(int)Stats.Energy];                
         }
         return 0;
     }

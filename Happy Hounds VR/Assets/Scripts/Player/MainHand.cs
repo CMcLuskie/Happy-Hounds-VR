@@ -58,7 +58,7 @@ public class MainHand : Controllers {
             }
         }
 
-
+        HandAnimaiton(TriggerPos());
         if (TriggerUp())
         {
             if (objectInHand)
@@ -89,6 +89,9 @@ public class MainHand : Controllers {
            // dog.GetComponent<DogBrain>().toy = null;
             Instantiate(toyPrefab, transform.position, Quaternion.identity);
         }
+
+        TriggerPos();
+
     }
 
 

@@ -5,6 +5,7 @@ using Valve.VR;
 
 public abstract class Controllers : MonoBehaviour {
 
+    public Animator animator;
     [SerializeField]
     protected PlayerStats playerStatsScript;
 
@@ -78,12 +79,21 @@ public abstract class Controllers : MonoBehaviour {
             return false;
     }
 
+    public float TriggerPos()
+    {
+        print( Controller.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x);
+        return Controller.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x;
+    }
     public Vector2 GetTouchpadPos()
     {
         Vector2 touchpad = Controller.GetAxis(EVRButtonId.k_EButton_Axis0);
         return touchpad;
     }
 
+    public void HandAnimaiton(float handPos)
+    {
+        animator.SetFloat("Grab", handPos);
+    }
 #endregion
     public void ControllerVibrate(ushort vibration)
     {
