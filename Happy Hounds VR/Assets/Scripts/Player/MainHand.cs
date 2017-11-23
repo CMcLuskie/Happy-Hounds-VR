@@ -84,10 +84,10 @@ public class MainHand : Controllers {
 
         if (GripButtonDown())
         {
-            Destroy(GameObject.FindGameObjectWithTag("Toy"));
-            GameObject dog = GameObject.FindGameObjectWithTag("Body");
-           // dog.GetComponent<DogBrain>().toy = null;
-            Instantiate(toyPrefab, transform.position, Quaternion.identity);
+            //Destroy(GameObject.FindGameObjectWithTag("Toy"));
+            //GameObject dog = GameObject.FindGameObjectWithTag("Body");
+            //dog.GetComponent<DogBrain>().toy = null;
+            //Instantiate(toyPrefab, transform.position, Quaternion.identity);
         }
 
         TriggerPos();

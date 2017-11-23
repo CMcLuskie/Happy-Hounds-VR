@@ -5,10 +5,14 @@ using Valve.VR;
 
 public abstract class Controllers : MonoBehaviour {
 
+    [SerializeField]
+    protected GameObject handModel;
     public Animator animator;
     [SerializeField]
     protected PlayerStats playerStatsScript;
 
+    [SerializeField]
+    protected Transform palmTransform;
     [HideInInspector]
     public SteamVR_TrackedObject trackedObj;
 
@@ -171,12 +175,14 @@ public abstract class Controllers : MonoBehaviour {
     {
         Debug.Log("Grab Object");
         objectInHand = collidingObject;//moves GO to players hand
+        objectInHand.transform.position = palmTransform.position;
         if (objectInHand.tag == "Toy")
             playerStatsScript.pickedUpToy = true;
 
         collidingObject = null;//removes it from colliding object variable
         var joint = AddFixJoint(); //sets joint variable
         joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+
     }
 
 
