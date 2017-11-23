@@ -1,0 +1,576 @@
+fileFormatVersion: 2
+guid: 485ddf5a9657d0b48ab8a32924841ba3
+timeCreated: 1511438983
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Ball
+    100002: Bone
+    100004: Bush
+    100006: Bush 1
+    100008: Bush1
+    100010: Bush1 1
+    100012: Bush1 2
+    100014: Bush1 3
+    100016: Bush2
+    100018: Bush2 1
+    100020: Bush2 2
+    100022: Bush2 3
+    100024: Bush3
+    100026: Bush3 1
+    100028: Bush3 2
+    100030: Bush3 3
+    100032: Bush4
+    100034: Bush4 1
+    100036: Bush4 2
+    100038: Bush4 3
+    100040: Bushes
+    100042: Bushes1
+    100044: Bushes2
+    100046: Bushes3
+    100048: BWall
+    100050: castlpillers
+    100052: DogFoodCan
+    100054: DogFoodCan2
+    100056: Door
+    100058: Door2
+    100060: Doorknob
+    100062: Fence
+    100064: flag
+    100066: Floor1
+    100068: Food
+    100070: FoodBag
+    100072: FoodBowl
+    100074: Garden2
+    100076: Garden_Table:parasol
+    100078: Garden_Table:pole
+    100080: Garden_Table:seat
+    100082: Garden_Table:supportlegs1
+    100084: Garden_Table:tabletop
+    100086: Ground
+    100088: House1
+    100090: //RootNode
+    100092: kennel1
+    100094: Kong
+    100096: LLeg
+    100098: LWall
+    100100: OutsideTrees
+    100102: polySurface1
+    100104: polySurface10
+    100106: polySurface11
+    100108: polySurface13
+    100110: polySurface14
+    100112: polySurface18
+    100114: polySurface19
+    100116: polySurface2
+    100118: polySurface20
+    100120: polySurface21
+    100122: polySurface22
+    100124: polySurface23
+    100126: polySurface24
+    100128: polySurface25
+    100130: polySurface26
+    100132: polySurface27
+    100134: polySurface28
+    100136: polySurface3
+    100138: polySurface30
+    100140: polySurface32
+    100142: polySurface33
+    100144: polySurface34
+    100146: polySurface4
+    100148: polySurface6
+    100150: polySurface6 1
+    100152: polySurface6 2
+    100154: polySurface6 3
+    100156: polySurface7
+    100158: polySurface7 1
+    100160: polySurface7 2
+    100162: polySurface7 3
+    100164: polySurface8
+    100166: polySurface9
+    100168: Porch
+    100170: RLeg
+    100172: Roof
+    100174: Roof 1
+    100176: RopeToy
+    100178: RWall
+    100180: sand1
+    100182: sandcastle2
+    100184: Sandpit
+    100186: sandpit
+    100188: screws
+    100190: screws2
+    100192: seatofpit1
+    100194: Table2
+    100196: Toys
+    100198: Tree
+    100200: Tree 1
+    100202: Tree10
+    100204: Tree5
+    100206: Tree7
+    100208: Tree8
+    100210: Tree9
+    100212: Wall
+    100214: Walls
+    100216: Water
+    100218: WaterBowl
+    100220: Window
+    100222: Window1
+    100224: Window2
+    100226: Window3
+    100228: Windows
+    400000: Ball
+    400002: Bone
+    400004: Bush
+    400006: Bush 1
+    400008: Bush1
+    400010: Bush1 1
+    400012: Bush1 2
+    400014: Bush1 3
+    400016: Bush2
+    400018: Bush2 1
+    400020: Bush2 2
+    400022: Bush2 3
+    400024: Bush3
+    400026: Bush3 1
+    400028: Bush3 2
+    400030: Bush3 3
+    400032: Bush4
+    400034: Bush4 1
+    400036: Bush4 2
+    400038: Bush4 3
+    400040: Bushes
+    400042: Bushes1
+    400044: Bushes2
+    400046: Bushes3
+    400048: BWall
+    400050: castlpillers
+    400052: DogFoodCan
+    400054: DogFoodCan2
+    400056: Door
+    400058: Door2
+    400060: Doorknob
+    400062: Fence
+    400064: flag
+    400066: Floor1
+    400068: Food
+    400070: FoodBag
+    400072: FoodBowl
+    400074: Garden2
+    400076: Garden_Table:parasol
+    400078: Garden_Table:pole
+    400080: Garden_Table:seat
+    400082: Garden_Table:supportlegs1
+    400084: Garden_Table:tabletop
+    400086: Ground
+    400088: House1
+    400090: //RootNode
+    400092: kennel1
+    400094: Kong
+    400096: LLeg
+    400098: LWall
+    400100: OutsideTrees
+    400102: polySurface1
+    400104: polySurface10
+    400106: polySurface11
+    400108: polySurface13
+    400110: polySurface14
+    400112: polySurface18
+    400114: polySurface19
+    400116: polySurface2
+    400118: polySurface20
+    400120: polySurface21
+    400122: polySurface22
+    400124: polySurface23
+    400126: polySurface24
+    400128: polySurface25
+    400130: polySurface26
+    400132: polySurface27
+    400134: polySurface28
+    400136: polySurface3
+    400138: polySurface30
+    400140: polySurface32
+    400142: polySurface33
+    400144: polySurface34
+    400146: polySurface4
+    400148: polySurface6
+    400150: polySurface6 1
+    400152: polySurface6 2
+    400154: polySurface6 3
+    400156: polySurface7
+    400158: polySurface7 1
+    400160: polySurface7 2
+    400162: polySurface7 3
+    400164: polySurface8
+    400166: polySurface9
+    400168: Porch
+    400170: RLeg
+    400172: Roof
+    400174: Roof 1
+    400176: RopeToy
+    400178: RWall
+    400180: sand1
+    400182: sandcastle2
+    400184: Sandpit
+    400186: sandpit
+    400188: screws
+    400190: screws2
+    400192: seatofpit1
+    400194: Table2
+    400196: Toys
+    400198: Tree
+    400200: Tree 1
+    400202: Tree10
+    400204: Tree5
+    400206: Tree7
+    400208: Tree8
+    400210: Tree9
+    400212: Wall
+    400214: Walls
+    400216: Water
+    400218: WaterBowl
+    400220: Window
+    400222: Window1
+    400224: Window2
+    400226: Window3
+    400228: Windows
+    2300000: Ball
+    2300002: Bone
+    2300004: Bush
+    2300006: Bush 1
+    2300008: Bush1
+    2300010: Bush1 1
+    2300012: Bush1 2
+    2300014: Bush1 3
+    2300016: Bush2
+    2300018: Bush2 1
+    2300020: Bush2 2
+    2300022: Bush2 3
+    2300024: Bush3
+    2300026: Bush3 1
+    2300028: Bush3 2
+    2300030: Bush3 3
+    2300032: Bush4
+    2300034: Bush4 1
+    2300036: Bush4 2
+    2300038: Bush4 3
+    2300040: BWall
+    2300042: castlpillers
+    2300044: DogFoodCan
+    2300046: DogFoodCan2
+    2300048: Doorknob
+    2300050: flag
+    2300052: Floor1
+    2300054: FoodBag
+    2300056: FoodBowl
+    2300058: Garden_Table:parasol
+    2300060: Garden_Table:pole
+    2300062: Garden_Table:seat
+    2300064: Garden_Table:supportlegs1
+    2300066: Garden_Table:tabletop
+    2300068: Ground
+    2300070: kennel1
+    2300072: Kong
+    2300074: LLeg
+    2300076: LWall
+    2300078: polySurface1
+    2300080: polySurface10
+    2300082: polySurface11
+    2300084: polySurface14
+    2300086: polySurface2
+    2300088: polySurface21
+    2300090: polySurface22
+    2300092: polySurface23
+    2300094: polySurface24
+    2300096: polySurface25
+    2300098: polySurface26
+    2300100: polySurface27
+    2300102: polySurface28
+    2300104: polySurface3
+    2300106: polySurface30
+    2300108: polySurface32
+    2300110: polySurface33
+    2300112: polySurface34
+    2300114: polySurface4
+    2300116: polySurface6
+    2300118: polySurface6 1
+    2300120: polySurface6 2
+    2300122: polySurface6 3
+    2300124: polySurface7
+    2300126: polySurface7 1
+    2300128: polySurface7 2
+    2300130: polySurface7 3
+    2300132: polySurface8
+    2300134: polySurface9
+    2300136: RLeg
+    2300138: Roof
+    2300140: Roof 1
+    2300142: RopeToy
+    2300144: RWall
+    2300146: sand1
+    2300148: sandcastle2
+    2300150: sandpit
+    2300152: screws2
+    2300154: seatofpit1
+    2300156: Tree
+    2300158: Tree 1
+    2300160: Tree10
+    2300162: Tree5
+    2300164: Tree7
+    2300166: Tree8
+    2300168: Tree9
+    2300170: Wall
+    2300172: Water
+    2300174: WaterBowl
+    3300000: Ball
+    3300002: Bone
+    3300004: Bush
+    3300006: Bush 1
+    3300008: Bush1
+    3300010: Bush1 1
+    3300012: Bush1 2
+    3300014: Bush1 3
+    3300016: Bush2
+    3300018: Bush2 1
+    3300020: Bush2 2
+    3300022: Bush2 3
+    3300024: Bush3
+    3300026: Bush3 1
+    3300028: Bush3 2
+    3300030: Bush3 3
+    3300032: Bush4
+    3300034: Bush4 1
+    3300036: Bush4 2
+    3300038: Bush4 3
+    3300040: BWall
+    3300042: castlpillers
+    3300044: DogFoodCan
+    3300046: DogFoodCan2
+    3300048: Doorknob
+    3300050: flag
+    3300052: Floor1
+    3300054: FoodBag
+    3300056: FoodBowl
+    3300058: Garden_Table:parasol
+    3300060: Garden_Table:pole
+    3300062: Garden_Table:seat
+    3300064: Garden_Table:supportlegs1
+    3300066: Garden_Table:tabletop
+    3300068: Ground
+    3300070: kennel1
+    3300072: Kong
+    3300074: LLeg
+    3300076: LWall
+    3300078: polySurface1
+    3300080: polySurface10
+    3300082: polySurface11
+    3300084: polySurface14
+    3300086: polySurface2
+    3300088: polySurface21
+    3300090: polySurface22
+    3300092: polySurface23
+    3300094: polySurface24
+    3300096: polySurface25
+    3300098: polySurface26
+    3300100: polySurface27
+    3300102: polySurface28
+    3300104: polySurface3
+    3300106: polySurface30
+    3300108: polySurface32
+    3300110: polySurface33
+    3300112: polySurface34
+    3300114: polySurface4
+    3300116: polySurface6
+    3300118: polySurface6 1
+    3300120: polySurface6 2
+    3300122: polySurface6 3
+    3300124: polySurface7
+    3300126: polySurface7 1
+    3300128: polySurface7 2
+    3300130: polySurface7 3
+    3300132: polySurface8
+    3300134: polySurface9
+    3300136: RLeg
+    3300138: Roof
+    3300140: Roof 1
+    3300142: RopeToy
+    3300144: RWall
+    3300146: sand1
+    3300148: sandcastle2
+    3300150: sandpit
+    3300152: screws2
+    3300154: seatofpit1
+    3300156: Tree
+    3300158: Tree 1
+    3300160: Tree10
+    3300162: Tree5
+    3300164: Tree7
+    3300166: Tree8
+    3300168: Tree9
+    3300170: Wall
+    3300172: Water
+    3300174: WaterBowl
+    4300000: Roof
+    4300002: RLeg
+    4300004: LLeg
+    4300006: Wall
+    4300008: LWall
+    4300010: Floor1
+    4300012: RWall
+    4300014: BWall
+    4300016: Roof
+    4300018: polySurface7
+    4300020: polySurface6
+    4300022: polySurface9
+    4300024: polySurface7
+    4300026: polySurface6
+    4300028: polySurface11
+    4300030: polySurface7
+    4300032: polySurface6
+    4300034: polySurface8
+    4300036: polySurface7
+    4300038: polySurface6
+    4300040: polySurface10
+    4300042: polySurface14
+    4300044: polySurface26
+    4300046: polySurface22
+    4300048: polySurface27
+    4300050: polySurface24
+    4300052: polySurface28
+    4300054: polySurface23
+    4300056: polySurface25
+    4300058: polySurface21
+    4300060: Doorknob
+    4300062: Ground
+    4300064: polySurface32
+    4300066: polySurface30
+    4300068: polySurface33
+    4300070: polySurface34
+    4300072: Bush
+    4300074: Bush1
+    4300076: Bush2
+    4300078: Bush3
+    4300080: Bush4
+    4300082: Bush1
+    4300084: Bush2
+    4300086: Bush3
+    4300088: Bush4
+    4300090: Bush1
+    4300092: Bush2
+    4300094: Bush3
+    4300096: Bush4
+    4300098: Bush
+    4300100: Bush1
+    4300102: Bush2
+    4300104: Bush3
+    4300106: Bush4
+    4300108: Tree
+    4300110: Tree5
+    4300112: Tree10
+    4300114: seatofpit1
+    4300116: sandpit
+    4300118: polySurface1
+    4300120: polySurface2
+    4300122: polySurface3
+    4300124: polySurface4
+    4300126: screws2
+    4300128: castlpillers
+    4300130: sandcastle2
+    4300132: flag
+    4300134: sand1
+    4300136: kennel1
+    4300138: Garden_Table:tabletop
+    4300140: Garden_Table:seat
+    4300142: Garden_Table:pole
+    4300144: Garden_Table:supportlegs1
+    4300146: Garden_Table:parasol
+    4300148: Bone
+    4300150: Ball
+    4300152: Kong
+    4300154: RopeToy
+    4300156: Tree
+    4300158: Tree7
+    4300160: Tree8
+    4300162: Tree9
+    4300164: FoodBowl
+    4300166: WaterBowl
+    4300168: Water
+    4300170: FoodBag
+    4300172: DogFoodCan
+    4300174: DogFoodCan2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
