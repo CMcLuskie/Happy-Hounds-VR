@@ -12,5 +12,10 @@ public class PlayerStats : MonoBehaviour {
     public bool calledDog;
     [HideInInspector]
     public bool calledSit;
+
+    void PlayWhistle()
+    {
+
+    }
     
 }
