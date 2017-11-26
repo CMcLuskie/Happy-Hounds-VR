@@ -508,7 +508,8 @@ public abstract class Dog : MonoBehaviour
         costumeList[(int)Costumes.Glasses] = GameObject.FindGameObjectWithTag("Glasses");
         costumeList[(int)Costumes.Hat] = GameObject.FindGameObjectWithTag("Hat");
 
-        for (int i = 0; i < costumeList.Count; i++)
+        costumeStringList = new List<string>();
+        for (int i = 0; i < costumeList.Count - 1; i++)
         {
             costumeStringList.Add(costumeList[i].name);
         }

@@ -6,10 +6,16 @@ using Valve.VR;
 public abstract class Controllers : MonoBehaviour {
 
     [SerializeField]
+    protected UIMGR uiScript;
+    [SerializeField]
     protected GameObject handModel;
     public Animator animator;
     [SerializeField]
     protected PlayerStats playerStatsScript;
+    [SerializeField]
+    protected GameObject otherHand;
+    [HideInInspector]
+    public bool pickedUpTablet;
 
     [SerializeField]
     protected Transform palmTransform;
@@ -54,7 +60,10 @@ public abstract class Controllers : MonoBehaviour {
     public bool TriggerDown()
     {
         if (Controller.GetHairTriggerDown())
+        {
+            animator.SetBool("HandClosed", true);
             return true;
+        }
         else
             return false;
     }
@@ -62,7 +71,10 @@ public abstract class Controllers : MonoBehaviour {
     public bool TriggerUp()
     {
         if (Controller.GetHairTriggerUp())
+        {
+            animator.SetBool("HandClosed", false);
             return true;
+        }
         else
             return false;
     }
@@ -85,7 +97,6 @@ public abstract class Controllers : MonoBehaviour {
 
     public float TriggerPos()
     {
-        print( Controller.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x);
         return Controller.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x;
     }
     public Vector2 GetTouchpadPos()
@@ -114,10 +125,14 @@ public abstract class Controllers : MonoBehaviour {
             ControllerVibrate(500);
             //HeadScratch();
         }
+        if (other.tag == "Button")
+            uiScript.UseButton(other.name);
+
     }
 
     public void OnTriggerStay(Collider other)
     {
+
         SetCollidingObject(other);
         if ((other.tag == "Head") || (other.tag == "Body"))
         {
@@ -125,6 +140,9 @@ public abstract class Controllers : MonoBehaviour {
             ControllerVibrate(500);
             //HeadScratch();
         }
+
+        
+
     }
 
     public void OnTriggerExit(Collider other)
@@ -176,8 +194,11 @@ public abstract class Controllers : MonoBehaviour {
         Debug.Log("Grab Object");
         objectInHand = collidingObject;//moves GO to players hand
         objectInHand.transform.position = palmTransform.position;
+
         if (objectInHand.tag == "Toy")
             playerStatsScript.pickedUpToy = true;
+        else if (objectInHand.tag == "Tablet")
+            pickedUpTablet = true;
 
         collidingObject = null;//removes it from colliding object variable
         var joint = AddFixJoint(); //sets joint variable
@@ -205,8 +226,11 @@ public abstract class Controllers : MonoBehaviour {
             objectInHand.GetComponent<Rigidbody>().velocity = ControllerVelocity();
             objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity();
         }
+
         if (objectInHand.tag == "Toy")
             playerStatsScript.pickedUpToy = false;
+        else if (objectInHand.tag == "Tablet")
+            pickedUpTablet = false;
 
         objectInHand = null;
     }

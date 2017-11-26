@@ -49,6 +49,10 @@ public class MainHand : Controllers {
 
     private void Update()
     {
+        if (otherHand.GetComponent<SecondHand>().pickedUpTablet)
+            animator.SetBool("Point", true);
+        else
+            animator.SetBool("Point", false);
         //Grab
         if (TriggerDown())
         {

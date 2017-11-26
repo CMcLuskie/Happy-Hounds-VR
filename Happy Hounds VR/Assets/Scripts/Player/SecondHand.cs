@@ -18,6 +18,10 @@ public class SecondHand : Controllers {
     // Update is called once per frame
     void Update()
     {
+        if (otherHand.GetComponent<SecondHand>().pickedUpTablet)
+            animator.SetBool("Point", true);
+        else
+            animator.SetBool("Point", false);
         //Grab
         if (TriggerDown())
         {

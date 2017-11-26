@@ -15,6 +15,7 @@ TagManager:
   - Crown
   - Glasses
   - Hat
+  - Button
   layers:
   - Default
   - TransparentFX

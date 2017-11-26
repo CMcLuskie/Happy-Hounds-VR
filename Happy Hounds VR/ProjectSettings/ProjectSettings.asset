@@ -502,7 +502,7 @@ PlayerSettings:
   webGLUseWasm: 0
   webGLCompressionFormat: 1
   scriptingDefineSymbols:
-    1: VIU_BINDING_INTERFACE_SWITCH;VIU_EXTERNAL_CAMERA_SWITCH;VIU_PLUGIN;VIU_STEAMVR
+    1: VIU_BINDING_INTERFACE_SWITCH;VIU_EXTERNAL_CAMERA_SWITCH;VIU_STEAMVR
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}
