@@ -132,8 +132,6 @@ public class Grid : MonoBehaviour
     public Node GetRandomNode()
     {
         int i = Random.Range(0, nodes.Length);
-        print(nodes[i].coord);
-
         return nodes[i];
     }
 }

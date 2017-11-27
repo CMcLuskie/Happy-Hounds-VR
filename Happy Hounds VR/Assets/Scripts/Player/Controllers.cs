@@ -61,7 +61,7 @@ public abstract class Controllers : MonoBehaviour {
     {
         if (Controller.GetHairTriggerDown())
         {
-            animator.SetBool("HandClosed", true);
+            animator.SetBool("Grab", true);
             return true;
         }
         else
@@ -72,7 +72,7 @@ public abstract class Controllers : MonoBehaviour {
     {
         if (Controller.GetHairTriggerUp())
         {
-            animator.SetBool("HandClosed", false);
+            animator.SetBool("Grab", false);
             return true;
         }
         else
@@ -223,8 +223,8 @@ public abstract class Controllers : MonoBehaviour {
         {
             GetComponent<FixedJoint>().connectedBody = null;
             Destroy(GetComponent<FixedJoint>());
-            objectInHand.GetComponent<Rigidbody>().velocity = ControllerVelocity();
-            objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity();
+            objectInHand.GetComponent<Rigidbody>().velocity = -ControllerVelocity();
+            objectInHand.GetComponent<Rigidbody>().angularVelocity = -ControllerAngularVelocity();
         }
 
         if (objectInHand.tag == "Toy")

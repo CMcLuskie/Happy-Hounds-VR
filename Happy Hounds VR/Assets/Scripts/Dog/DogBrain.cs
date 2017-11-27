@@ -183,14 +183,15 @@ public class DogBrain : Dog {
         #region Fetch
         if (previousBehaviour == DogBehaviours.FollowToy)
         {
-            if (!ClosetoPoint(transform.position, PlayerPos(), 1))
-            {
-                toy.transform.position = mouth.transform.position;
-            }
-            else
-            {               
-                ChangeBehaviour(DogBehaviours.Sitting);
-            }
+            if (toy)
+                if (!ClosetoPoint(transform.position, PlayerPos(), 1))
+                {
+                    toy.transform.position = mouth.transform.position;
+                }
+                else
+                {
+                    ChangeBehaviour(DogBehaviours.Sitting);
+                }
 
             #endregion
 
@@ -288,6 +289,7 @@ public class DogBrain : Dog {
         animator.SetFloat("IdleLength", idleTimer);
         if (statList[(int)Stats.Energy] < 50)
         {
+            
             if ((idleTimer > 15 && idleTimer < 16) || (idleTimer > 25 && idleTimer < 26))
                 ScratchCheck();
             else
@@ -456,9 +458,9 @@ public class DogBrain : Dog {
 
     bool OutOfBounds()
     {
-        if ((transform.position.x >= -3) || (transform.position.x <= -15))
+        if ((transform.position.x >= -2) || (transform.position.x <= -15))
             return true;
-        else if ((transform.position.z >= 4) || (transform.position.z <= -12))
+        else if ((transform.position.z >= 1) || (transform.position.z <= -13))
             return true;
         else
             return false;

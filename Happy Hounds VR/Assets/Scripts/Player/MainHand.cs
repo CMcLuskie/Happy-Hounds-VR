@@ -56,13 +56,14 @@ public class MainHand : Controllers {
         //Grab
         if (TriggerDown())
         {
+            print("cunt");
             if (collidingObject)
             {
                 GrabObject();
             }
+            
         }
 
-        HandAnimaiton(TriggerPos());
         if (TriggerUp())
         {
             if (objectInHand)
