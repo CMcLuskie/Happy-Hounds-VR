@@ -367,7 +367,6 @@ public class DogBrain : Dog {
     }
  
     
-
         public Vector3 ToyPos(GameObject toy)
         {
             Vector3 targetPos = new Vector3();
