@@ -33,7 +33,7 @@ public class MainHand : Controllers {
     //events
     public delegate void OnControllerInput(Vector3 playerPos);
     public delegate void OnDogInteraction();
-    public static event OnDogInteraction HeadScratch;
+    //public static event OnDogInteraction HeadScratch;
     public static event OnDogInteraction StopHeadScratch;
     public static event OnDogInteraction BodyScratch;
     public static event OnDogInteraction StopBodyScratch;
@@ -49,14 +49,13 @@ public class MainHand : Controllers {
 
     private void Update()
     {
-        if (otherHand.GetComponent<SecondHand>().pickedUpTablet)
-            animator.SetBool("Point", true);
-        else
-            animator.SetBool("Point", false);
+        //if (playerStatsScript.pickedUpTablet)
+        //    animator.SetBool("Point", true);
+        //else
+        //    animator.SetBool("Point", false);
         //Grab
         if (TriggerDown())
         {
-            print("cunt");
             if (collidingObject)
             {
                 GrabObject();
@@ -64,6 +63,8 @@ public class MainHand : Controllers {
             
         }
 
+        if (!isPetting)
+            StopHeadScratch();
         if (TriggerUp())
         {
             if (objectInHand)

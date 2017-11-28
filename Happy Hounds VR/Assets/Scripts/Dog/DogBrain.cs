@@ -10,6 +10,11 @@ public class DogBrain : Dog {
     [SerializeField]
     protected GameObject toyPrefab;
     public GameObject newToy;
+    [SerializeField]
+    protected GameObject shitPrefab;
+    [SerializeField]
+    protected Transform ass;
+    GameObject shitObject;
 
     [SerializeField]
     protected GameObject mouth;
@@ -37,7 +42,7 @@ public class DogBrain : Dog {
     public bool toySeen;
 
     public enum Seekable { Player, Toy };
-    public enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, FollowWater, Eating, Drinking, Sitting, PickedUp };
+    public enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, FollowWater, Eating, Drinking, Sitting, PickedUp, Shitting };
     public DogBehaviours previousBehaviour;
     DogBehaviours currentBehaviour;
     [SerializeField]
@@ -47,7 +52,7 @@ public class DogBrain : Dog {
     private void OnEnable()
     {
 
-        MainHand.HeadScratch += HeadScratch;
+        Controllers.HeadScratch += HeadScratch;
         MainHand.BodyScratch += BodyScratch;
         MainHand.StopBodyScratch += StopBodyScratch;
         MainHand.StopHeadScratch += StopHeadScratch;
@@ -59,7 +64,7 @@ public class DogBrain : Dog {
 
     private void OnDisable()
     {
-        MainHand.HeadScratch -= HeadScratch;
+        Controllers.HeadScratch -= HeadScratch;
         MainHand.BodyScratch -= BodyScratch;
         MainHand.StopBodyScratch -= StopBodyScratch;
         MainHand.StopHeadScratch -= StopHeadScratch;
@@ -157,6 +162,9 @@ public class DogBrain : Dog {
                 break;
             case DogBehaviours.Sitting:
                 Sitting();
+                break;
+            case DogBehaviours.Shitting:
+                Shitting();
                 break;
 
 
@@ -321,6 +329,9 @@ public class DogBrain : Dog {
 
     private void Wandering()
     {
+        int shit = UnityEngine.Random.Range(0, 50);
+        if (shit == 1)
+            ChangeBehaviour(DogBehaviours.Shitting);
 
         if (ClosetoPoint(transform.position, wanderPos, 1))
             wanderPos = gridScript.GetRandomNode().coord;
@@ -346,6 +357,15 @@ public class DogBrain : Dog {
 
         if (isThirsty())
             ChangeBehaviour(DogBehaviours.FollowWater);
+    }
+
+    private void Shitting()
+    {
+        animator.SetFloat("Move", 0);
+        animator.SetBool("Shit", true);
+        if (!shitObject)
+            shitObject = Instantiate(shitPrefab, ass.position, Quaternion.identity);
+        ChangeBehaviour(DogBehaviours.FollowPlayer);
     }
 
     public void ChangeBehaviour(DogBehaviours latest)
@@ -382,16 +402,19 @@ public class DogBrain : Dog {
     #region Interactions
         private void HeadScratch()
         {
-
+        Debug.Log("cunt episode 4: a new bitch");
+        animator.SetBool("Petting", true);
         }
         private void BodyScratch()
         {
 
 
         }
+
     private void StopHeadScratch()
     {
-        throw new NotImplementedException();
+        Debug.Log("cunt episode 6: return of the bastard ");
+        animator.SetBool("Petting", false);
     }
 
     private void StopBodyScratch()

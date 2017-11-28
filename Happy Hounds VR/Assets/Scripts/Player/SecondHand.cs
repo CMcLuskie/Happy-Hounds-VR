@@ -26,7 +26,7 @@ public class SecondHand : Controllers {
                 GrabObject();
             }
         }
-        if (otherHand.GetComponent<MainHand>().pickedUpTablet)
+        if (playerStatsScript.pickedUpTablet)
             animator.SetBool("Point", true);
         else
             animator.SetBool("Point", false);

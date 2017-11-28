@@ -14,8 +14,8 @@ public abstract class Controllers : MonoBehaviour {
     protected PlayerStats playerStatsScript;
     [SerializeField]
     protected GameObject otherHand;
-    [HideInInspector]
-    public bool pickedUpTablet;
+
+    public bool isPetting;
 
     [SerializeField]
     protected Transform palmTransform;
@@ -30,6 +30,9 @@ public abstract class Controllers : MonoBehaviour {
 
     public Transform playerHead;
 
+    public delegate void OnDogPet();
+    public static event OnDogPet HeadScratch;
+    //public static event OnDogPet StopHeadScratch;
     public SteamVR_Controller.Device Controller
     {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
@@ -121,9 +124,10 @@ public abstract class Controllers : MonoBehaviour {
         SetCollidingObject(other);
         if ((other.tag == "Head") || (other.tag == "Body"))
         {
-            //petting = true;
+            isPetting = true;
+            HeadScratch();
             ControllerVibrate(500);
-            //HeadScratch();
+
         }
         if (other.tag == "Button")
             uiScript.UseButton(other.name);
@@ -136,7 +140,7 @@ public abstract class Controllers : MonoBehaviour {
         SetCollidingObject(other);
         if ((other.tag == "Head") || (other.tag == "Body"))
         {
-            //petting = true;
+            isPetting = true;
             ControllerVibrate(500);
             //HeadScratch();
         }
@@ -147,14 +151,12 @@ public abstract class Controllers : MonoBehaviour {
 
     public void OnTriggerExit(Collider other)
     {
+
+        isPetting = false;
         if (!collidingObject)
             return;
         collidingObject = null;
-        if ((other.tag == "Head") || (other.tag == "Body"))
-        {
-            ControllerVibrate(0);
-
-        }
+        
     }
     #endregion
 
@@ -198,7 +200,7 @@ public abstract class Controllers : MonoBehaviour {
         if (objectInHand.tag == "Toy")
             playerStatsScript.pickedUpToy = true;
         else if (objectInHand.tag == "Tablet")
-            pickedUpTablet = true;
+            playerStatsScript.pickedUpTablet = true;
 
         collidingObject = null;//removes it from colliding object variable
         var joint = AddFixJoint(); //sets joint variable
@@ -230,7 +232,7 @@ public abstract class Controllers : MonoBehaviour {
         if (objectInHand.tag == "Toy")
             playerStatsScript.pickedUpToy = false;
         else if (objectInHand.tag == "Tablet")
-            pickedUpTablet = false;
+            playerStatsScript.pickedUpTablet = false;
 
         objectInHand = null;
     }
