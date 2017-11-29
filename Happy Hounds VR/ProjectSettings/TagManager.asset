@@ -16,6 +16,7 @@ TagManager:
   - Glasses
   - Hat
   - Button
+  - Tablet
   layers:
   - Default
   - TransparentFX

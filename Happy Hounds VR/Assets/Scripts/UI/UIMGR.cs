@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UIMGR : MonoBehaviour {
 
+#region Variables
+    #region Buttons
     [SerializeField]
     protected GameObject mainMenuObject;
     [SerializeField]
@@ -18,32 +20,49 @@ public class UIMGR : MonoBehaviour {
     protected GameObject wingObject;
     [SerializeField]
     protected GameObject glassesObject;
-    	
+    #endregion
+
+#region Button Timer
+    bool canPress;
+    [SerializeField]
+    protected float buttonPressTime;
+    #endregion
+
+    #endregion
+
+    private void Start()
+    {
+        canPress = true;
+    }
     public void UseButton(string buttonName)
     {
-        switch (buttonName)
+        if (canPress)
         {
-            case "Shop":
-                Shop();
-                break;
-            case "Stats":
-                Stats();
-                break;
-            case "Main Menu":
-                MainMenu();
-                break;
-            case "Wings":
-                Wings();
-                break;
-            case "Crown":
-                Crown();
-                break;
-            case "Hat":
-                Hat();
-                break;
-            case "Glasses":
-                Glasses();
-                break;
+            switch (buttonName)
+            {
+                case "Shop":
+                    Shop();
+                    break;
+                case "Stats":
+                    Stats();
+                    break;
+                case "Main Menu":
+                    MainMenu();
+                    break;
+                case "Wings":
+                    Wings();
+                    break;
+                case "Crown":
+                    Crown();
+                    break;
+                case "Hat":
+                    Hat();
+                    break;
+                case "Glasses":
+                    Glasses();
+                    break;
+            }
+            StartCoroutine(ButtonTimer());
         }
     }
 
@@ -106,4 +125,14 @@ public class UIMGR : MonoBehaviour {
             glassesObject.SetActive(true);
     }
     #endregion
+
+    #region Bug Prevention
+
+    IEnumerator ButtonTimer()
+    {
+        canPress = false;
+        yield return new WaitForSeconds(buttonPressTime);
+        canPress = true;
+    }
+#endregion
 }

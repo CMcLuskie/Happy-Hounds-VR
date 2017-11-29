@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class MainHand : Controllers {
 
+#region Variables
     public PlayerStats stats;
     //General variables
     //public bool mainHand;
     //public bool secondHand;
 
+#region UI
     [SerializeField]
     protected GameObject tabletObject;
-
+    [SerializeField]
+    protected GameObject indexCollider;
+    [SerializeField]
+    protected GameObject handCollider;
+#endregion
     //laser variables
     public GameObject laserPrefab;
     private GameObject laser;
@@ -39,6 +45,7 @@ public class MainHand : Controllers {
     public static event OnDogInteraction BodyScratch;
     public static event OnDogInteraction StopBodyScratch;
 
+#endregion
     private void Start()
     {
         laser = Instantiate(laserPrefab);
@@ -46,20 +53,22 @@ public class MainHand : Controllers {
 
         reticle = Instantiate(teleportReticlePrefab);
         teleportReticleTransform = reticle.transform;
+
+        indexCollider.SetActive(false);
+        handCollider.SetActive(true);
     }
 
     private void Update()
     {
         if (playerStatsScript.pickedUpTablet)
-            animator.SetBool("Point", true);
+            Point();
         else
-            animator.SetBool("Point", false);
+            DontPoint();
 
         //Grab
         if (TriggerDown())
         {
             animator.SetBool("Grab", true);
-
             if (collidingObject)
                 GrabObject();
         }
@@ -96,10 +105,7 @@ public class MainHand : Controllers {
             tabletObject.transform.position = transform.position;            
     }
 
-
-    
-
-    
+    #region teleport
 
     public void InstantiateLaser()
     {
@@ -158,4 +164,26 @@ public class MainHand : Controllers {
     {
         reticle.SetActive(false);
     }//Teleport
+
+    #endregion
+
+    #region UI
+
+    void Point()
+    {
+        animator.SetBool("Point", true);
+        indexCollider.SetActive(true);
+        handCollider.SetActive(false);
+    }
+
+    /// <summary>
+    /// it's rude
+    /// </summary>
+    void DontPoint()
+    {
+        animator.SetBool("Point", true);
+        indexCollider.SetActive(false);
+        handCollider.SetActive(true);
+    }
+#endregion
 }
