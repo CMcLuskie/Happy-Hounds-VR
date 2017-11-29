@@ -120,6 +120,10 @@ ModelImporter:
     100224: Window2
     100226: Window3
     100228: Windows
+    100230: palmleaves
+    100232: PalmTree
+    100234: Pool
+    100236: treestem
     400000: Ball
     400002: Bone
     400004: Bush
@@ -235,6 +239,10 @@ ModelImporter:
     400224: Window2
     400226: Window3
     400228: Windows
+    400230: palmleaves
+    400232: PalmTree
+    400234: Pool
+    400236: treestem
     2300000: Ball
     2300002: Bone
     2300004: Bush
@@ -323,6 +331,9 @@ ModelImporter:
     2300170: Wall
     2300172: Water
     2300174: WaterBowl
+    2300176: palmleaves
+    2300178: Pool
+    2300180: treestem
     3300000: Ball
     3300002: Bone
     3300004: Bush
@@ -411,6 +422,9 @@ ModelImporter:
     3300170: Wall
     3300172: Water
     3300174: WaterBowl
+    3300176: palmleaves
+    3300178: Pool
+    3300180: treestem
     4300000: Roof
     4300002: RLeg
     4300004: LLeg
@@ -499,6 +513,9 @@ ModelImporter:
     4300170: FoodBag
     4300172: DogFoodCan
     4300174: DogFoodCan2
+    4300176: treestem
+    4300178: palmleaves
+    4300180: Pool
   materials:
     importMaterials: 1
     materialName: 0
