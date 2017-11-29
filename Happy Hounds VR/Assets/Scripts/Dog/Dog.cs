@@ -29,7 +29,8 @@ public abstract class Dog : MonoBehaviour
 
     public float idleTimer;
 
-
+    [SerializeField]
+    protected bool demoDog;
 
     //GameObjects and components
     [SerializeField]
@@ -98,34 +99,39 @@ public abstract class Dog : MonoBehaviour
     public void InitialiseStats(float total)
     {
         InitialiseStatList();
-        #region random stats
-        //for (int i = 0; i < statList.Count; i++)
-        //{
-        //    if (total <= 50)
-        //        statList[i] = UnityEngine.Random.Range(0, total);
-        //    else
-        //        statList[i] = UnityEngine.Random.Range(0, 75);
+        if (demoDog)
+            DemoDogStats();
+        else
+            RandomDogStats(total);
+        PrintStats();
+    }
 
-        //    if (statList[i] < 20)
-        //        statList[i] += 20;
-
-        //    if (total - statList[i] < 0)
-        //        total -= statList[i];
-        //}
-        #endregion
-
-        #region demo stats
+    private void DemoDogStats()
+    {
         statList[(int)Stats.Happiness] = 80;
         statList[(int)Stats.Hunger] = 80;
         statList[(int)Stats.Thirst] = 80;
         statList[(int)Stats.Cleanliness] = 100;
         statList[(int)Stats.Obedience] = 100;
         statList[(int)Stats.Energy] = 100;
-        #endregion
-        PrintStats();
-
     }
 
+    private void RandomDogStats(float total)
+    {
+        for (int i = 0; i < statList.Count; i++)
+        {
+            if (total <= 50)
+                statList[i] = UnityEngine.Random.Range(0, total);
+            else
+                statList[i] = UnityEngine.Random.Range(0, 75);
+
+            if (statList[i] < 20)
+                statList[i] += 20;
+
+            if (total - statList[i] < 0)
+                total -= statList[i];
+        }
+    }
     private void PrintStats()
     {
         print("happiness: " + statList[(int)Stats.Happiness]);

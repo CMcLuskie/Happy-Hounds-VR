@@ -63,10 +63,7 @@ public abstract class Controllers : MonoBehaviour {
     public bool TriggerDown()
     {
         if (Controller.GetHairTriggerDown())
-        {
-            animator.SetBool("Grab", true);
             return true;
-        }
         else
             return false;
     }
@@ -74,10 +71,7 @@ public abstract class Controllers : MonoBehaviour {
     public bool TriggerUp()
     {
         if (Controller.GetHairTriggerUp())
-        {
-            animator.SetBool("Grab", false);
             return true;
-        }
         else
             return false;
     }
@@ -102,6 +96,7 @@ public abstract class Controllers : MonoBehaviour {
     {
         return Controller.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x;
     }
+
     public Vector2 GetTouchpadPos()
     {
         Vector2 touchpad = Controller.GetAxis(EVRButtonId.k_EButton_Axis0);

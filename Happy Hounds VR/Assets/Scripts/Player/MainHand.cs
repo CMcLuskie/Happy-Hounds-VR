@@ -9,7 +9,8 @@ public class MainHand : Controllers {
     //public bool mainHand;
     //public bool secondHand;
 
-    public GameObject toyPrefab;
+    [SerializeField]
+    protected GameObject tabletObject;
 
     //laser variables
     public GameObject laserPrefab;
@@ -49,24 +50,27 @@ public class MainHand : Controllers {
 
     private void Update()
     {
-        //if (playerStatsScript.pickedUpTablet)
-        //    animator.SetBool("Point", true);
-        //else
-        //    animator.SetBool("Point", false);
+        if (playerStatsScript.pickedUpTablet)
+            animator.SetBool("Point", true);
+        else
+            animator.SetBool("Point", false);
+
         //Grab
         if (TriggerDown())
         {
+            animator.SetBool("Grab", true);
+
             if (collidingObject)
-            {
                 GrabObject();
-            }
-            
         }
 
         if (!isPetting)
             StopHeadScratch();
+
         if (TriggerUp())
         {
+            animator.SetBool("Grab", false);
+
             if (objectInHand)
                 ReleaseObject();
         }
@@ -89,15 +93,7 @@ public class MainHand : Controllers {
             ControllerVibrate(500);
 
         if (GripButtonDown())
-        {
-            //Destroy(GameObject.FindGameObjectWithTag("Toy"));
-            //GameObject dog = GameObject.FindGameObjectWithTag("Body");
-            //dog.GetComponent<DogBrain>().toy = null;
-            //Instantiate(toyPrefab, transform.position, Quaternion.identity);
-        }
-
-        TriggerPos();
-
+            tabletObject.transform.position = transform.position;            
     }
 
 
