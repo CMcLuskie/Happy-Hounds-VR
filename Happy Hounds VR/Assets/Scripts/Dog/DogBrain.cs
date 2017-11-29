@@ -199,7 +199,7 @@ public class DogBrain : Dog {
                 else
                 {
                     toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                    toy.transform.position = new Vector3(toy.transform.position.x + 1, 0, toy.transform.position.z);
+                    toy.transform.position = new Vector3(toy.transform.position.x, 0, toy.transform.position.z);
                     toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     ChangeBehaviour(DogBehaviours.Sitting);
                 }

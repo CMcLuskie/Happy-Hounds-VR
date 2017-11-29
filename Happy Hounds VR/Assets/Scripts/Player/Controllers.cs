@@ -188,6 +188,7 @@ public abstract class Controllers : MonoBehaviour {
 
     public void GrabObject()
     {
+        handModel.SetActive(false);
         Debug.Log("Grab Object");
         objectInHand = collidingObject;//moves GO to players hand
         objectInHand.transform.position = palmTransform.position;
@@ -221,7 +222,7 @@ public abstract class Controllers : MonoBehaviour {
             GetComponent<FixedJoint>().connectedBody = null;
             Destroy(GetComponent<FixedJoint>());
             objectInHand.GetComponent<Rigidbody>().velocity = -ControllerVelocity();
-            objectInHand.GetComponent<Rigidbody>().angularVelocity = -ControllerAngularVelocity();
+            objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity();
         }
 
         if (objectInHand.tag == "Toy")
@@ -229,6 +230,7 @@ public abstract class Controllers : MonoBehaviour {
         else if (objectInHand.tag == "Tablet")
             playerStatsScript.pickedUpTablet = false;
 
+        handModel.SetActive(true);
         objectInHand = null;
     }
 #endregion

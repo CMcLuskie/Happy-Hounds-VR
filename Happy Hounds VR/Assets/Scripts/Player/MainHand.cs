@@ -64,8 +64,8 @@ public class MainHand : Controllers {
                 GrabObject();
         }
 
-        if (!isPetting)
-            StopHeadScratch();
+        //if (!isPetting)
+        //    StopHeadScratch();
 
         if (TriggerUp())
         {

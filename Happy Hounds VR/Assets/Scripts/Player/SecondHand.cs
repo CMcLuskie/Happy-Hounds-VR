@@ -26,10 +26,11 @@ public class SecondHand : Controllers {
                 GrabObject();
             }
         }
-        if (playerStatsScript.pickedUpTablet)
-            animator.SetBool("Point", true);
-        else
-            animator.SetBool("Point", false);
+
+        //if (playerStatsScript.pickedUpTablet)
+        //    animator.SetBool("Point", true);
+        //else
+        //    animator.SetBool("Point", false);
 
         
 
