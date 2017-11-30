@@ -234,7 +234,7 @@ public class DogBrain : Dog {
 
         if (ClosetoPoint(transform.position, ToyPos(toy), 0.5f))
         {
-            PickUpToy();
+            //PickUpToy();
             StartCoroutine(AnimationTimer(10));
             if(moveOn)
             ChangeBehaviour(DogBehaviours.FollowPlayer);
@@ -396,10 +396,10 @@ public class DogBrain : Dog {
     /// <summary>
     /// Plays toy pick up anim and attatches it to moith
     /// </summary>
-    void PickUpToy()
-    {
-        animator.SetBool("")
-    }
+    //void PickUpToy()
+    //{
+    //    animator.SetBool("");
+    //}
  
     
         public Vector3 ToyPos(GameObject toy)
