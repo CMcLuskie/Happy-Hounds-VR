@@ -15,6 +15,12 @@ public class PlayerStats : MonoBehaviour {
     [HideInInspector]
     public bool pickedUpTablet;
 
+
+    void InitBools()
+    {
+
+    }
+
     void PlayWhistle()
     {
 

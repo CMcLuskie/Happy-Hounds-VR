@@ -161,6 +161,23 @@ public abstract class Dog : MonoBehaviour
     }
     #endregion
 
+    #region Decision Check
+
+    public bool DecisionCheck(Stats stats, float parameter)
+    {
+
+        if (GetDogStats(stats) == 100)
+            return true;
+
+        float check = UnityEngine.Random.Range(0, 10) * GetDogStats(stats);
+
+        if (check >= parameter)
+            return true;
+        else return false;
+    }
+
+    #endregion
+
     #region Movement
     public virtual void Move(Direction dir, float speed)
     {

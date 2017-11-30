@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainHand : Controllers {
 
 #region Variables
-    public PlayerStats stats;
+
     //General variables
     //public bool mainHand;
     //public bool secondHand;
@@ -64,6 +64,10 @@ public class MainHand : Controllers {
             Point();
         else
             DontPoint();
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            Point();
 
         //Grab
         if (TriggerDown())
@@ -171,6 +175,7 @@ public class MainHand : Controllers {
 
     void Point()
     {
+        print("point");
         animator.SetBool("Point", true);
         indexCollider.SetActive(true);
         handCollider.SetActive(false);
@@ -181,7 +186,7 @@ public class MainHand : Controllers {
     /// </summary>
     void DontPoint()
     {
-        animator.SetBool("Point", true);
+        animator.SetBool("Point", false);
         indexCollider.SetActive(false);
         handCollider.SetActive(true);
     }

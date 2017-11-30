@@ -187,25 +187,37 @@ public abstract class Controllers : MonoBehaviour {
         handModel.SetActive(false);
         Debug.Log("Grab Object");
         objectInHand = collidingObject;//moves GO to players hand
-        
 
+        #region Food
+        if (objectInHand.name == "Food Bag")
+            playerStatsScript.pickedUpFood = true;
+#endregion
+
+        #region Toy
         if (objectInHand.tag == "Toy")
             playerStatsScript.pickedUpToy = true;
+#endregion
+
+        #region Tablet
         if (objectInHand.tag == "Tablet")
         {
-            objectInHand.transform.position = palmTransform.position;
-            if (gameObject.name == "Right Hand")
-                objectInHand.transform.position -= new Vector3(0, 0, .2f);
-
-            else if (gameObject.name=="Left Hand")
-                objectInHand.transform.position += new Vector3(0, 0, .2f);
-
             playerStatsScript.pickedUpTablet = true;
+            //puts object in players hand
+            objectInHand.transform.position = palmTransform.position;
+            #region Tablet Offset
+                        if (gameObject.name == "Right Hand")
+                            objectInHand.transform.position -= new Vector3(0, 0, .2f);
+                        else if (gameObject.name=="Left Hand")
+                            objectInHand.transform.position += new Vector3(0, 0, .2f);
+
+            #endregion
             Quaternion quaternion = new Quaternion(objectInHand.transform.rotation.x, 90, objectInHand.transform.rotation.z, objectInHand.transform.rotation.w);
             objectInHand.transform.SetPositionAndRotation(objectInHand.transform.position, quaternion);
         }
+#endregion
         else
             objectInHand.transform.position = palmTransform.position;
+
 
         collidingObject = null;//removes it from colliding object variable
         var joint = AddFixJoint(); //sets joint variable

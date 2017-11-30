@@ -30,8 +30,9 @@ public class DogBrain : Dog {
     float move;
 
     Vector3 wanderPos;
-
     
+
+    private bool moveOn;
     private bool idleTimerOn;
     private bool ballInterest;
     public bool isWaking;
@@ -234,6 +235,8 @@ public class DogBrain : Dog {
         if (ClosetoPoint(transform.position, ToyPos(toy), 0.5f))
         {
             PickUpToy();
+            StartCoroutine(AnimationTimer(10));
+            if(moveOn)
             ChangeBehaviour(DogBehaviours.FollowPlayer);
         }
     }
@@ -242,14 +245,21 @@ public class DogBrain : Dog {
     {
         if (playerStatsScript.pickedUpFood)
         {
-            GoToPoint(foodBag.position, 0.01f, 0.3f);
-            //implement jump later
+            GoToPoint(PlayerPos(), 0.01f, 0.3f);
+            if(ClosetoPoint(transform.position, PlayerPos(), 1))
+            {
+                animator.SetFloat("Move", 0);
+                animator.SetBool("Jump", true);
+            }
+                
         }
         else
         {
             GoToPoint(foodBowl.position, 0.01f, 0.3f);
             if ((ClosetoPoint(transform.position, foodBowl.transform.position, 0.3f)) && (statList[(int)Stats.Hunger] < 80))
                 ChangeBehaviour(DogBehaviours.Eating);
+            else
+                ChangeBehaviour(DogBehaviours.Wandering);
         }
             
     }
@@ -388,7 +398,7 @@ public class DogBrain : Dog {
     /// </summary>
     void PickUpToy()
     {
-        
+        animator.SetBool("")
     }
  
     
@@ -504,6 +514,13 @@ public class DogBrain : Dog {
         ballInterest = true;
     }
 
+    IEnumerator AnimationTimer(float time)
+    {
+        moveOn = false;
+        yield return new WaitForSeconds(time);
+        moveOn = true;
+
+    }
     /// <summary>
     /// this takes the dog out of its idle animations
     /// </summary>
