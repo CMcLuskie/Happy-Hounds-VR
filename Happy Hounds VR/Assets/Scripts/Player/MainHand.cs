@@ -167,8 +167,7 @@ public class MainHand : Controllers {
     public void DeactivateReticle()
     {
         reticle.SetActive(false);
-    }//Teleport
-
+    }
     #endregion
 
     #region UI

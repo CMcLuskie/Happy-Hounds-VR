@@ -43,7 +43,7 @@ public class DogBrain : Dog {
     public bool toySeen;
 
     public enum Seekable { Player, Toy };
-    public enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, FollowWater, Eating, Drinking, Sitting, PickedUp, Shitting };
+    public enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, FollowWater, Eating, Drinking, Sitting, PickedUp, Shitting, Swimming, Digging };
     public DogBehaviours previousBehaviour;
     DogBehaviours currentBehaviour;
     [SerializeField]
@@ -204,10 +204,10 @@ public class DogBrain : Dog {
                     toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     ChangeBehaviour(DogBehaviours.Sitting);
                 }
-
+        }
             #endregion
 
-
+#region Close To PLayer
             if (!ClosetoPoint(transform.position, PlayerPos(), 1))
                 GoToPoint(PlayerPos(), 0.01f, 1);
 
@@ -225,7 +225,8 @@ public class DogBrain : Dog {
                     ChangeBehaviour(DogBehaviours.Sitting);
                 }
             }
-        }
+
+        #endregion
     }
 
     private void FollowToy()
@@ -342,9 +343,9 @@ public class DogBrain : Dog {
 
     private void Wandering()
     {
-        int shit = UnityEngine.Random.Range(0, 50);
-        if (shit == 1)
-            ChangeBehaviour(DogBehaviours.Shitting);
+        //int shit = UnityEngine.Random.Range(0, 50);
+        //if (shit == 1)
+        //    ChangeBehaviour(DogBehaviours.Shitting);
 
         if (ClosetoPoint(transform.position, wanderPos, 1))
             wanderPos = gridScript.GetRandomNode().coord;
@@ -381,12 +382,30 @@ public class DogBrain : Dog {
         ChangeBehaviour(DogBehaviours.FollowPlayer);
     }
 
+    private void Swimming()
+    {
+        throw new NotImplementedException();
+    }
+
     public void ChangeBehaviour(DogBehaviours latest)
     {
         previousBehaviour = currentBehaviour;
         currentBehaviour = latest;
         if (currentBehaviour == DogBehaviours.Wandering)
             wanderPos = gridScript.GetRandomNode().coord;
+    }
+
+    public void RethinkBehaviour(GameObject coll)
+    {
+        if (currentBehaviour == DogBehaviours.Wandering)
+        {
+            if (coll.name == "PoolWall")
+                ChangeBehaviour(DogBehaviours.Swimming);
+            else if (coll.name == "SandWall")
+                ChangeBehaviour(DogBehaviours.Digging);
+            else
+                wanderPos = gridScript.GetRandomNode().coord;
+        }
     }
 #endregion
     #endregion
@@ -415,9 +434,9 @@ public class DogBrain : Dog {
     #region Interactions
         private void HeadScratch()
         {
-        Debug.Log("cunt episode 4: a new bitch");
         animator.SetBool("Petting", true);
         }
+
         private void BodyScratch()
         {
 
@@ -426,7 +445,6 @@ public class DogBrain : Dog {
 
     private void StopHeadScratch()
     {
-        Debug.Log("cunt episode 6: return of the bastard ");
         animator.SetBool("Petting", false);
     }
 
@@ -449,7 +467,7 @@ public class DogBrain : Dog {
 
         #endregion
 
-    #region Movement nad Positioning
+    #region Movement and Positioning
     private int DistanceToPoint(Vector3 target)
     {
         int difference = 0;
@@ -496,7 +514,7 @@ public class DogBrain : Dog {
     {
         if ((transform.position.x >= -2) || (transform.position.x <= -15))
             return true;
-        else if ((transform.position.z >= 1) || (transform.position.z <= -13))
+        else if ((transform.position.z >= 1) || (transform.position.z <= -14))
             return true;
         else
             return false;

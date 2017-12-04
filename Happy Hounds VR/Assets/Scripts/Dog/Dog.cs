@@ -16,6 +16,10 @@ public abstract class Dog : MonoBehaviour
      public bool attentionGiven = false;
      public int rotationSpeed;
      Vector3 goalPos;
+    [HideInInspector]
+    public bool inDogHouse;
+    [SerializeField]
+    protected Transform dogHouseExit;
 
      //Stats
      public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience, Energy };//for stats
@@ -32,6 +36,7 @@ public abstract class Dog : MonoBehaviour
     [SerializeField]
     protected bool demoDog;
 
+   
     //GameObjects and components
     [SerializeField]
     protected Animator animator;
@@ -199,10 +204,20 @@ public abstract class Dog : MonoBehaviour
         }
     }
 
+    
     #region Steering Behaviour
 
+    /// <summary>
+    /// distance is how close to point it should get
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="speed"></param>
+    /// <param name="distance"></param>
     public void GoToPoint(Vector3 pos, float speed, float distance)
     {
+        //if (inDogHouse)
+        //    StartCoroutine(LeaveArea(3, dogHouseExit.position));
+
         if (idleTimer == 0)
         {
             transform.LookAt(pos);
@@ -243,6 +258,8 @@ public abstract class Dog : MonoBehaviour
         else
             return false;
     }
+
+    
 #endregion 
 
 
@@ -493,7 +510,16 @@ public abstract class Dog : MonoBehaviour
         return false;
     }
 
-
+    IEnumerator LeaveArea(float timeTaken, Vector3 endPos)
+    {
+        float currentTime = 0;
+        while (currentTime <= timeTaken)
+        {
+            currentTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, endPos, currentTime / timeTaken);
+            yield return 0;
+        }
+    }
     #endregion
 
     #region Temp
@@ -583,8 +609,16 @@ public abstract class Dog : MonoBehaviour
                 break;
         }
     }
-#endregion
+    #endregion
 
+    #region Triggers
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name == "Kennel")
+            inDogHouse = true;
+    }
+    #endregion
 }
 
 

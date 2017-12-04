@@ -16,8 +16,9 @@ public class DogEyes : MonoBehaviour
             dogBrainScript.toy = other.gameObject;
             dogBrainScript.toySeen = true;
         }
+        else
+            dogBrainScript.RethinkBehaviour(other.gameObject);
     }
-
     
     private void OnTriggerStay(Collider other)
     {
@@ -45,4 +46,6 @@ public class DogEyes : MonoBehaviour
         tempCam.SetActive(false);
        
     }
+
+    
 }
