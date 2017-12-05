@@ -86,6 +86,22 @@ public abstract class Controllers : MonoBehaviour {
 
     public bool GripButtonUp()
     {
+        if (Controller.GetPress(SteamVR_Controller.ButtonMask.Grip))
+            return true;
+        else
+            return false;
+    }
+
+    public bool MenuButtonDown()
+    {
+        if (Controller.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+            return true;
+        else
+            return false;
+    }
+
+    public bool MenuButtonUp()
+    {
         if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Grip))
             return true;
         else

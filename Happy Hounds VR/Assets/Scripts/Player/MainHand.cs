@@ -99,6 +99,9 @@ public class MainHand : Controllers {
             DeactivateReticle();
         }
 
+        if (MenuButtonDown())
+            playerStatsScript.dogCalled = true;
+
         if (TouchpadPressUp() && shouldTeleport)
             Teleport();
 
