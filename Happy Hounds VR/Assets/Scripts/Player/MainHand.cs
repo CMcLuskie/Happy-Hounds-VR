@@ -100,7 +100,10 @@ public class MainHand : Controllers {
         }
 
         if (MenuButtonDown())
-            playerStatsScript.dogCalled = true;
+        {
+            playerStatsScript.calledDog = true;
+            audioScript.PlayClip(AudioManager.AudioSources.Player, AudioManager.ClipNames.Whistle);
+        }
 
         if (TouchpadPressUp() && shouldTeleport)
             Teleport();

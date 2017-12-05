@@ -20,9 +20,13 @@ public abstract class Dog : MonoBehaviour
     public bool inDogHouse;
     [SerializeField]
     protected Transform dogHouseExit;
+    [HideInInspector]
+    public bool inPool;
+    [SerializeField]
+    protected Transform poolExit;
 
-     //Stats
-     public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience, Energy };//for stats
+    //Stats
+    public enum Stats { Happiness, Hunger, Thirst, Cleanliness, Obedience, Energy };//for stats
      public List<float> statList;
      public enum StatDepletion { Happiness, Hunger, Thirst, Cleanliness, Obedience, Energy };
      public List<float> statDepletions;
@@ -215,8 +219,14 @@ public abstract class Dog : MonoBehaviour
     /// <param name="distance"></param>
     public void GoToPoint(Vector3 pos, float speed, float distance)
     {
-        //if (inDogHouse)
-        //    StartCoroutine(LeaveArea(3, dogHouseExit.position));
+        #region collision avoidance
+        if ((inDogHouse) &&!(isLerping))
+        {
+            isLerping = true;
+            StartCoroutine(LeaveArea(1, transform.position, dogHouseExit.position));            
+        }
+
+#endregion
 
         if (idleTimer == 0)
         {
@@ -510,13 +520,13 @@ public abstract class Dog : MonoBehaviour
         return false;
     }
 
-    IEnumerator LeaveArea(float timeTaken, Vector3 endPos)
+    IEnumerator LeaveArea(float timeTaken,Vector3 startPos, Vector3 endPos)
     {
         float currentTime = 0;
         while (currentTime <= timeTaken)
         {
             currentTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(transform.position, endPos, currentTime / timeTaken);
+            transform.position = Vector3.Lerp(startPos, endPos, currentTime / timeTaken);
             yield return 0;
         }
     }
@@ -617,6 +627,12 @@ public abstract class Dog : MonoBehaviour
     {
         if (other.gameObject.name == "Kennel")
             inDogHouse = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "Kennel")
+            inDogHouse = false;
     }
     #endregion
 }

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour {
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool pickedUpToy;
-    [HideInInspector]
+   // [HideInInspector]
     public bool pickedUpFood;
-    [HideInInspector]
+   // [HideInInspector]
     public bool calledDog;
-    [HideInInspector]
+   // [HideInInspector]
     public bool calledSit;
-    [HideInInspector]
+  //  [HideInInspector]
     public bool pickedUpTablet;
 
 

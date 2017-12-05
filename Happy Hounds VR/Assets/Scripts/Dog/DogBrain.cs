@@ -128,6 +128,7 @@ public class DogBrain : Dog {
 
     void ScratchCheck()
     {
+        animator.SetBool("Jump", false);
         animator.SetBool("Scratch", true);
     }
 
@@ -211,20 +212,21 @@ public class DogBrain : Dog {
             if (!ClosetoPoint(transform.position, PlayerPos(), 1))
                 GoToPoint(PlayerPos(), 0.01f, 1);
 
-            if (ClosetoPoint(transform.position, PlayerPos(), 1))
+        if (ClosetoPoint(transform.position, PlayerPos(), 1))
+        {
+            if ((GetDogStats(Stats.Happiness) >= 80) && GetDogStats(Stats.Energy) >= 80)
             {
-                print("clos to p[layer");
-                if ((GetDogStats(Stats.Happiness) >= 80) && GetDogStats(Stats.Energy) >= 80)
-                {
-                    statList[(int)Stats.Energy] -= Time.deltaTime;
-                    animator.SetBool("Jump", true);
-                }
-                else
-                {
-                    animator.SetBool("Jump", false);
-                    ChangeBehaviour(DogBehaviours.Sitting);
-                }
+                statList[(int)Stats.Energy] -= Time.deltaTime;
+                animator.SetBool("Jump", true);
             }
+            else
+            {
+                animator.SetBool("Jump", false);
+                ChangeBehaviour(DogBehaviours.Sitting);
+            }
+        }
+        else
+            animator.SetBool("Jump", false);
 
         #endregion
     }
@@ -384,7 +386,10 @@ public class DogBrain : Dog {
 
     private void Swimming()
     {
-        throw new NotImplementedException();
+        if (!inPool)
+        {
+            animator.SetBool("Swimming", true);
+        }
     }
 
     public void ChangeBehaviour(DogBehaviours latest)
@@ -434,6 +439,7 @@ public class DogBrain : Dog {
     #region Interactions
         private void HeadScratch()
         {
+        animator.SetBool("Jump", false);
         animator.SetBool("Petting", true);
         }
 

@@ -16,21 +16,53 @@ public class AudioManager : MonoBehaviour {
     public AudioClip whistleSound;
     public AudioClip clickSound;
 
-    enum ClipNames { Bark, Eating, Drinking, Whistle, Click };
-    enum AudioSources { Player, Dog, Tablet };
+    [HideInInspector]
+    public enum ClipNames { Bark, Eating, Drinking, Whistle, Click };
+    [HideInInspector]
+    public enum AudioSources { Player, Dog, Tablet };
 
-    void PlayClip(AudioSources sourceName, ClipNames clipName)
+    public void PlayClip(AudioSources sourceName, ClipNames clipName)
     {
         switch (sourceName)
         {
             case AudioSources.Dog:
-                dogAudio.Play();
+                switch (clipName)
+                {
+                    case ClipNames.Bark:
+                        dogAudio.PlayOneShot(barkSound);
+                        break;
+                    case ClipNames.Eating:
+                        dogAudio.PlayOneShot(eatSound);
+                        break;
+                    case ClipNames.Drinking:
+                        dogAudio.PlayOneShot(drinkSound);
+                        break;
+                    default:
+                        Debug.Log("DOG CANT FUCKING MAKE SOUND TO THAT");
+                        break;
+                }
                 break;
             case AudioSources.Player:
-                dogAudio.Play();
+                switch (clipName)
+                {
+                    case ClipNames.Whistle:
+                        playerAudio.PlayOneShot(whistleSound);
+                        break;
+                    default:
+                        Debug.Log("PLAYER CANT FUCKING MAKE SOUND TO THAT");
+                        break;
+                }
                 break;
             case AudioSources.Tablet:
-                dogAudio.Play();
+                switch (clipName)
+                {
+                    case ClipNames.Click:
+                        playerAudio.PlayOneShot(clickSound);
+                        break;
+                    default:
+                        Debug.Log("TABLET CANT FUCKING MAKE SOUND TO THAT");
+                        break;
+                }
                 break;
         }
 

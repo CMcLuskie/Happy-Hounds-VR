@@ -6,6 +6,8 @@ using Valve.VR;
 public abstract class Controllers : MonoBehaviour {
 
     [SerializeField]
+    protected AudioManager audioScript;
+    [SerializeField]
     protected UIMGR uiScript;
     [SerializeField]
     protected GameObject handModel;
@@ -94,7 +96,7 @@ public abstract class Controllers : MonoBehaviour {
 
     public bool MenuButtonDown()
     {
-        if (Controller.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+        if (Controller.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
             return true;
         else
             return false;
@@ -102,7 +104,7 @@ public abstract class Controllers : MonoBehaviour {
 
     public bool MenuButtonUp()
     {
-        if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Grip))
+        if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.ApplicationMenu))
             return true;
         else
             return false;
