@@ -185,27 +185,27 @@ public class DogBrain : Dog {
         {
             if (statList[(int)Stats.Energy] < 60)
                 ChangeBehaviour(DogBehaviours.Sitting);
-            else
-                ChangeBehaviour(DogBehaviours.Wandering);
+            //else
+            //    ChangeBehaviour(DogBehaviours.Wandering);
         }
         #endregion
 
         #region Fetch
-        if (previousBehaviour == DogBehaviours.FollowToy)
-        {
-            if (toy)
-                if (!ClosetoPoint(transform.position, PlayerPos(), 1))
-                {
-                    toy.transform.position = mouth.transform.position;
-                }
-                else
-                {
-                    toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                    toy.transform.position = new Vector3(toy.transform.position.x, 0, toy.transform.position.z);
-                    toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    ChangeBehaviour(DogBehaviours.Sitting);
-                }
-        }
+        //if (previousBehaviour == DogBehaviours.FollowToy)
+        //{
+        //    if (toy)
+        //        if (!ClosetoPoint(transform.position, PlayerPos(), 1))
+        //        {
+        //            //toy.transform.position = mouth.transform.position;
+        //        }
+        //        else
+        //        {
+        //            toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        //            toy.transform.position = new Vector3(toy.transform.position.x, 0, toy.transform.position.z);
+        //            toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        //            ChangeBehaviour(DogBehaviours.Sitting);
+        //        }
+        //}
             #endregion
 
 #region Close To PLayer
@@ -213,20 +213,8 @@ public class DogBrain : Dog {
                 GoToPoint(PlayerPos(), 0.01f, 1);
 
         if (ClosetoPoint(transform.position, PlayerPos(), 1))
-        {
-            if ((GetDogStats(Stats.Happiness) >= 80) && GetDogStats(Stats.Energy) >= 80)
-            {
-                statList[(int)Stats.Energy] -= Time.deltaTime;
-                animator.SetBool("Jump", true);
-            }
-            else
-            {
-                animator.SetBool("Jump", false);
-                ChangeBehaviour(DogBehaviours.Sitting);
-            }
-        }
-        else
-            animator.SetBool("Jump", false);
+            ChangeBehaviour(DogBehaviours.Sitting);
+
 
         #endregion
     }
@@ -262,7 +250,7 @@ public class DogBrain : Dog {
             if ((ClosetoPoint(transform.position, foodBowl.transform.position, 0.3f)) && (statList[(int)Stats.Hunger] < 80))
                 ChangeBehaviour(DogBehaviours.Eating);
             else
-                ChangeBehaviour(DogBehaviours.Wandering);
+                ChangeBehaviour(DogBehaviours.Sitting);
         }
             
     }
@@ -322,7 +310,7 @@ public class DogBrain : Dog {
         else if (idleTimer >= 20)
         {
             WakeUp();
-            ChangeBehaviour(DogBehaviours.Wandering);
+            //ChangeBehaviour(DogBehaviours.Wandering);
         }
         #endregion
 
@@ -338,9 +326,23 @@ public class DogBrain : Dog {
             ChangeBehaviour(DogBehaviours.FollowPlayer);
         }
 
-        if (toySeen)
+        if ((toySeen) && (playerStatsScript.pickedUpToy))
             ChangeBehaviour(DogBehaviours.FollowToy);
 
+        #region CloseToPlayer
+        if (ClosetoPoint(transform.position, PlayerPos(), 1))
+        {
+            if ((GetDogStats(Stats.Happiness) >= 80) && GetDogStats(Stats.Energy) >= 80)
+            {
+                statList[(int)Stats.Energy] -= Time.deltaTime;
+                animator.SetBool("Jump", true);
+            }
+            else
+            {
+                animator.SetBool("Jump", false);
+            }
+        }
+        #endregion
     }
 
     private void Wandering()
@@ -515,7 +517,10 @@ public class DogBrain : Dog {
     //}
 
    
-
+/// <summary>
+/// stevies might be a cunt
+/// </summary>
+/// <returns></returns>
     bool OutOfBounds()
     {
         if ((transform.position.x >= -2) || (transform.position.x <= -15))
