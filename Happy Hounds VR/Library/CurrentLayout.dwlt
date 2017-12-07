@@ -15,12 +15,13 @@ MonoBehaviour:
     serializedVersion: 2
 <<<<<<< HEAD
     x: 0
-    y: 54
-    width: 1920
-    height: 976
+    y: 43
+    width: 1536
+    height: 781
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
+<<<<<<< HEAD
   m_MinSize: {x: 950, y: 300}
 =======
     x: -1920
@@ -32,6 +33,9 @@ MonoBehaviour:
   m_RootView: {fileID: 2}
   m_MinSize: {x: 950, y: 442}
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+  m_MinSize: {x: 950, y: 421}
+>>>>>>> parent of ab440d70... Art Update
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -52,6 +56,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1920
 <<<<<<< HEAD
     height: 976
@@ -59,6 +64,11 @@ MonoBehaviour:
     height: 1117
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
   m_MinSize: {x: 950, y: 300}
+=======
+    width: 1536
+    height: 781
+  m_MinSize: {x: 950, y: 421}
+>>>>>>> parent of ab440d70... Art Update
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -76,7 +86,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1920
+    width: 1536
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -97,11 +107,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 956
 =======
     y: 1097
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
     width: 1920
+=======
+    y: 761
+    width: 1536
+>>>>>>> parent of ab440d70... Art Update
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -122,6 +137,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
+<<<<<<< HEAD
     width: 1920
 <<<<<<< HEAD
     height: 926
@@ -136,6 +152,14 @@ MonoBehaviour:
   vertical: 1
   controlID: 149
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    width: 1536
+    height: 731
+  m_MinSize: {x: 713, y: 371}
+  m_MaxSize: {x: 18008, y: 14021}
+  vertical: 1
+  controlID: 172
+>>>>>>> parent of ab440d70... Art Update
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -155,6 +179,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1920
 <<<<<<< HEAD
     height: 926
@@ -169,6 +194,14 @@ MonoBehaviour:
   vertical: 0
   controlID: 150
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    width: 1536
+    height: 731
+  m_MinSize: {x: 713, y: 371}
+  m_MaxSize: {x: 18008, y: 14021}
+  vertical: 0
+  controlID: 173
+>>>>>>> parent of ab440d70... Art Update
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -187,6 +220,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1097
 <<<<<<< HEAD
     height: 926
@@ -201,6 +235,14 @@ MonoBehaviour:
   vertical: 1
   controlID: 151
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    width: 878
+    height: 731
+  m_MinSize: {x: 202, y: 342}
+  m_MaxSize: {x: 4002, y: 8042}
+  vertical: 1
+  controlID: 174
+>>>>>>> parent of ab440d70... Art Update
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -217,11 +259,18 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1097
 <<<<<<< HEAD
     height: 646
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
+=======
+    width: 878
+    height: 531
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> parent of ab440d70... Art Update
   m_ActualView: {fileID: 18}
 =======
     height: 523
@@ -250,11 +299,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 646
     width: 1097
     height: 280
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
+=======
+    y: 531
+    width: 878
+    height: 200
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> parent of ab440d70... Art Update
   m_ActualView: {fileID: 16}
 =======
     y: 523
@@ -284,8 +341,9 @@ MonoBehaviour:
   - {fileID: 12}
   m_Position:
     serializedVersion: 2
-    x: 1097
+    x: 878
     y: 0
+<<<<<<< HEAD
     width: 349
 <<<<<<< HEAD
     height: 926
@@ -300,6 +358,14 @@ MonoBehaviour:
   vertical: 1
   controlID: 109
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    width: 279
+    height: 731
+  m_MinSize: {x: 279, y: 292}
+  m_MaxSize: {x: 4004, y: 8042}
+  vertical: 1
+  controlID: 34
+>>>>>>> parent of ab440d70... Art Update
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -316,9 +382,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 349
 <<<<<<< HEAD
     height: 478
+=======
+    width: 279
+    height: 377
+>>>>>>> parent of ab440d70... Art Update
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 19}
@@ -349,11 +420,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 478
     width: 349
     height: 448
   m_MinSize: {x: 279, y: 71}
   m_MaxSize: {x: 4004, y: 4021}
+=======
+    y: 377
+    width: 279
+    height: 354
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> parent of ab440d70... Art Update
   m_ActualView: {fileID: 21}
 =======
     y: 550
@@ -383,8 +462,9 @@ MonoBehaviour:
   - {fileID: 15}
   m_Position:
     serializedVersion: 2
-    x: 1446
+    x: 1157
     y: 0
+<<<<<<< HEAD
     width: 474
 <<<<<<< HEAD
     height: 926
@@ -399,6 +479,14 @@ MonoBehaviour:
   vertical: 1
   controlID: 58
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    width: 379
+    height: 731
+  m_MinSize: {x: 232, y: 371}
+  m_MaxSize: {x: 10002, y: 14021}
+  vertical: 1
+  controlID: 76
+>>>>>>> parent of ab440d70... Art Update
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -415,11 +503,18 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 474
 <<<<<<< HEAD
     height: 424
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
+=======
+    width: 379
+    height: 335
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> parent of ab440d70... Art Update
   m_ActualView: {fileID: 22}
 =======
     height: 489
@@ -448,6 +543,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 424
     width: 474
     height: 502
@@ -456,6 +552,11 @@ MonoBehaviour:
     width: 474
     height: 578
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    y: 335
+    width: 379
+    height: 396
+>>>>>>> parent of ab440d70... Art Update
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 24}
@@ -534,6 +635,7 @@ MonoBehaviour:
     serializedVersion: 2
 <<<<<<< HEAD
     x: 0
+<<<<<<< HEAD
     y: 749
     width: 1095
     height: 259
@@ -543,6 +645,11 @@ MonoBehaviour:
     width: 1095
     height: 523
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    y: 623
+    width: 876
+    height: 179
+>>>>>>> parent of ab440d70... Art Update
   m_MaximizeOnPlay: 0
   m_Gizmos: 1
   m_Stats: 0
@@ -551,6 +658,7 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_HBaseRangeMin: -215.11111
     m_HBaseRangeMax: 215.11111
@@ -562,6 +670,12 @@ MonoBehaviour:
     m_VBaseRangeMin: -253
     m_VBaseRangeMax: 253
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    m_HBaseRangeMin: -144
+    m_HBaseRangeMax: 144
+    m_VBaseRangeMin: -81
+    m_VBaseRangeMax: 81
+>>>>>>> parent of ab440d70... Art Update
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -578,6 +692,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
+<<<<<<< HEAD
       width: 1095
 <<<<<<< HEAD
       height: 242
@@ -588,12 +703,19 @@ MonoBehaviour:
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 547.5, y: 253}
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+      width: 876
+      height: 162
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 438, y: 81}
+>>>>>>> parent of ab440d70... Art Update
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
       x: -547.5
 <<<<<<< HEAD
       y: -121
@@ -604,15 +726,25 @@ MonoBehaviour:
       width: 1095
       height: 506
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+      x: -438
+      y: -81
+      width: 876
+      height: 162
+>>>>>>> parent of ab440d70... Art Update
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LastWindowPixelSize: {x: 1095, y: 259}
 =======
   m_LastWindowPixelSize: {x: 1095, y: 523}
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+  m_LastWindowPixelSize: {x: 876, y: 179}
+>>>>>>> parent of ab440d70... Art Update
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -666,10 +798,11 @@ MonoBehaviour:
     serializedVersion: 2
 <<<<<<< HEAD
     x: 0
-    y: 103
-    width: 1095
-    height: 625
+    y: 92
+    width: 876
+    height: 510
   m_SceneLighting: 1
+<<<<<<< HEAD
   lastFramingTime: 1071.933421729963
 =======
     x: -1920
@@ -679,10 +812,14 @@ MonoBehaviour:
   m_SceneLighting: 1
   lastFramingTime: 15046.111657658974
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+  lastFramingTime: 4277.795341128205
+>>>>>>> parent of ab440d70... Art Update
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Target: {x: -7.8356953, y: -1.2933693, z: -8.779297}
     speed: 2
@@ -692,6 +829,11 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -8.083174, y: 1.3962759, z: -3.4722571}
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    m_Target: {x: 2.9432902, y: 6.2283344, z: 7.9841776}
+    speed: 2
+    m_Value: {x: 2.9432902, y: 6.2283344, z: 7.9841776}
+>>>>>>> parent of ab440d70... Art Update
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -715,12 +857,17 @@ MonoBehaviour:
       m_Value: 0
   m_Rotation:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 0.35117733, y: 0.0025745698, z: -0.0008971042, w: 0.93632376}
+=======
+    m_Target: {x: -0.3337843, y: -0.47696185, z: 0.20204969, w: -0.78757316}
+>>>>>>> parent of ab440d70... Art Update
     speed: 2
-    m_Value: {x: 0.3511712, y: 0.0025745246, z: -0.0008970885, w: 0.9363074}
+    m_Value: {x: -0.3337843, y: -0.47696185, z: 0.20204969, w: -0.78757316}
   m_Size:
-    m_Target: 63.98561
+    m_Target: 14.8046255
     speed: 2
+<<<<<<< HEAD
     m_Value: 63.98561
 =======
     m_Target: {x: 0.32599655, y: -0.6283856, z: 0.32745892, w: 0.6258023}
@@ -731,6 +878,9 @@ MonoBehaviour:
     speed: 2
     m_Value: 0.08772659
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    m_Value: 14.8046255
+>>>>>>> parent of ab440d70... Art Update
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -764,14 +914,22 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1099
     y: 103
     width: 345
     height: 457
+=======
+    x: 880
+    y: 92
+    width: 275
+    height: 356
+>>>>>>> parent of ab440d70... Art Update
   m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 653}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 1afcffff000000009a3a0000f83a0000263c00000a3d0000743f0000843f0000ea410000ee4100005c430000324600003e480000d6480000da4e0000565300009a540000
 =======
     x: -821
@@ -784,6 +942,9 @@ MonoBehaviour:
     m_LastClickedID: 23540
     m_ExpandedIDs: e404c6ffd207f7ff3af6ffffeaf6ffff00f7ffff20f7ffff2af7ffff3af7ffff42f7ffff92f7ffff9ef7ffffb4f7ffffd4f7ffffdef7fffff6f7ffffbaf9ffff0000000094440000484600005e48000022490000b24e0000185000007852000056530000be530000705500007c55000086560000545700008e57000098570000c4580000e058000072590000e45a0000265d0000385e00009e5e0000
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    m_ExpandedIDs: 4aa9fdff54a9fdffcea9fdff58aafdff0acafdff28e0fdffe6f9fdff2215feff2e15feff4215feffcaf3ffff00000000ba430000a8440000f8440000ca45000098460000944900002e4a0000da4a0000d84e00006a5000009c52000018570000725a0000845d0000145e0000be5e00001c620000
+>>>>>>> parent of ab440d70... Art Update
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -857,6 +1018,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1099
     y: 581
     width: 345
@@ -867,10 +1029,16 @@ MonoBehaviour:
     width: 345
     height: 496
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    x: 880
+    y: 469
+    width: 275
+    height: 333
+>>>>>>> parent of ab440d70... Art Update
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
-    m_CachedPref: -239
+    m_CachedPref: 239
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
@@ -897,10 +1065,17 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1448
     y: 103
     width: 472
     height: 403
+=======
+    x: 1159
+    y: 92
+    width: 377
+    height: 314
+>>>>>>> parent of ab440d70... Art Update
 --- !u!114 &23
 =======
     x: -472
@@ -931,6 +1106,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1448
     y: 527
     width: 472
@@ -941,6 +1117,12 @@ MonoBehaviour:
     width: 472
     height: 557
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    x: 1159
+    y: 427
+    width: 377
+    height: 375
+>>>>>>> parent of ab440d70... Art Update
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -954,16 +1136,21 @@ MonoBehaviour:
     m_SearchArea: 0
     m_Folders:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/Art/Environment/HouseV3Colour.fbm/Materials
+=======
+    - Assets/Art
+>>>>>>> parent of ab440d70... Art Update
   m_ViewMode: 1
   m_StartGridSize: 44
   m_LastFolders:
-  - Assets/Art/Environment/HouseV3Colour.fbm/Materials
+  - Assets/Art
   m_LastFoldersGridSize: 44
-  m_LastProjectPath: C:\Users\danni\Documents\GitHub\Happy-Hounds-VR\Happy Hounds
+  m_LastProjectPath: C:\Users\RyanH\Documents\GitHub\Happy-Hounds-VR\Happy Hounds
     VR
   m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 3a2d0000
     m_LastClickedID: 11578
@@ -984,6 +1171,12 @@ MonoBehaviour:
     m_LastClickedID: 16304
     m_ExpandedIDs: 0000000052310000b6310000fa310000323300009c330000da3400004e37000092370000823a0000903b0000cc3b0000b23c00003e3e0000b03f000042410000a04100002466000026660000286600002a6600002c6600002e6600003066000000ca9a3bffffff7f
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 5e330000
+    m_LastClickedID: 13150
+    m_ExpandedIDs: 00000000b83200001c3300005e33000098340000fe3400003636000092380000d6380000b83b0000be3c0000fa3c0000da3d00005e3f000060420000c04200000c6900000e690000106900001269000014690000166900001869000000ca9a3bffffff7f
+>>>>>>> parent of ab440d70... Art Update
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1012,10 +1205,14 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000002a2700008e270000d0270000042900006e2900006a3000007a3100001e34000080360000e0360000225c0000245c0000265c0000285c00002a5c00002c5c00002e5c0000
 =======
     m_ExpandedIDs: 0000000052310000b6310000fa310000323300009c330000da3400004e37000092370000823a0000903b0000cc3b0000b23c00003e3e000042410000a04100002466000026660000286600002a6600002c6600002e66000030660000
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+    m_ExpandedIDs: 00000000b83200001c3300005e33000098340000fe3400003636000092380000d6380000b83b0000be3c0000fa3c0000da3d00005e3f000060420000c04200000c6900000e6900001069000012690000146900001669000018690000
+>>>>>>> parent of ab440d70... Art Update
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1043,7 +1240,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 826200008e2d0000e43100005e300000a22e0000102c0000aa990000b498000078990000307f0000403300009a3500001a3400004c040100c62b00001a2d00000e2e0000742a0000fa2c000088330000de360000e42c0000000000005a3801004e380100502d0000b8300000b82d0000262e0000a629000016d10a00d432000094300000
+    m_ExpandedInstanceIDs: 826200008e2d0000e43100005e300000a22e0000102c0000aa990000b498000078990000307f0000403300009a3500001a3400004c040100c62b00001a2d00000e2e0000742a0000fa2c000088330000de360000e42c0000000000005a3801004e380100502d0000b8300000b82d0000262e0000a629000016d10a00
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1067,10 +1264,14 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 48}
     m_GridSize: 44
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_DirectoriesAreaWidth: 221
 =======
   m_DirectoriesAreaWidth: 228
 >>>>>>> 479a14aa6af2789bb123be8bfe25455e55bf8c20
+=======
+  m_DirectoriesAreaWidth: 110
+>>>>>>> parent of ab440d70... Art Update
