@@ -497,8 +497,17 @@ public abstract class Dog : MonoBehaviour
     public  void ResetPosition()
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+        Quaternion quar = new Quaternion(0, 0, 0, transform.rotation.w);
         transform.SetPositionAndRotation(new Vector3(-10, 0, -10), quar);
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+    }
+
+    public void ResetRotation()
+    {
+        print("does this");
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        Quaternion quar = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+        transform.SetPositionAndRotation(transform.position, quar);
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 

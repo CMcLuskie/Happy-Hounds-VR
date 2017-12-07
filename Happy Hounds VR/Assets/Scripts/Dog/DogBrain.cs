@@ -37,10 +37,11 @@ public class DogBrain : Dog {
     private bool ballInterest;
     public bool isWaking;
 
-   // [HideInInspector]
+    [HideInInspector]
     public GameObject toy;
     [HideInInspector]
     public bool toySeen;
+    private bool pickedUpToy;
 
     public enum Seekable { Player, Toy };
     public enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, FollowWater, Eating, Drinking, Sitting, PickedUp, Shitting, Swimming, Digging };
@@ -96,6 +97,9 @@ public class DogBrain : Dog {
     {
         DecisionMaker(currentBehaviour);
 
+        if ((transform.rotation.x != 0)||(transform.rotation.z !=0))
+            ResetRotation();
+
         if (transform.position.y < 0)
             ResetYPosition();
 
@@ -115,6 +119,8 @@ public class DogBrain : Dog {
                 isWaking = false;
             }
         }
+
+        
 
         #region StatModification
         statList[(int)Stats.Hunger] -= Time.deltaTime / statList[(int)StatDepletion.Hunger];
@@ -191,25 +197,25 @@ public class DogBrain : Dog {
         #endregion
 
         #region Fetch
-        //if (previousBehaviour == DogBehaviours.FollowToy)
-        //{
-        //    if (toy)
-        //        if (!ClosetoPoint(transform.position, PlayerPos(), 1))
-        //        {
-        //            //toy.transform.position = mouth.transform.position;
-        //        }
-        //        else
-        //        {
-        //            toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        //            toy.transform.position = new Vector3(toy.transform.position.x, 0, toy.transform.position.z);
-        //            toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        //            ChangeBehaviour(DogBehaviours.Sitting);
-        //        }
-        //}
-            #endregion
+        if (previousBehaviour == DogBehaviours.FollowToy)
+        {
+            if ((pickedUpToy) && (toy))
+                if (!ClosetoPoint(transform.position, PlayerPos(), 1))
+                {
+                    toy.transform.position = mouth.transform.position;
+                }
+                else
+                {
+                    toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    toy.transform.position = new Vector3(toy.transform.position.x, 0, toy.transform.position.z);
+                    toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    ChangeBehaviour(DogBehaviours.Sitting);
+                }
+        }
+        #endregion
 
-#region Close To PLayer
-            if (!ClosetoPoint(transform.position, PlayerPos(), 1))
+        #region Close To PLayer
+        if (!ClosetoPoint(transform.position, PlayerPos(), 1))
                 GoToPoint(PlayerPos(), 0.01f, 1);
 
         if (ClosetoPoint(transform.position, PlayerPos(), 1))
@@ -225,10 +231,10 @@ public class DogBrain : Dog {
 
         if (ClosetoPoint(transform.position, ToyPos(toy), 0.5f))
         {
-            //PickUpToy();
+            PickUpToy();
             StartCoroutine(AnimationTimer(10));
-            if(moveOn)
-            ChangeBehaviour(DogBehaviours.FollowPlayer);
+            if (moveOn)
+                ChangeBehaviour(DogBehaviours.FollowPlayer);
         }
     }
 
@@ -330,18 +336,18 @@ public class DogBrain : Dog {
             ChangeBehaviour(DogBehaviours.FollowToy);
 
         #region CloseToPlayer
-        if (ClosetoPoint(transform.position, PlayerPos(), 1))
-        {
-            if ((GetDogStats(Stats.Happiness) >= 80) && GetDogStats(Stats.Energy) >= 80)
-            {
-                statList[(int)Stats.Energy] -= Time.deltaTime;
-                animator.SetBool("Jump", true);
-            }
-            else
-            {
-                animator.SetBool("Jump", false);
-            }
-        }
+        //if (ClosetoPoint(transform.position, PlayerPos(), 1))
+        //{
+        //    if ((GetDogStats(Stats.Happiness) >= 80) && GetDogStats(Stats.Energy) >= 80)
+        //    {
+        //        statList[(int)Stats.Energy] -= Time.deltaTime;
+        //        animator.SetBool("Jump", true);
+        //    }
+        //    else
+        //    {
+        //        animator.SetBool("Jump", false);
+        //    }
+        //}
         #endregion
     }
 
@@ -414,7 +420,7 @@ public class DogBrain : Dog {
                 wanderPos = gridScript.GetRandomNode().coord;
         }
     }
-#endregion
+    #endregion
     #endregion
 
     #region Toy
@@ -422,13 +428,14 @@ public class DogBrain : Dog {
     /// <summary>
     /// Plays toy pick up anim and attatches it to moith
     /// </summary>
-    //void PickUpToy()
-    //{
-    //    animator.SetBool("");
-    //}
- 
-    
-        public Vector3 ToyPos(GameObject toy)
+    void PickUpToy()
+    {
+        animator.SetBool("PickUp", true);
+        pickedUpToy = true;
+    }
+
+
+    public Vector3 ToyPos(GameObject toy)
         {
             Vector3 targetPos = new Vector3();
             targetPos = toy.transform.position;

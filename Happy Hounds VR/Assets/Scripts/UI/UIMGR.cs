@@ -20,9 +20,13 @@ public class UIMGR : MonoBehaviour {
     protected GameObject wingObject;
     [SerializeField]
     protected GameObject glassesObject;
+    [SerializeField]
+    protected GameObject rightDugOjects;
+    [SerializeField]
+    protected GameObject leftDugObject;
     #endregion
 
-#region Button Timer
+    #region Button Timer
     bool canPress;
     [SerializeField]
     protected float buttonPressTime;
@@ -61,6 +65,13 @@ public class UIMGR : MonoBehaviour {
                 case "Glasses":
                     Glasses();
                     break;
+                case "Arrow Right":
+                    ArrowRight();
+                    break;
+                case "Arrow Left":
+                    ArrowRight();
+                    break;
+
             }
             StartCoroutine(ButtonTimer());
         }
@@ -123,6 +134,18 @@ public class UIMGR : MonoBehaviour {
             glassesObject.SetActive(false);
         else
             glassesObject.SetActive(true);
+    }
+
+    void ArrowRight()
+    {
+        leftDugObject.SetActive(false);
+        rightDugOjects.SetActive(true);
+    }
+
+    void ArrowLeft()
+    {
+        rightDugOjects.SetActive(false);
+        leftDugObject.SetActive(true);      
     }
     #endregion
 
