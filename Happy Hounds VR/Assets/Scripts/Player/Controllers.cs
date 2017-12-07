@@ -137,7 +137,7 @@ public abstract class Controllers : MonoBehaviour {
         SetCollidingObject(other);
         if ((other.tag == "Head") || (other.tag == "Body"))
         {
-            isPetting = true;
+            playerStatsScript.pettingDog = true;
             HeadScratch();
             ControllerVibrate(500);
 
@@ -153,15 +153,15 @@ public abstract class Controllers : MonoBehaviour {
         SetCollidingObject(other);
         if ((other.tag == "Head") || (other.tag == "Body"))
         {
-            isPetting = true;
+            playerStatsScript.pettingDog = true;
             ControllerVibrate(500);
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-
-        isPetting = false;
+        
+        playerStatsScript.pettingDog = false;
         if (!collidingObject)
             return;
         collidingObject = null;
@@ -260,8 +260,8 @@ public abstract class Controllers : MonoBehaviour {
         {
             GetComponent<FixedJoint>().connectedBody = null;
             Destroy(GetComponent<FixedJoint>());
-            objectInHand.GetComponent<Rigidbody>().velocity = -ControllerVelocity();
-            objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity();
+            objectInHand.GetComponent<Rigidbody>().velocity = ControllerVelocity();
+            objectInHand.GetComponent<Rigidbody>().angularVelocity = -ControllerAngularVelocity();
         }
 
         if (objectInHand.tag == "Toy")

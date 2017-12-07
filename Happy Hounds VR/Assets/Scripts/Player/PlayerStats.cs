@@ -14,7 +14,8 @@ public class PlayerStats : MonoBehaviour {
     public bool calledSit;
   //  [HideInInspector]
     public bool pickedUpTablet;
-
+    //[HideInInspector]
+    public bool pettingDog;
 
     void InitBools()
     {

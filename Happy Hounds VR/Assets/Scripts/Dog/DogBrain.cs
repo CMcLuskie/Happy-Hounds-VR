@@ -37,7 +37,7 @@ public class DogBrain : Dog {
     private bool ballInterest;
     public bool isWaking;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject toy;
     [HideInInspector]
     public bool toySeen;
@@ -120,7 +120,10 @@ public class DogBrain : Dog {
             }
         }
 
-        
+        if (playerStatsScript.pettingDog)
+            animator.SetBool("Petting", true);
+        else
+            animator.SetBool("Petting", false);
 
         #region StatModification
         statList[(int)Stats.Hunger] -= Time.deltaTime / statList[(int)StatDepletion.Hunger];
