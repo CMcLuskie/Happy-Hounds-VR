@@ -23,7 +23,7 @@ public class SecondHand : Controllers {
         {
             if (collidingObject)
             {
-                GrabObject();
+                //GrabObject();
             }
         }
 

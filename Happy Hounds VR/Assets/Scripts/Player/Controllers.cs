@@ -200,48 +200,48 @@ public abstract class Controllers : MonoBehaviour {
 
 
 
-    public void GrabObject()
-    {
-        handModel.SetActive(false);
-        Debug.Log("Grab Object");
-        objectInHand = collidingObject;//moves GO to players hand
+  //  public void GrabObject()
+//    {
+//        handModel.SetActive(false);
+//        Debug.Log("Grab Object");
+//        objectInHand = collidingObject;//moves GO to players hand
 
-        #region Food
-        if (objectInHand.name == "Food Bag")
-            playerStatsScript.pickedUpFood = true;
-#endregion
+//        #region Food
+//        if (objectInHand.name == "Food Bag")
+//            playerStatsScript.pickedUpFood = true;
+//#endregion
 
-        #region Toy
-        if (objectInHand.tag == "Toy")
-            playerStatsScript.pickedUpToy = true;
-#endregion
+//        #region Toy
+//        if (objectInHand.tag == "Toy")
+//            playerStatsScript.pickedUpToy = true;
+//#endregion
 
-        #region Tablet
-        if (objectInHand.tag == "Tablet")
-        {
-            playerStatsScript.pickedUpTablet = true;
-            //puts object in players hand
-            objectInHand.transform.position = palmTransform.position;
-            #region Tablet Offset
-                        if (gameObject.name == "Right Hand")
-                            objectInHand.transform.position -= new Vector3(0, 0, .2f);
-                        else if (gameObject.name=="Left Hand")
-                            objectInHand.transform.position += new Vector3(0, 0, .2f);
+//        #region Tablet
+//        if (objectInHand.tag == "Tablet")
+//        {
+//            playerStatsScript.pickedUpTablet = true;
+//            //puts object in players hand
+//            objectInHand.transform.position = palmTransform.position;
+//            #region Tablet Offset
+//                        if (gameObject.name == "Right Hand")
+//                            objectInHand.transform.position -= new Vector3(0, 0, .2f);
+//                        else if (gameObject.name=="Left Hand")
+//                            objectInHand.transform.position += new Vector3(0, 0, .2f);
 
-            #endregion
-            Quaternion quaternion = new Quaternion(objectInHand.transform.rotation.x, 90, objectInHand.transform.rotation.z, objectInHand.transform.rotation.w);
-            objectInHand.transform.SetPositionAndRotation(objectInHand.transform.position, quaternion);
-        }
-#endregion
-        else
-            objectInHand.transform.position = palmTransform.position;
+//            #endregion
+//            Quaternion quaternion = new Quaternion(objectInHand.transform.rotation.x, 90, objectInHand.transform.rotation.z, objectInHand.transform.rotation.w);
+//            objectInHand.transform.SetPositionAndRotation(objectInHand.transform.position, quaternion);
+//        }
+//#endregion
+//        else
+//            objectInHand.transform.position = palmTransform.position;
 
 
-        collidingObject = null;//removes it from colliding object variable
-        var joint = AddFixJoint(); //sets joint variable
-        joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+//        collidingObject = null;//removes it from colliding object variable
+//        var joint = AddFixJoint(); //sets joint variable
+//        joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
 
-    }
+//    }
 
 
     private FixedJoint AddFixJoint()
@@ -261,7 +261,7 @@ public abstract class Controllers : MonoBehaviour {
             GetComponent<FixedJoint>().connectedBody = null;
             Destroy(GetComponent<FixedJoint>());
             objectInHand.GetComponent<Rigidbody>().velocity = ControllerVelocity();
-            objectInHand.GetComponent<Rigidbody>().angularVelocity = -ControllerAngularVelocity();
+            objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity() * 1;
         }
 
         if (objectInHand.tag == "Toy")

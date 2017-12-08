@@ -73,8 +73,8 @@ public class MainHand : Controllers {
         if (TriggerDown())
         {
             animator.SetBool("Grab", true);
-            if (collidingObject)
-                GrabObject();
+            //if (collidingObject)
+                //GrabObject();
         }
 
         //if (!isPetting)
