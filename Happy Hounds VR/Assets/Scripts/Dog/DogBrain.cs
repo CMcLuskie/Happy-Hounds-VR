@@ -55,9 +55,7 @@ public class DogBrain : Dog {
     {
 
         Controllers.HeadScratch += HeadScratch;
-        MainHand.BodyScratch += BodyScratch;
-        MainHand.StopBodyScratch += StopBodyScratch;
-        MainHand.StopHeadScratch += StopHeadScratch;
+
         SecondHand.DogSit += DogSit;
         SecondHand.DogCall += DogCall;
     }
@@ -67,9 +65,7 @@ public class DogBrain : Dog {
     private void OnDisable()
     {
         Controllers.HeadScratch -= HeadScratch;
-        MainHand.BodyScratch -= BodyScratch;
-        MainHand.StopBodyScratch -= StopBodyScratch;
-        MainHand.StopHeadScratch -= StopHeadScratch;
+    
         SecondHand.DogSit -= DogSit;
         SecondHand.DogCall -= DogCall;
     }

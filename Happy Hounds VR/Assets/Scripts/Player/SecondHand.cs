@@ -21,10 +21,7 @@ public class SecondHand : Controllers {
         //Grab
         if (TriggerDown())
         {
-            if (collidingObject)
-            {
-                //GrabObject();
-            }
+
         }
 
         //if (playerStatsScript.pickedUpTablet)
@@ -37,38 +34,18 @@ public class SecondHand : Controllers {
 
         if (TriggerUp())
         {
-            if (objectInHand)
-                ReleaseObject();
+
         }
 
         if (TouchpadPressDown())
         {
-
-            //if (GetTouchpadPos().x > 0)
-            //{
-            //    DogCall(playerHead.transform.position);
-            //}
-            //else if (GetTouchpadPos().x < 0)
-            //{
-            //   //DogSit(playerHead.transform.position);
-            //}
-
-            //if (GetTouchpadPos().x > 0)
-            //{
-            //    DogCall(playerHead.transform.position);
-            //}
-            //else if (GetTouchpadPos().x < 0)
-            //{
-
-            //   //DogSit(playerHead.transform.position);
-            //}
 
                 
         }
 
         if (GripButtonDown())
         {
-            dogBrainScript.ChangeBehaviour(DogBrain.DogBehaviours.FollowPlayer);
+
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIMGR : MonoBehaviour {
 
@@ -158,4 +159,9 @@ public class UIMGR : MonoBehaviour {
         canPress = true;
     }
 #endregion
+
+    public void Test()
+    {
+        Debug.Log("Test");
+    }
 }

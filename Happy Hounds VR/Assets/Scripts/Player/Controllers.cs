@@ -9,8 +9,7 @@ public abstract class Controllers : MonoBehaviour {
     protected AudioManager audioScript;
     [SerializeField]
     protected UIMGR uiScript;
-    [SerializeField]
-    protected GameObject handModel;
+
     public Animator animator;
     [SerializeField]
     protected PlayerStats playerStatsScript;
@@ -133,8 +132,7 @@ public abstract class Controllers : MonoBehaviour {
 
 #region Triggers
     public void OnTriggerEnter(Collider other)
-    {
-        SetCollidingObject(other);
+    {;
         if ((other.tag == "Head") || (other.tag == "Body"))
         {
             playerStatsScript.pettingDog = true;
@@ -149,8 +147,6 @@ public abstract class Controllers : MonoBehaviour {
 
     public void OnTriggerStay(Collider other)
     {
-
-        SetCollidingObject(other);
         if ((other.tag == "Head") || (other.tag == "Body"))
         {
             playerStatsScript.pettingDog = true;
@@ -188,89 +184,4 @@ public abstract class Controllers : MonoBehaviour {
     }
     #endregion
 
-#region pick up
-    public void SetCollidingObject(Collider col)
-    {
-        if (collidingObject || !col.GetComponent<Rigidbody>())//doesnt make GO potential grab if player already is holding something
-        {
-            return;
-        }
-        collidingObject = col.gameObject;//assigns object as potential grab object
-    }
-
-
-
-  //  public void GrabObject()
-//    {
-//        handModel.SetActive(false);
-//        Debug.Log("Grab Object");
-//        objectInHand = collidingObject;//moves GO to players hand
-
-//        #region Food
-//        if (objectInHand.name == "Food Bag")
-//            playerStatsScript.pickedUpFood = true;
-//#endregion
-
-//        #region Toy
-//        if (objectInHand.tag == "Toy")
-//            playerStatsScript.pickedUpToy = true;
-//#endregion
-
-//        #region Tablet
-//        if (objectInHand.tag == "Tablet")
-//        {
-//            playerStatsScript.pickedUpTablet = true;
-//            //puts object in players hand
-//            objectInHand.transform.position = palmTransform.position;
-//            #region Tablet Offset
-//                        if (gameObject.name == "Right Hand")
-//                            objectInHand.transform.position -= new Vector3(0, 0, .2f);
-//                        else if (gameObject.name=="Left Hand")
-//                            objectInHand.transform.position += new Vector3(0, 0, .2f);
-
-//            #endregion
-//            Quaternion quaternion = new Quaternion(objectInHand.transform.rotation.x, 90, objectInHand.transform.rotation.z, objectInHand.transform.rotation.w);
-//            objectInHand.transform.SetPositionAndRotation(objectInHand.transform.position, quaternion);
-//        }
-//#endregion
-//        else
-//            objectInHand.transform.position = palmTransform.position;
-
-
-//        collidingObject = null;//removes it from colliding object variable
-//        var joint = AddFixJoint(); //sets joint variable
-//        joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
-
-//    }
-
-
-    private FixedJoint AddFixJoint()
-    {
-        //creates new joint
-        FixedJoint fx = gameObject.AddComponent<FixedJoint>();
-        //sets joint so it doesnt break easily
-        fx.breakForce = 20000;
-        fx.breakTorque = 20000;
-        return fx;
-    }
-
-    public void ReleaseObject()
-    {
-        if (GetComponent<FixedJoint>())
-        {
-            GetComponent<FixedJoint>().connectedBody = null;
-            Destroy(GetComponent<FixedJoint>());
-            objectInHand.GetComponent<Rigidbody>().velocity = ControllerVelocity();
-            objectInHand.GetComponent<Rigidbody>().angularVelocity = ControllerAngularVelocity() * 1;
-        }
-
-        if (objectInHand.tag == "Toy")
-            playerStatsScript.pickedUpToy = false;
-        else if (objectInHand.tag == "Tablet")
-            playerStatsScript.pickedUpTablet = false;
-
-        handModel.SetActive(true);
-        objectInHand = null;
-    }
-#endregion
 }
