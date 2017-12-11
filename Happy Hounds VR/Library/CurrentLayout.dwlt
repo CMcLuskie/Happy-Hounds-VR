@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 442}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -105,10 +105,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 711, y: 371}
-  m_MaxSize: {x: 18008, y: 14021}
+  m_MinSize: {x: 713, y: 392}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 1
-  controlID: 45
+  controlID: 120
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 947
-  m_MinSize: {x: 711, y: 371}
-  m_MaxSize: {x: 18008, y: 14021}
+  m_MinSize: {x: 713, y: 392}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 46
+  controlID: 121
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,10 +154,10 @@ MonoBehaviour:
     y: 0
     width: 1097
     height: 947
-  m_MinSize: {x: 200, y: 321}
-  m_MaxSize: {x: 4002, y: 8021}
+  m_MinSize: {x: 202, y: 342}
+  m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 180
+  controlID: 11
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -203,8 +203,8 @@ MonoBehaviour:
     y: 464
     width: 1097
     height: 483
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_MinSize: {x: 279, y: 292}
   m_MaxSize: {x: 4004, y: 8042}
   vertical: 1
-  controlID: 135
+  controlID: 182
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -252,8 +252,8 @@ MonoBehaviour:
     y: 0
     width: 349
     height: 488
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -278,8 +278,8 @@ MonoBehaviour:
     y: 488
     width: 349
     height: 459
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 279, y: 71}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -305,10 +305,10 @@ MonoBehaviour:
     y: 0
     width: 474
     height: 947
-  m_MinSize: {x: 232, y: 371}
-  m_MaxSize: {x: 10002, y: 14021}
+  m_MinSize: {x: 232, y: 392}
+  m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 47
+  controlID: 122
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -327,8 +327,8 @@ MonoBehaviour:
     y: 0
     width: 474
     height: 434
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -513,14 +513,14 @@ MonoBehaviour:
     width: 1095
     height: 443
   m_SceneLighting: 1
-  lastFramingTime: 30482.299715231897
+  lastFramingTime: 26290.769691729853
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.3380289, y: 0.62016124, z: -3.1479216}
+    m_Target: {x: -9.465827, y: -2.0278032, z: -15.433078}
     speed: 2
-    m_Value: {x: -1.3380289, y: 0.62016124, z: -3.1479216}
+    m_Value: {x: -9.465827, y: -2.0278032, z: -15.433078}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -543,13 +543,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.030111957, y: 0.7030736, z: -0.029721908, w: 0.70985734}
+    m_Target: {x: -0.0031847628, y: 0.9367945, z: -0.3497564, w: -0.008734185}
     speed: 2
-    m_Value: {x: 0.030111957, y: 0.7030736, z: -0.029721908, w: 0.70985734}
+    m_Value: {x: -0.003184763, y: 0.9367946, z: -0.34975642, w: -0.008734186}
   m_Size:
-    m_Target: 3.40835
+    m_Target: 4.422268
     speed: 2
-    m_Value: 3.40835
+    m_Value: 4.422268
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -587,24 +587,24 @@ MonoBehaviour:
     width: 345
     height: 467
   m_TreeViewState:
-    scrollPos: {x: 0, y: 750}
-    m_SelectedIDs: 348bf1ff328bf1ff
-    m_LastClickedID: -947406
-    m_ExpandedIDs: 5238dcffb204deff06d2deff007ee0fffaeae3ffd092e4ff388bf1ffe692f1ffea92f1fffa92f1fffe92f1ff4293f1ff4e94f1ff86c5f1ff8efaffff90faffff14fcffff0000000068410000484a00001c4d000000580000f6e10200520c03008c0c0300100d0300f80d03009a0f0300f2120300de17030088180300701a03009a1d030084240300
+    scrollPos: {x: 0, y: 734}
+    m_SelectedIDs: 86590000
+    m_LastClickedID: 22918
+    m_ExpandedIDs: 22faffff26faffff42faffff48faffff4efaffff66faffff72faffff76faffff7afaffff7efaffff14fcffff00000000c83e00003640000048410000ac4100002c4200000a43000022430000504300002c4400004044000080440000844500008c450000b0450000b44500001646000088460000c4460000dc460000e8460000e04700008448000024490000ec490000ae4a00001c4b00003e4b0000924b0000be4b0000ca4b0000ae4c00005e4d00007a4d0000a04e0000a44e0000d44f00003a50000094500000c0500000285100004a51000090510000e851000038520000d8520000dc52000066530000a65300000e5400001e5400007a54000098540000105500001c550000425500004e55000062550000f255000056560000705600007c560000aa5600003a5700005e5800007c580000e65800007859000090590000ae5900004e5a0000965a0000cc5a0000f25a00008a5b0000fa5b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Bar
-      m_OriginalName: Bar
+      m_Name: Demo Corgi
+      m_OriginalName: Demo Corgi
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -2227022
+      m_UserData: 21208
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 4
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
@@ -667,7 +667,7 @@ MonoBehaviour:
     y: 580
     width: 345
     height: 438
-  m_ScrollPosition: {x: 0, y: 1381.9551}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -239
@@ -738,19 +738,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Art/UI/Materials
+    - Assets/Art/Accessories/Materials
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Art/UI/Materials
+  - Assets/Art/Accessories/Materials
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\Github\Happy-Hounds-VR\Happy Hounds VR
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 319}
-    m_SelectedIDs: 84390000
-    m_LastClickedID: 14724
-    m_ExpandedIDs: 000000004e290000c8290000102a0000262a0000942b0000082c00003a2c00006c2d00002630000080300000d6300000a4310000b6320000063400003a350000763500008a36000028380000d2390000263a0000a43b0000063c0000123c0000386300003a6300003c6300003e63000040630000426300004463000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: ae390000
+    m_LastClickedID: 14766
+    m_ExpandedIDs: 0000000050290000c62900000e2a0000242a00008c2b0000002c0000342c0000b42c0000642d00001e3000007a300000d03000009e310000b032000000340000343500006e3500008036000024380000ce390000203a0000a63b0000083c0000143c000096620000986200009a6200009c6200009e620000a0620000a262000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -778,7 +778,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004e290000c8290000102a0000942b0000082c00003a2c00006c2d00002630000080300000d6300000b6320000063400003a350000763500008a36000028380000d2390000263a0000a43b0000123c0000386300003a6300003c6300003e630000406300004263000044630000
+    m_ExpandedIDs: 0000000050290000c62900000e2a0000242a00008c2b0000002c0000342c0000642d00001e3000007a300000d03000009e310000b032000000340000343500006e3500008036000024380000ce390000203a0000a63b0000083c0000143c000096620000986200009a6200009c6200009e620000a0620000a2620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -809,15 +809,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 826200008e2d0000e43100005e300000a22e0000102c0000aa990000b498000078990000307f0000403300009a3500001a3400004c040100c62b00001a2d00000e2e0000742a0000fa2c000088330000de360000e42c00005a3801004e380100502d0000b8300000b82d0000262e0000a629000016d10a00d04b000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: if_minus_214643
-      m_OriginalName: if_minus_214643
+      m_Name: bump2d1-crown2.1
+      m_OriginalName: bump2d1-crown2.1
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 14616
+      m_UserData: 12860
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
