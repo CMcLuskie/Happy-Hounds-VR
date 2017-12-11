@@ -568,20 +568,7 @@ public abstract class Dog : MonoBehaviour
 
     #region Costumes
 
-    public void InitCostumeList()
-    {
-        print("here");
-        costumeList[(int)Costumes.Wings] = GameObject.FindGameObjectWithTag("Wings");
-        costumeList[(int)Costumes.Crown] = GameObject.FindGameObjectWithTag("Crown");
-        costumeList[(int)Costumes.Glasses] = GameObject.FindGameObjectWithTag("Glasses");
-        costumeList[(int)Costumes.Hat] = GameObject.FindGameObjectWithTag("Hat");
-
-        costumeStringList = new List<string>();
-        for (int i = 0; i < costumeList.Count - 1; i++)
-        {
-            costumeStringList.Add(costumeList[i].name);
-        }
-    }
+  
 
     /// <summary>
     /// will put a costume ont he dog

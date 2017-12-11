@@ -5,7 +5,30 @@ using UnityEngine.UI;
 
 public class UIMGR : MonoBehaviour {
 
-#region Variables
+    #region Variables
+
+    bool readyToUpdate;
+
+    #region Dogs
+    [SerializeField]
+    protected List<DogBrain> dogBrains;
+    #endregion
+
+    #region Stats
+    [SerializeField]
+    protected List<GameObject> happiness;
+    [SerializeField]
+    protected List<GameObject> cleanliness;
+    [SerializeField]
+    protected List<GameObject> hunger;
+    [SerializeField]
+    protected List<GameObject> energy;
+
+    private List<float> happinessValue;
+    private List<float> cleanlinessValue;
+    private List<float> hungerValue;
+    private List<float> energyValue;
+    #endregion
     #region Buttons
     [SerializeField]
     protected GameObject mainMenuObject;
@@ -37,7 +60,15 @@ public class UIMGR : MonoBehaviour {
 
     private void Start()
     {
+        readyToUpdate = false;
         canPress = true;
+        InitStats();
+    }
+
+    private void Update()
+    {
+        if (readyToUpdate)
+            UpdateStats();
     }
     public void UseButton(string buttonName)
     {
@@ -72,7 +103,6 @@ public class UIMGR : MonoBehaviour {
                 case "Arrow Left":
                     ArrowRight();
                     break;
-
             }
             StartCoroutine(ButtonTimer());
         }
@@ -159,6 +189,40 @@ public class UIMGR : MonoBehaviour {
         canPress = true;
     }
 #endregion
+
+
+     void InitStats()
+    {
+
+        #region initLists
+        happinessValue = new List<float>();
+        cleanlinessValue = new List<float>();
+        hungerValue = new List<float>();
+        energyValue = new List<float>();
+        #endregion
+
+
+        for (int i = 0; i < dogBrains.Count - 1; i++)
+        {
+            happinessValue.Add(dogBrains[i].GetDogStats(Dog.Stats.Happiness));
+            cleanlinessValue.Add(dogBrains[i].GetDogStats(Dog.Stats.Cleanliness));
+            hungerValue.Add(dogBrains[i].GetDogStats(Dog.Stats.Hunger));
+            energyValue.Add(dogBrains[i].GetDogStats(Dog.Stats.Energy));
+        }
+        readyToUpdate = true;
+    }
+
+     void UpdateStats()
+    {
+        for(int i= 0; i < dogBrains.Count - 1; i++)
+        {
+            happiness[i].transform.localScale = new Vector3(0.01f * dogBrains[i].GetDogStats(Dog.Stats.Happiness), 1, 1);
+            cleanliness[i].transform.localScale = new Vector3(0.01f * dogBrains[i].GetDogStats(Dog.Stats.Cleanliness), 1, 1);
+            hunger[i].transform.localScale = new Vector3(0.01f * dogBrains[i].GetDogStats(Dog.Stats.Hunger), 1, 1);
+            energy[i].transform.localScale = new Vector3(0.01f * dogBrains[i].GetDogStats(Dog.Stats.Energy), 1, 1);
+
+        }
+    }
 
     public void Test()
     {

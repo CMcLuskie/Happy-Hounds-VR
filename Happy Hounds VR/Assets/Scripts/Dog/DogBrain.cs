@@ -34,8 +34,13 @@ public class DogBrain : Dog {
 
     private bool moveOn;
     private bool idleTimerOn;
-    private bool ballInterest;
     public bool isWaking;
+
+    private bool ballInterest;
+    private bool ballInterestTime;
+    private float currentTime;
+    private float totalTime;
+
 
     //[HideInInspector]
     public GameObject toy;
@@ -75,13 +80,13 @@ public class DogBrain : Dog {
     {
         ChangeBehaviour(startBehaviour);
         InitialiseStats(200);
-        InitCostumeList();
         InitVariables();
     }
 
     void InitVariables()
     {
         isWaking = false;
+        ballInterest = true;
         idleTimerOn = false;
         idleTimer = 0;
     }
@@ -121,13 +126,26 @@ public class DogBrain : Dog {
         else
             animator.SetBool("Petting", false);
 
+        if (ballInterestTime)
+        {
+            print( ballInterestTime);
+            currentTime += Time.deltaTime;
+            if (currentTime >= totalTime)
+            {
+                ballInterest = true;
+                ballInterestTime = false;
+            }
+
+        }
+
         #region StatModification
         statList[(int)Stats.Hunger] -= Time.deltaTime / statList[(int)StatDepletion.Hunger];
         statList[(int)Stats.Thirst] -= Time.deltaTime / statList[(int)StatDepletion.Thirst];
         statList[(int)Stats.Energy] -= Time.deltaTime / statList[(int)StatDepletion.Energy];
         statList[(int)Stats.Cleanliness] -= Time.deltaTime / statList[(int)StatDepletion.Cleanliness];
-#endregion
+        #endregion
 
+        
 
     }
 
@@ -205,10 +223,23 @@ public class DogBrain : Dog {
                 }
                 else
                 {
+#region phsyics
                     toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                     toy.transform.position = new Vector3(toy.transform.position.x, 0, toy.transform.position.z);
                     toy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    ChangeBehaviour(DogBehaviours.Sitting);
+                    #endregion
+                    statList[(int)Stats.Happiness] += 10;
+                    #region Interest
+                    ballInterest = false;
+                    if (!ballInterestTime)
+                    {
+                        ballInterestTime = true;
+                        currentTime = 0.0f;
+                        totalTime = 10.0f;
+                    }
+                    #endregion
+                    if (currentTime >= totalTime)
+                        ChangeBehaviour(DogBehaviours.Sitting);
                 }
         }
         #endregion
@@ -228,12 +259,21 @@ public class DogBrain : Dog {
     {
         GoToPoint(ToyPos(toy), 0.01f, 0.4f);
 
-        if (ClosetoPoint(transform.position, ToyPos(toy), 0.5f))
+        if (ClosetoPoint(transform.position, toy.transform.position, 0.5f))
         {
             PickUpToy();
-            StartCoroutine(AnimationTimer(10));
-            if (moveOn)
-                ChangeBehaviour(DogBehaviours.FollowPlayer);
+            
+            float totalTime = 3.0f;
+            float currentTime = 0.0f;
+            while (currentTime<totalTime)
+            {                
+                currentTime += Time.deltaTime;
+                if (currentTime >= totalTime)
+                {
+                    animator.SetBool("PickUp", false);
+                    ChangeBehaviour(DogBehaviours.FollowPlayer);
+                }
+            }
         }
     }
 
@@ -319,19 +359,14 @@ public class DogBrain : Dog {
         }
         #endregion
 
-        if (playerStatsScript.pickedUpToy)
-        {
-            WakeUp();
-            ChangeBehaviour(DogBehaviours.FollowToy);
-        }
-
+        
         if (playerStatsScript.calledDog)
         {
             WakeUp();
             ChangeBehaviour(DogBehaviours.FollowPlayer);
         }
 
-        if ((toySeen) && (playerStatsScript.pickedUpToy))
+        if ((toySeen) && (ballInterest))
             ChangeBehaviour(DogBehaviours.FollowToy);
 
         #region CloseToPlayer
@@ -554,7 +589,6 @@ public class DogBrain : Dog {
         moveOn = false;
         yield return new WaitForSeconds(time);
         moveOn = true;
-
     }
     /// <summary>
     /// this takes the dog out of its idle animations
