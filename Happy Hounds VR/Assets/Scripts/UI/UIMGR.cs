@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIMGR : MonoBehaviour {
 
@@ -74,6 +75,8 @@ public class UIMGR : MonoBehaviour {
     {
         if (canPress)
         {
+
+            GameObject.Find("Audio").GetComponent<AudioManager>().PlayClip(AudioManager.AudioSources.Tablet, AudioManager.ClipNames.Click);
             switch (buttonName)
             {
                 case "Shop":
@@ -224,8 +227,13 @@ public class UIMGR : MonoBehaviour {
         }
     }
 
-    public void Test()
+    public void LoadV1()
     {
-        Debug.Log("Test");
+        SceneManager.LoadScene("V1");
+    }
+
+    public void LoadEnter()
+    {
+        SceneManager.LoadScene("Enter");
     }
 }

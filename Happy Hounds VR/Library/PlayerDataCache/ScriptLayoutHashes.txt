@@ -416,7 +416,7 @@ aa336d6fedf2162670a2a20eb551b9b7 Assembly-CSharp.dll:.SteamVR_ExternalCamera
 f885a4962080ddf9dc918e70710e91c7 Assembly-CSharp.dll:VRTK.Examples.Hand
 7a38b46daa370b7cb2b8478f41a3773d Assembly-CSharp.dll:VRTK.UnityEventHelper.VRTK_ObjectControl_UnityEvents
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:VRTK.Examples.RendererOffOnDash
-390a9629ee34e113a5157c793bd6ef7d Assembly-CSharp.dll:.DogBrain
+872cc6f24110a64ff3688d74ad8f8fdd Assembly-CSharp.dll:.DogBrain
 7535ffda0516b04ed08ed1bcd4436966 Assembly-CSharp.dll:VRTK.VRTK_Door
 d52aee9c83b781e1b0ef02aef63ecb20 Assembly-CSharp.dll:Valve.VR.InteractionSystem.IgnoreHovering
 3f057262dfffcaf1e216a5564f575a9b Assembly-CSharp.dll:VRTK.UnityEventHelper.VRTK_PointerDirectionIndicator_UnityEvents

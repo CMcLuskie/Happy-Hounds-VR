@@ -2,24 +2,24 @@ Initialize engine version: 2017.1.0f3 (472613c02cf7)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1080 (ID=0x1b80)
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1c03)
     Vendor:   NVIDIA
-    VRAM:     8086 MB
-    Driver:   23.21.13.8813
+    VRAM:     6049 MB
+    Driver:   22.21.13.8541
 Begin MonoManager ReloadAssembly
-Platform assembly: E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.Timeline.dll (this message is harmless)
-Loading E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
-Platform assembly: E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\System.dll (this message is harmless)
-Platform assembly: E:\Github\Happy-Hounds-VR\Builds\week12_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.161 seconds
+Platform assembly: C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.Timeline.dll (this message is harmless)
+Loading C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
+Platform assembly: C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\cmclus200\Documents\GitHub\Happy-Hounds-VR\Builds\week12_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.015 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
@@ -27,9 +27,851 @@ OpenVR initialized!
  
 (Filename:  Line: 584)
 
-UnloadTime: 0.374546 ms
+UnloadTime: 0.351808 ms
 Setting up 4 worker threads for Enlighten.
-  Thread -> id: 4d58 -> priority: 1 
-  Thread -> id: 4e24 -> priority: 1 
-  Thread -> id: 4260 -> priority: 1 
-  Thread -> id: 4d78 -> priority: 1 
+  Thread -> id: a5a4 -> priority: 1 
+  Thread -> id: b720 -> priority: 1 
+  Thread -> id: d3d8 -> priority: 1 
+  Thread -> id: e098 -> priority: 1 
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsFrontV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load CorgiExample4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load GrassUVNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SeatWLegsV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SeatWLegsV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load DogFoodBag texture2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load RoofUV texture var3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load OutTreeUV copy from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Pool from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load RoofNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load Roof from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load ParasolV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load FenceUV texture more detail copyV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+async texture load: failed to load TableV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load ally from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load TableNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load UI screen for the dog LOKI from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load dog stats button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Ui maain screen happy hounds day care final from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load WallsSideV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load shop button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsFrontV1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load right arrow from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsFront from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load bump2d13-WaterBowl_Water from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SandpitSeat from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load WallsSide from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Parasol from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load PalmStem from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load TableV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load WallsFrontNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SeatWLegsV4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Tree2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SeatWLegs from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SeatWLegsNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Table from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load left arrow from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load eltons button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Kennel UV texture copy from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load UI screen for the dog THOR from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load tax avoidance from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsSideV1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load BushUVV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load if_minus_214643 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load 12.glitter-texture from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load FenceUV texture more detail from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load RoofUV texture var2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load FenceUV texture more detailV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load eastwood button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SandpitBaseNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load DogFoodCan texture from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load TableV4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SandpitFlag from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SandpitPillars from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load bull red wings buttton from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsSideNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SandpitBase from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SandpitSeatNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load FenceUV texture more detailV4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load PalmLeaves from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load GrassUVV2 copy from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Tree1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load ParasolV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsSideV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SandpitCastle from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load vive_controllers from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load Hat texture from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsFrontV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load CorgiExample1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load ParasolV4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load RopeToy from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load menu button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load RoofUV texture var1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+UnloadTime: 3.256718 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 4349.
+Total: 0.718946 ms (FindLiveObjects: 0.168622 ms CreateObjectMapping: 0.052119 ms MarkObjects: 0.487473 ms  DeleteObjects: 0.010219 ms)
+
+happiness: 23
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+hunger: 29
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+thirst: 53
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+cleanliness: 63
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+obedience: 69
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+happiness: 80
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+hunger: 80
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+thirst: 80
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+cleanliness: 100
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+obedience: 100
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Connected to lighthouse:LHR-803CC277
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.993293 ms
+
+Unloading 1388 unused Assets to reduce memory usage. Loaded Objects now: 728.
+Total: 2.076870 ms (FindLiveObjects: 0.104495 ms CreateObjectMapping: 0.092487 ms MarkObjects: 0.277205 ms  DeleteObjects: 1.602171 ms)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsFrontV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load CorgiExample4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load GrassUVNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SeatWLegsV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SeatWLegsV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+async texture load: failed to load DogFoodBag texture2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load RoofUV texture var3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load OutTreeUV copy from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Pool from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load RoofNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load Roof from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load ParasolV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load FenceUV texture more detail copyV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load TableV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load ally from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load TableNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load UI screen for the dog LOKI from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load dog stats button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Ui maain screen happy hounds day care final from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load WallsSideV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load shop button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsFrontV1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load right arrow from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsFront from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load bump2d13-WaterBowl_Water from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SandpitSeat from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load WallsSide from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Parasol from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load PalmStem from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load TableV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load WallsFrontNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SeatWLegsV4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Tree2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SeatWLegs from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SeatWLegsNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Table from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load left arrow from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load eltons button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Kennel UV texture copy from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load UI screen for the dog THOR from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load tax avoidance from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsSideV1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load BushUVV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load if_minus_214643 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load 12.glitter-texture from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load FenceUV texture more detail from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load RoofUV texture var2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load FenceUV texture more detailV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load eastwood button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SandpitBaseNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load DogFoodCan texture from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load TableV4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SandpitFlag from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SandpitPillars from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load bull red wings buttton from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsSideNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SandpitBase from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load SandpitSeatNormal from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load FenceUV texture more detailV4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load PalmLeaves from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load GrassUVV2 copy from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load Tree1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load ParasolV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsSideV2 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load SandpitCastle from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load vive_controllers from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+async texture load: failed to load Hat texture from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load WallsFrontV3 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load CorgiExample1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load ParasolV4 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load RopeToy from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load menu button from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+Could not open file C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS for read
+ 
+(Filename:  Line: 56)
+
+async texture load: failed to load RoofUV texture var1 from C:/Users/cmclus200/Documents/GitHub/Happy-Hounds-VR/Builds/week12_Data/sharedassets1.assets.resS
+UnloadTime: 0.360239 ms
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 4380.
+Total: 0.818331 ms (FindLiveObjects: 0.186762 ms CreateObjectMapping: 0.058251 ms MarkObjects: 0.559010 ms  DeleteObjects: 0.013029 ms)
+
+happiness: 21
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+hunger: 48
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+thirst: 74
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+cleanliness: 24
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+obedience: 32
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+happiness: 80
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+hunger: 80
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+thirst: 80
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+cleanliness: 100
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+obedience: 100
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.394970 ms
+
+Unloading 376 unused Assets to reduce memory usage. Loaded Objects now: 753.
+Total: 1.010970 ms (FindLiveObjects: 0.046499 ms CreateObjectMapping: 0.033980 ms MarkObjects: 0.300455 ms  DeleteObjects: 0.629269 ms)
+
+OpenVR Shutdown
+ 
+(Filename:  Line: 1253)
+

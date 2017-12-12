@@ -51,7 +51,7 @@ public class DogBrain : Dog {
     public enum Seekable { Player, Toy };
     public enum DogBehaviours { FollowToy, Wandering, FollowPlayer, FollowFood, FollowWater, Eating, Drinking, Sitting, PickedUp, Shitting, Swimming, Digging };
     public DogBehaviours previousBehaviour;
-    DogBehaviours currentBehaviour;
+    public DogBehaviours currentBehaviour;
     [SerializeField]
     protected DogBehaviours startBehaviour;
 
@@ -235,7 +235,7 @@ public class DogBrain : Dog {
                     {
                         ballInterestTime = true;
                         currentTime = 0.0f;
-                        totalTime = 10.0f;
+                        totalTime = 5.0f;
                     }
                     #endregion
                     if (currentTime >= totalTime)
@@ -292,10 +292,13 @@ public class DogBrain : Dog {
         else
         {
             GoToPoint(foodBowl.position, 0.01f, 0.3f);
-            if ((ClosetoPoint(transform.position, foodBowl.transform.position, 0.3f)) && (statList[(int)Stats.Hunger] < 80))
-                ChangeBehaviour(DogBehaviours.Eating);
-            else
-                ChangeBehaviour(DogBehaviours.Sitting);
+            if ((ClosetoPoint(transform.position, foodBowl.transform.position, 0.3f)))
+            {
+                if ((statList[(int)Stats.Hunger] < 80))
+                    ChangeBehaviour(DogBehaviours.Eating);
+                else
+                    ChangeBehaviour(DogBehaviours.FollowPlayer);
+            }
         }
             
     }
